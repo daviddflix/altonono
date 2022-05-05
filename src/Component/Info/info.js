@@ -5,7 +5,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 import mp from './image/icons8-mercado-pago-96.png'
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWRkZmxpeCIsImEiOiJjbDJyOXFnMHEwbXVvM2NxcmtpNmJmanZkIn0.UCpw9jgs42SyipHfaGRQQQ';
-
+//eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 
 export default function Info (){

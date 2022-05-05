@@ -6,7 +6,7 @@ body{
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  overflow-x: hidden;
+  
 }
 
 .chat{
@@ -15,9 +15,6 @@ body{
   right: 0;
 }
 
-.App{
-  overflow-y: auto;
-}
 
 
 

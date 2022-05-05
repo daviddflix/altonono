@@ -189,8 +189,8 @@ export const MenuCart = styled.ul`
     flex-direction: column;
     transition: 0.5s all ease;
     background-color: #fff;
-    top: 45px;
-    right: ${({open}) => open? "0" : "-100%"} ;
+    top: ${({open}) => open? "44px" : "-100%"} ;
+    right: 0;
     z-index: 50;
     border: 1px #ade8f4 solid;
    }
