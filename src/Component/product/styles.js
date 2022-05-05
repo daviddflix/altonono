@@ -29,11 +29,7 @@ export const  Menu = styled.div`
 
 
 @media screen and (max-width: 600px ) {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    /* background-color: #161a1d; */
+    padding: 10px;
 }
 `;
 
@@ -98,6 +94,7 @@ export const  Buttons = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+ 
 }
 `;
 
@@ -120,7 +117,8 @@ export const  ButtonAddToCart = styled(Link)`
     background-color: black;
     margin-left: 19px;
     text-decoration: none;
-    /* width: ; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
 
     &:hover{
         background-color: black;
@@ -137,6 +135,8 @@ export const  Arrow = styled.button`
     padding: 5px 10px 5px 10px;
     border: 1px solid black;
     background-color: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
 
     &:hover{
         background-color: black;
@@ -155,6 +155,8 @@ export const  ProductNumber = styled.p`
     border-bottom: 1px solid black;
     background-color: #fff;
     font-size: 13px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     border-radius: 5px;
    
 
    

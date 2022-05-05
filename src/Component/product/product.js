@@ -46,15 +46,15 @@ import {getProduct} from '../../redux/actions'
          <MainContainer>
              <h3>Nuestros productos</h3>
              <Menu>
-                <NavLink to={'pastas'} activeClassName='active'> Pastas</NavLink>
-                <NavLink to={'Salsas'} activeClassName='active'> Salsas</NavLink>
-                <NavLink to={'Toppings'} activeClassName='active'> Toppings</NavLink>
+                Podes elegir una pasta y dos salsas a eleccion
              </Menu>
          
              <CarouselProvider
                     naturalSlideWidth={100}
                     naturalSlideHeight={135}
-                    totalSlides={3}
+                    totalSlides={6}
+                    isPlaying={false}
+                    
                 >
                     <Slider>
                           {

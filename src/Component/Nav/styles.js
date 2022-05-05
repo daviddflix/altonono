@@ -12,6 +12,7 @@ export const  MainContainer = styled.div`
     background-color: #ffff;
     border-bottom: 1px solid ;
     border-color: #b7b7a4;
+    overflow: hidden;
 `
 
 export const Wrapper = styled.div`
@@ -21,7 +22,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  overflow: hidden;
  
 `;
 
@@ -48,7 +49,10 @@ export const LinkLogo = styled(NavLink)`
 
 export const Cart = styled(IoCartOutline)`
 
-    display: none;
+width: 20px;
+height: 20px;
+display: block;
+overflow: hidden;
    
     @media screen and (max-width: 600px ) {
         width: 20px;
@@ -60,19 +64,18 @@ export const Cart = styled(IoCartOutline)`
 export const Menu = styled.ul`
     display: flex;
     list-style: none;
-    /* justify-content: space-around; */
-    height: 100%;
+    height: 90%;
+    overflow: hidden;
+
 
    @media screen and (max-width: 600px){
     position: absolute;
-    top: 45px;
-    /* border: 1px solid black; */
-    width: 70%;
+    top: 44px;
+    width: 60%;
     height: 90vh;
-    /* justify-content: center; */
-    align-items: flex-start;
     flex-direction: column;
-    transition: 1s all ease;
+    border: 1px solid #b7b7a4;
+    transition: 0.5s all ease;
     background-color: #fff;
     left: ${({open}) => open? "0" : "-100%"} ;
     z-index: 50;
@@ -82,18 +85,17 @@ export const Menu = styled.ul`
 
 export const ContainerRutas = styled.li`
 
-  height: 100%;
+  
+ 
+ 
+  width: 100%;
 
   @media screen and (max-width:600px){
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 30px;
         position: relative;
-        right: 1.9rem;
-        padding: 6px;
-        border-bottom: 1px solid #b7b7a4;
+        right:2.7rem ; 
+        height: 40px;
         width: 100%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         
        
         
@@ -105,22 +107,20 @@ export const ContainerRutas = styled.li`
 
 export const Link = styled(NavLink)`
     
-    text-decoration: none;
+    
 
     @media screen and (max-width:600px){
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        color: hotpink;
+        color: black;
         padding: 10px;
         font-weight: 600;
-       
+        text-decoration: none;
+        height: 100%;
        
 
-        &:hover{
-            background-color: black;
-            color: hotpink;
-        }
+        
        
     }
 `;
@@ -128,20 +128,25 @@ export const Link = styled(NavLink)`
 export const RedirectLink = styled(HashLink)`
     
     text-decoration: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: black;
+    padding: 10px;
+    font-weight: 600;
+    height: 100%;
+   
 
     @media screen and (max-width:600px){
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        color: hotpink;
+        color: black;
         padding: 10px;
         font-weight: 600;
        
 
-        &:hover{
-            background-color: black;
-            color: hotpink;
-        }
+      
        
     }
 `;
@@ -162,10 +167,10 @@ export const MenuCart = styled.ul`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: 1s all ease;
+    transition: 0.5s all ease;
     background-color: #fff;
-    top: ${({open}) => open? "45px" : "-100%"} ;
-    right: 0;
+    top: 45px;
+    right: ${({open}) => open? "0" : "-100%"} ;
     z-index: 50;
    }
 `; 

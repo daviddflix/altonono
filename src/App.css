@@ -6,12 +6,17 @@ body{
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+ 
 }
 
 .chat{
   position: fixed;
   bottom: 0;
   right: 0;
+}
+
+.App{
+  overflow: hidden;
 }
 
 

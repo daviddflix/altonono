@@ -38,7 +38,7 @@ export default function Nav(){
      <MobileIcon onClick={showRoutes}/>
 
     <LinkLogo to='/'>
-     <h1 style={{fontWeight:'600'}}>HIT PASTA</h1>
+     <h1 style={{fontWeight:'800'}}>HIT PASTA</h1>
     </LinkLogo>
 
      <Cart onClick={cart}/>
@@ -59,9 +59,6 @@ export default function Nav(){
           </ContainerRutas>
      
           <ContainerRutas>
-               {/* <Link to='/envios'>
-               ENVIOS
-               </Link> */}
                <RedirectLink smooth to ='#envio' onClick={() => setShow(false)}>
                ENVIOS
                </RedirectLink>

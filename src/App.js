@@ -6,8 +6,8 @@ import Info from './Component/Info/info';
 import Footer from './Component/footer/footer';
 import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
-
 import DetailProduct from './Component/detailProduct/detailProduct';
+import Categories from './Component/categories/categories';
 
 
 
@@ -28,7 +28,9 @@ function App() {
         <CarouselProduct/>
         </Route> 
 
-    
+        <Route exact path='/productos'>
+        <Categories/>
+        </Route>
 
         <Route exact path='/detail/:id'>
         <DetailProduct/>

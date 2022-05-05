@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import {MdOutlinePayment} from 'react-icons/md'
 import {BsFillGeoAltFill} from 'react-icons/bs'
+import {FaMoneyBillWave} from 'react-icons/fa'
 
 export const  MainContainer = styled.div`
 
@@ -72,5 +73,26 @@ export const  HeaderPi = styled.h4`
 `;
 
 
+
+export const  MoneyIcon = styled(FaMoneyBillWave)`
+
+
+    @media screen and (max-width: 600px ) {
+      color: green;
+      width: 40px;
+      height: 40px;
+   }
+`;
+
+
+export const  MercadoPagoIcon = styled.img`
+
+
+    @media screen and (max-width: 600px ) {
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
+   }
+`;
 
 

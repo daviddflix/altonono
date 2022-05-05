@@ -2,12 +2,15 @@ const axios = require('axios').default;
 
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const NOT_FOUND = 'NOT_FOUND'
+export const GET_DETAILS = 'GET_DETAILS'
+
+const url = 'https://hit-pasta.herokuapp.com'
 
 
 export function getProduct (){
        return async function (dispatch){
           try {                            
-               const res = await axios.get(`http://localhost:5000/product`); 
+               const res = await axios.get(url); 
                console.log('ree', res)
                if(res.data.status === 404){
                  dispatch({ type: NOT_FOUND, payload: true });
@@ -23,13 +26,13 @@ export function getProduct (){
     
  }
 
-//  export function getDetail(idPais){
-//     return async function (dispatch){  //https://countriesa-d.herokuapp.com/countries/${idPais}
-//        const data = await fetch(`https://countriesa-d.herokuapp.com/countries/${idPais}`)
-//        const info = await data.json()
-//        return dispatch({ type: GET_DETAILS, payload: info })
-//     }        
-//  }
+ export function getDetail(id){
+    return async function (dispatch){ 
+       const data = await fetch(`${url}/detail/${id}`)
+       const info = await data.json()
+       return dispatch({ type: GET_DETAILS, payload: info })
+    }        
+ }
 
 //  export function getAll (){
 //   return async function (dispatch){

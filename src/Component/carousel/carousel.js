@@ -10,18 +10,18 @@ import Loading from '../spinner/spinner';
 export default class Carouselp extends Component {
     render() {
         return (
-           img?  <Carousel infiniteLoop={true} showThumbs={false} showStatus={false}>
+           img?  <Carousel infiniteLoop={true} autoPlay={true} showThumbs={false} showStatus={false}>
            <div>
                <img src={img} alt=''/>
-               <p className="legend">Legend 1</p>
+               <p className="legend" >Cual es tu HIT?</p>
            </div>
            <div>
                <img src={img3} alt='' />
-               <p className="legend">Legend 2</p>
+               <p className="legend">Cual es tu HIT?</p>
            </div>
            <div>
                <img src={img4} alt=''/>
-               <p className="legend">Legend 3</p>
+               <p className="legend">Cual es tu HIT?</p>
            </div>
        </Carousel> : <Loading/>
         );
