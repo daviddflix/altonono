@@ -1,4 +1,4 @@
-import { Header, MainContainer } from "./styles";
+import { Header, Instagram, MainContainer } from "./styles";
 
 
 export default function Footer (){
@@ -7,7 +7,7 @@ export default function Footer (){
      <MainContainer>
          <Header>Hit Pasta</Header>
           <div>
-
+               <Instagram/>
           </div>
      </MainContainer>
        

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink as Link} from "react-router-dom";
+import {  ButtonBack, ButtonNext } from 'pure-react-carousel';
 
 export const Titulo = styled.p`
 	
@@ -132,7 +133,7 @@ export const  Arrow = styled.button`
 
 @media screen and (max-width: 600px ) {
     color: black;
-    padding: 5px 10px 5px 10px;
+    padding:8px 14px 8px 14px;
     border: 1px solid black;
     background-color: #fff;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -150,7 +151,7 @@ export const  ProductNumber = styled.p`
 
 @media screen and (max-width: 600px ) {
     color: black;
-    padding: 5px 10px 5px 10px;
+    padding: 8px 14px 8px 14px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-color: #fff;
@@ -162,3 +163,33 @@ export const  ProductNumber = styled.p`
    
 }
 `;
+
+export const  ArrowLeft = styled(ButtonBack)`
+
+
+@media screen and (max-width: 600px ) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70%;
+    width: 0;
+    background-color: transparent;
+    border: none;
+}
+`;
+
+export const  ArrowRight = styled(ButtonNext)`
+
+
+@media screen and (max-width: 600px ) {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    height: 70%;
+    width: 0;
+    background-color: transparent;
+    border: none;
+}
+`;
+
+

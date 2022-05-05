@@ -1,10 +1,13 @@
-import { MainContainer, TextoSlide, Menu, NavLink, ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ProductNumber } from "./styles";
+import { MainContainer, TextoSlide, Menu, NavLink, ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ProductNumber, ArrowLeft, ArrowRight } from "./styles";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useParams } from "react-router-dom";
 import React, {  useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {getProduct} from '../../redux/actions'
+import {IoIosArrowForward} from 'react-icons/io';
+import {IoIosArrowBack} from 'react-icons/io'
+
 
  const CarouselProduct = () =>{
     
@@ -51,7 +54,7 @@ import {getProduct} from '../../redux/actions'
          
              <CarouselProvider
                     naturalSlideWidth={100}
-                    naturalSlideHeight={135}
+                    naturalSlideHeight={145}
                     totalSlides={6}
                     isPlaying={false}
                     
@@ -62,7 +65,7 @@ import {getProduct} from '../../redux/actions'
                                  return(
                                    
                                     <Slide index={p.id} key={p.id}><a href="https://www.instagram.com/hitpasta/">
-                                    <img src={`http://localhost:5000${p.image}`} alt="Img"/>
+                                    <img src={`https://hit-pasta.herokuapp.com/${p.image}`} alt="Img"/>
                                 </a>
                                 <TextoSlide >
                                 <Text>{p.description}</Text>
@@ -82,6 +85,8 @@ import {getProduct} from '../../redux/actions'
                               })
                             }
                     </Slider>
+                   <ArrowLeft><IoIosArrowBack/></ArrowLeft>
+                   <ArrowRight><IoIosArrowForward/></ArrowRight>
                 </CarouselProvider>
                 </MainContainer>
 

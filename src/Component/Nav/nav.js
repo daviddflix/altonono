@@ -1,18 +1,20 @@
-import { useState } from "react";
-import {  Cart, ContainerRutas, Link, LinkLogo, MainContainer, Menu, MenuCart, MobileIcon, RedirectLink, Wrapper } from "./styles";
+import { useContext, useState } from "react";
+import {  Cart, ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, Menu, MenuCart, MobileIcon, RedirectLink, Wrapper } from "./styles";
 import Carrito from "../cart/cart";
+import logo from '../../image/119711044_788870178530785_8282321138516462315_n.jpg'
+import Context from "../context/Items";
 
 export default function Nav(){ 
 
 
      const [show, setShow] = useState(false)
-     const [showCart, setShowCart] = useState(false)
+     const {closeCart, setCloseCart} = useContext(Context)
     
  
   const showRoutes = () => {
-     if(showCart === true){
+     if(closeCart === true){
           setShow(!show)
-          setShowCart(false)
+          setCloseCart(false)
        }else{
           setShow(!show)
        }
@@ -24,9 +26,9 @@ export default function Nav(){
   const cart = () => {
        if(show === true){
           setShow(false)
-          setShowCart(!showCart)
+          setCloseCart(!closeCart)
        }else{
-          setShowCart(!showCart)
+         setCloseCart(!closeCart)
        }
 }
 
@@ -38,6 +40,7 @@ export default function Nav(){
      <MobileIcon onClick={showRoutes}/>
 
     <LinkLogo to='/'>
+      <div> <ImgLogo src={logo} alt='logo'/></div>
      <h1 style={{fontWeight:'800'}}>HIT PASTA</h1>
     </LinkLogo>
 
@@ -67,7 +70,7 @@ export default function Nav(){
 
     </Menu>
 
-     <MenuCart open={showCart} >
+     <MenuCart open={closeCart} >
         <Carrito/>
      </MenuCart>
 

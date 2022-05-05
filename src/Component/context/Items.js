@@ -21,6 +21,6 @@ const Product = [
     }
   ]
 
- const ProductContext = createContext(Product)
+ const Context = createContext(null)
   
- export default ProductContext
+ export default Context

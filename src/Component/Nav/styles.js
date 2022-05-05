@@ -12,7 +12,7 @@ export const  MainContainer = styled.div`
     background-color: #ffff;
     border-bottom: 1px solid ;
     border-color: #b7b7a4;
-    overflow: hidden;
+   
 `
 
 export const Wrapper = styled.div`
@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  overflow: hidden;
+
  
 `;
 
@@ -43,9 +43,29 @@ export const LinkLogo = styled(NavLink)`
    color: black;
 
     @media screen and (max-width: 600px) {
-       display: block;
+       display: flex;  
+       flex-direction : row;
+       justify-content: center;
+       align-items: center;
 }
 `;
+
+export const ImgLogo = styled.img`
+    
+   text-decoration: none;
+   color: black;
+
+    @media screen and (max-width: 600px) {
+       border-radius: 50% ;
+       height: 2rem;
+       width: 2rem;
+       margin-right: 5px;
+       z-index: 10;
+
+}
+`;
+
+
 
 export const Cart = styled(IoCartOutline)`
 
@@ -172,6 +192,7 @@ export const MenuCart = styled.ul`
     top: 45px;
     right: ${({open}) => open? "0" : "-100%"} ;
     z-index: 50;
+    border: 1px #ade8f4 solid;
    }
 `; 
 

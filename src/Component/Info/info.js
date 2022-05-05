@@ -1,6 +1,7 @@
 import { Anchor, IconMap, HeaderPi, MainContainer, Text, IconPayment, IconGeo, Container, MoneyIcon, MercadoPagoIcon } from "./styles";
 import img from './image/google-maps-color-codes.svg'
 import { useEffect } from "react";
+import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 import mp from './image/icons8-mercado-pago-96.png'
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWRkZmxpeCIsImEiOiJjbDJyOXFnMHEwbXVvM2NxcmtpNmJmanZkIn0.UCpw9jgs42SyipHfaGRQQQ';
@@ -97,7 +98,7 @@ export default function Info (){
                    <h2>Metodos de pago</h2>
                    <Text>Podes pagar con mercado pago o en efectivo en cualquiera de nuestras sucursales</Text>
                    <MercadoPagoIcon src={mp}/>
-                   <MoneyIcon/>
+                   
                </Container>
 
            </MainContainer>

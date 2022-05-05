@@ -8,6 +8,8 @@ import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/categories';
+import { useState } from 'react';
+import Context from './Component/context/Items';
 
 
 
@@ -15,10 +17,11 @@ import Categories from './Component/categories/categories';
 
 function App() {
 
- 
+    const [closeCart, setCloseCart] = useState(false)
 
 
   return (
+    <Context.Provider value={{closeCart, setCloseCart }}>
     <div className="App">
        <Nav/>
        <Switch>
@@ -30,7 +33,7 @@ function App() {
 
         <Route exact path='/productos'>
         <Categories/>
-        </Route>
+        </Route>     
 
         <Route exact path='/detail/:id'>
         <DetailProduct/>
@@ -45,6 +48,7 @@ function App() {
      <Chat/>
      </div>
     </div>
+    </Context.Provider>
   );
 }
 

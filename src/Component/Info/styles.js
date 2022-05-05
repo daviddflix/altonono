@@ -15,6 +15,10 @@ export const  MainContainer = styled.div`
 export const  Container = styled.div`
   @media screen and (max-width: 600px ) {
     margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
    }
  
 `;

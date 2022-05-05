@@ -7,7 +7,7 @@ export const GET_DETAILS = 'GET_DETAILS'
 const url = 'https://hit-pasta.herokuapp.com'
 
 
-export function getProduct (){
+export function getProduct (){   
        return async function (dispatch){
           try {                            
                const res = await axios.get(url); 

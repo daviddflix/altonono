@@ -59,3 +59,15 @@ export const NavLink = styled(Link)`
    
 }
 `;
+
+
+
+export const Title = styled.h2`
+   
+
+@media screen and (max-width:600px){
+    color: black;
+    font-size: 1rem;
+   
+}
+`;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from './image/272153264_135055148978376_2152940238819777357_n.jpg'
+import img from './image/10.jpg'
 import img3 from './image/11.jpg'
 import img4 from './image/9.jpg'
 
@@ -10,7 +10,7 @@ import Loading from '../spinner/spinner';
 export default class Carouselp extends Component {
     render() {
         return (
-           img?  <Carousel infiniteLoop={true} autoPlay={true} showThumbs={false} showStatus={false}>
+           img?  <Carousel  infiniteLoop={true} autoPlay={true} showThumbs={false} showStatus={false}>
            <div>
                <img src={img} alt=''/>
                <p className="legend" >Cual es tu HIT?</p>

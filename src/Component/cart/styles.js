@@ -13,6 +13,8 @@ export const Item = styled.div`
       position: relative;
       right: 1rem; 
       height: 100vh;
+      overflow-y: auto;
+     
    } 
 `; 
 
@@ -23,7 +25,7 @@ export const Button = styled.button`
     @media screen and (max-width: 600px){
      padding: 10px;
      color: #fff;
-     background-color: #0466c8;
+     background-color: #e63946;
      border: none;
     
    } 
@@ -37,7 +39,7 @@ export const ButtonClose = styled(AiFillCloseCircle)`
      position: absolute;
      top: 10px;
      right: 5px;
-     color: #0466c8;
+     color: #e63946;
      height: 20px;
      width: 20px
 
