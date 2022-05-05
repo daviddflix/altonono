@@ -6,13 +6,15 @@ import React, {  useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {getProduct} from '../../redux/actions'
 import {IoIosArrowForward} from 'react-icons/io';
-import {IoIosArrowBack} from 'react-icons/io'
+import {IoIosArrowBack} from 'react-icons/io';
+import Rating from '@mui/material/Rating';
 
 
  const CarouselProduct = () =>{
     
     const [Number, setNumber] = useState(0)
-     console.log('number', Number)
+    const [value, setValue] = React.useState(3);
+    
 
     const ProductNumberIncrement = () => {
         setNumber(Number + 1)
@@ -67,6 +69,13 @@ import {IoIosArrowBack} from 'react-icons/io'
                                     <Slide index={p.id} key={p.id}><a href="https://www.instagram.com/hitpasta/">
                                     <img src={`https://hit-pasta.herokuapp.com/${p.image}`} alt="Img"/>
                                 </a>
+                                <Rating
+                                    name="simple-controlled"
+                                    value={value}
+                                    onChange={(event, newValue) => {
+                                    setValue(newValue);
+                                    }}
+                                />
                                 <TextoSlide >
                                 <Text>{p.description}</Text>
                                 <Text>$ {p.price}</Text>
