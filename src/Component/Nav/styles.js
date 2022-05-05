@@ -81,7 +81,7 @@ overflow: hidden;
 }
 `;
 
-export const Menu = styled.ul`
+export const MenuBar = styled.ul`
     display: flex;
     list-style: none;
     height: 90%;
@@ -115,12 +115,7 @@ export const ContainerRutas = styled.li`
         right:2.7rem ; 
         height: 40px;
         width: 100%;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        
-       
-        
-       
-       
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
      
   }
 `;
@@ -137,10 +132,7 @@ export const Link = styled(NavLink)`
         padding: 10px;
         font-weight: 600;
         text-decoration: none;
-        height: 100%;
-       
-
-        
+        height: 100%;  
        
     }
 `;
@@ -194,6 +186,14 @@ export const MenuCart = styled.ul`
     z-index: 50;
     border: 1px #ade8f4 solid;
    }
+`; 
+
+
+export const PictureAuth0 = styled.img`
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    
 `; 
 
 
