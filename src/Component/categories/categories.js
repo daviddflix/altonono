@@ -44,7 +44,7 @@ export default function Categories(){
                  )
                }): <Loading/>
            }
-           <h3>lor</h3>
+          
         </MainContainer>
     )
 }

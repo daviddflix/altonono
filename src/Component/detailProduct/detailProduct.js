@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { getDetail } from "../../redux/actions"
-import { Form, Input, MainContainer } from "./styles"
+import { BoxComentario, ContainerOption, ContainerOption_, Form, Input, InputOptions, MainBoxComentario, MainContainer } from "./styles"
 
 
 export default function DetailProduct(){
@@ -60,38 +60,46 @@ export default function DetailProduct(){
         <MainContainer>
             <h1>{detail.description}</h1>
             <Form>
-               <div>
-               <label>Salsas</label>
+               <ContainerOption>
+              <div  style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <h3>Salsas</h3>
                <p>selecciona maximo 2</p>
+              </div>
                 {
                      detail && detail?.salsas?.map(p => {
                         return(
-                            <div key={p}>
-                                 <input type='checkbox' checked={checked} name={p} value={p} onChange={() => handleSalsa()}/>
+                            <ContainerOption_ key={p}>
                                  <label>{p}</label>
-                            </div>
+                                 <InputOptions type='checkbox' checked={checked} name={p} value={p} onChange={() => handleSalsa()}/>
+                            </ContainerOption_>
                         )
                     })
                 }
-               </div>
-                <div>
-                <label>Toppings</label>
+               </ContainerOption>
+
+                <ContainerOption>
+                <h3>Toppings</h3>
                 <p>Podes seleccionar todas las quieras</p>
                 {
                      detail && detail?.toppings?.option?.map(p => {
                         return(
-                            <div key={p}>
-                                 <input type='checkbox' value={p} onChange={handleToppings}/>
-                                 <label>{p}</label>
-                                  <label>{detail.toppings.price}</label>
-                            </div>
+                            <ContainerOption_  key={p}>
+                                 <label style={{fontWeight: '800'}}>{p}</label>
+                                  <label>$ {detail.toppings.price}</label>
+                                 <InputOptions type='checkbox' value={p} onChange={handleToppings}/>
+                            </ContainerOption_>
                         )
                     })
                 }
                 
-                </div>
+                </ContainerOption>
                  
             </Form>
+
+            <MainBoxComentario>
+              <h3>Comentarios</h3>
+              <BoxComentario type='text' placeholder="Agrega instrucciones o comentarios a tu orden"/>
+            </MainBoxComentario>
 
         </MainContainer>
     )

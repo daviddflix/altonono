@@ -7,14 +7,12 @@ export default function Footer (){
      <MainContainer>
          <Header>Hit Pasta</Header>
          <div>
-             <h4>ENCONTRANOS EN LAS REDES</h4>
+             <h4 style={{color: '#fff'}}>ENCONTRANOS EN LAS REDES</h4>
          <div>
-             <a href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
+             <a style={{marginRight: '10px'}} href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
             <a href="https://www.facebook.com/hitpasta"><FacebookIcon/></a>
           </div>
-          <div>
-              <h3>Desarollado</h3>
-          </div>
+         
          </div>
      </MainContainer>
        

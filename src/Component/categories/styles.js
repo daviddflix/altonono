@@ -15,7 +15,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 5rem;
+   
     background-color: #bcb8b1;
 }
 `;
