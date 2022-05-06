@@ -1,9 +1,10 @@
-import { GET_DETAILS, GET_PRODUCTS } from "./actions"
+import { GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
 
 
 const InicialState ={
   food: [],
-  detail: {}
+  detail: {},
+  userDetails: []
 }
 
 
@@ -19,6 +20,12 @@ const InicialState ={
     return{
       ...state,
       detail: action.payload
+    }
+  }
+  if(action.type === GET_USER){
+    return{
+      ...state,
+      userDetails: action.payload
     }
   }
    

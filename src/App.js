@@ -10,6 +10,7 @@ import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/categories';
 import { useState } from 'react';
 import Context from './Component/context/Items';
+import UserProfile from './Component/profile/userProfile';
 
 
 
@@ -33,6 +34,10 @@ function App() {
 
         <Route exact path='/productos'>
         <Categories/>
+        </Route> 
+
+         <Route exact path='/userProfile'>
+        <UserProfile/>
         </Route>     
 
         <Route exact path='/detail/:id'>

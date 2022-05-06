@@ -16,6 +16,7 @@ export const MainContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     margin-bottom: 5rem;
+    background-color: #bcb8b1;
 }
 `;
 
@@ -39,6 +40,22 @@ export const Container = styled.div`
     align-items: center;
     height: 110px;
     width: 90%;
+    background-color: #fff;
+    border-radius: 5px;
+    
+      
+}
+`;
+
+export const Container_Info = styled.div`
+   
+@media screen and (max-width:600px){
+   
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     
       
 }

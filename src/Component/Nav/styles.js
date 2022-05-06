@@ -12,7 +12,10 @@ export const  MainContainer = styled.div`
     background-color: #ffff;
     border-bottom: 1px solid ;
     border-color: #b7b7a4;
-   
+    position: sticky;
+    top: 0;
+    z-index: 300;
+    background-color: #161a1d;   
 `
 
 export const Wrapper = styled.div`
@@ -34,6 +37,7 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         width: 20px;
         height: 20px;
         display: block;
+        color: #fff;
 }
 `;
 
@@ -78,6 +82,7 @@ overflow: hidden;
         width: 20px;
         height: 20px;
         display: block;
+        color: #fff;
 }
 `;
 
@@ -114,7 +119,7 @@ export const ContainerRutas = styled.li`
         position: relative;
         right:2.7rem ; 
         height: 40px;
-        width: 100%;
+        width: 300px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
      
   }
@@ -179,9 +184,9 @@ export const MenuCart = styled.ul`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: 0.5s all ease;
+    transition: 0.8s all ease;
     background-color: #fff;
-    top: ${({open}) => open? "44px" : "-300%"} ;
+    top: ${({open}) => open? "44px" : "-3000%"} ;
     right: 0;
     z-index: 50;
     border: 1px #ade8f4 solid;

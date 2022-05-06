@@ -3,6 +3,7 @@ const axios = require('axios').default;
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const NOT_FOUND = 'NOT_FOUND'
 export const GET_DETAILS = 'GET_DETAILS'
+export const GET_USER = 'GET_USER'
 
 const url = 'https://hit-pasta.herokuapp.com'
 
@@ -34,33 +35,34 @@ export function getProduct (){
     }        
  }
 
-//  export function getAll (){
-//   return async function (dispatch){
-//          try {                          //https://countriesa-d.herokuapp.com/countries
-//               const res = await axios.get(`https://countriesa-d.herokuapp.com/countries`);
-//               return dispatch({ type: GET_All, payload: res.data });
-//           } catch (err) {
-//               return console.error(err);
-//           }
+ export function postUser (payload){
+  return async function (dispatch){
+         try {                          
+              const res = await axios.post(`${url}/user`, payload);
+              return res
+          } catch (err) {
+              return console.error('algo paso',err);
+          }
               
-//       } 
+      } 
    
    
-// } 
+} 
 
  
 
-//  export function postAcitvity  (payload){
-//  return function  (dispatch){
-//     try {                       // https://countriesa-d.herokuapp.com/activity
-//         const res =   axios.post("https://countriesa-d.herokuapp.com/activity", payload);
-//          return res
-//     } catch (err) {
-//         return console.error(err);
-//     }
-//  }
+ export function getUser  (){
+ return async function (dispatch){
+    try {                       
+        const res =  await  axios.get(`${url}/getUser`);
+        console.log('getUser', res)
+        return dispatch({ type: GET_USER, payload: res })
+    } catch (err) {
+        return console.error(err);
+    }
+ }
     
-//  } 
+ } 
 
 //  export function  getActs(){
 //     return async function(dispatch){

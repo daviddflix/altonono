@@ -13,7 +13,7 @@ export const Item = styled.div`
       position: relative;
       right: 1rem; 
       height: 100vh;
-      overflow-y: auto;
+     
      
    } 
 `; 

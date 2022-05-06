@@ -11,17 +11,17 @@ export default class Carouselp extends Component {
     render() {
         return (
            img?  <Carousel  infiniteLoop={true} autoPlay={true} showThumbs={false} showStatus={false}>
-           <div>
-               <img src={img} alt=''/>
+           <div style={{height:'500px'}}>
+               <img style={{height:'500px'}} src={img} alt=''/>
                <p className="legend" >Cual es tu HIT?</p>
            </div>
-           <div>
-               <img src={img3} alt='' />
+           <div style={{height:'500px'}}>
+               <img style={{height:'500px'}} src={img3} alt='' />
                <p className="legend">Cual es tu HIT?</p>
            </div>
-           <div>
-               <img src={img4} alt=''/>
-               <p className="legend">Cual es tu HIT?</p>
+           <div style={{height:'500px'}}>
+               <img style={{height:'500px'}} src={img4} alt=''/>
+               <p className="">Cual es tu HIT?</p>
            </div>
        </Carousel> : <Loading/>
         );
