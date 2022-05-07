@@ -7,9 +7,9 @@ export default function ResumenCarrito (){
     const cart = useSelector(state => state.cart)
     return(
         <div>
-            cart.length  && <div>
+            <div>
         {
-          cart.map(p => {
+         cart.length && cart.map(p => {
             return(
               <Container key={p.id}>
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture}`} alt='picture'/>

@@ -32,11 +32,13 @@ export default function DetailProduct(){
       const backToProducts = () => {
          history.push('/productos')
          dispatch(addItem(options))
+         window.scroll(0,0)
       }
 
       const carrito = () => {
         history.push('/carrito')
         dispatch(addItem(options))
+        window.scroll(0,0)
       }
       
       const handleSalsa = (e) => {

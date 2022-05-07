@@ -79,7 +79,7 @@ const onClose = () => {
 
     <LinkLogo to='/'>
       {/* <div> <ImgLogo src={logo} alt='logo'/></div> */}
-     <h1 style={{color: '#fff',  fontFamily: 'Lobster'}}>HIT PASTA</h1>
+     <h1 style={{color: 'red',  fontFamily: 'Lobster'}}>HIT PASTA</h1>
     </LinkLogo>
 
      <Cart onClick={cart}/>

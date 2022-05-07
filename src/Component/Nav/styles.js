@@ -15,7 +15,8 @@ export const  MainContainer = styled.div`
     position: sticky;
     top: 0;
     z-index: 300;
-    background-color: #161a1d;   
+    background-color: #fff;  
+    //#161a1d 
 `
 
 export const Wrapper = styled.div`
@@ -37,7 +38,7 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         width: 20px;
         height: 20px;
         display: block;
-        color: #fff;
+        color: black;
 }
 `;
 
@@ -82,7 +83,7 @@ overflow: hidden;
         width: 20px;
         height: 20px;
         display: block;
-        color: #fff;
+        color: black;
 }
 `;
 
@@ -190,6 +191,7 @@ export const MenuCart = styled.ul`
     right: 0;
     z-index: 50;
     border: 1px #ade8f4 solid;
+    
    }
 `; 
 
