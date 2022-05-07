@@ -9,7 +9,7 @@ import img from '../../image/119711044_788870178530785_8282321138516462315_n-mod
 export default function Chat (){
 
     const date = new Date().getHours()
-    console.log(date)
+   
     return(
            <div style={{zIndex:'300'}}>
             <WhatsAppWidget 

@@ -1,4 +1,4 @@
-import { Anchor, IconMap, HeaderPi, MainContainer, Text, IconPayment, IconGeo, Container, MoneyIcon, MercadoPagoIcon } from "./styles";
+import { Anchor, IconMap, HeaderPi, MainContainer, Text, IconPayment, IconGeo, Container, MercadoPagoIcon } from "./styles";
 import img from './image/google-maps-color-codes.svg'
 import { useEffect } from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';

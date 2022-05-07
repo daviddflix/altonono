@@ -33,6 +33,11 @@ import Rating from '@mui/material/Rating';
 
     console.log('info', product)
 
+    const handleClick = () => {
+        window.scroll(0,0)
+      }
+     
+
 
     useEffect(() => {
         let cancel = false
@@ -77,14 +82,14 @@ import Rating from '@mui/material/Rating';
                                     setValue(newValue);
                                     }}
                                 />
-                                <Text>$ {p.price}</Text>
+                                 <Text>$ {p.price}</Text>
                                 <ContainerButton>
                                     <Buttons>
                                         <Arrow onClick={ProductNumberDecrement}>-</Arrow>
                                          <ProductNumber>{Number}</ProductNumber>
                                         <Arrow onClick={ProductNumberIncrement}>+</Arrow>
                                     </Buttons>
-                                    <ButtonAddToCart to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
+                                    <ButtonAddToCart onClick={handleClick} to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
                                 </ContainerButton>
                             </TextoSlide>
                             </Slide>

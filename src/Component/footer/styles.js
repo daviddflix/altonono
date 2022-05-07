@@ -6,6 +6,7 @@ import {FaFacebookSquare} from 'react-icons/fa'
 export const  MainContainer = styled.div`
     background-color: #161a1d;
     padding: 1rem;
+     height: 250px;
 `;
 
 

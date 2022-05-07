@@ -15,7 +15,7 @@ import Badge from '@mui/material/Badge'
 export default function Nav(){ 
 
      const {isAuthenticated, user, loginWithPopup, logout , loginWithRedirect } = useAuth0();
-     console.log(user)
+     
      const [show, setShow] = useState(false)
      const {closeCart, setCloseCart} = useContext(Context)
      const [anchorEl, setAnchorEl] = useState(null);
@@ -27,12 +27,6 @@ export default function Nav(){
      useEffect(() => {
           if (isAuthenticated) {
             dispatch(postUser(user))
-              .then(res => {
-                console.log(res.data)
-              })
-              .catch(err => {
-                console.log(err.response)
-              })
           }
         }, [user, isAuthenticated])
     

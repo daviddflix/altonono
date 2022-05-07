@@ -4,6 +4,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const NOT_FOUND = 'NOT_FOUND'
 export const GET_DETAILS = 'GET_DETAILS'
 export const GET_USER = 'GET_USER'
+export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 
 const url = 'https://hit-pasta.herokuapp.com'
 
@@ -12,7 +13,7 @@ export function getProduct (){
        return async function (dispatch){
           try {                            
                const res = await axios.get(url); 
-               console.log('ree', res)
+              
                if(res.data.status === 404){
                  dispatch({ type: NOT_FOUND, payload: true });
                } else {
@@ -55,7 +56,7 @@ export function getProduct (){
  return async function (dispatch){
     try {                       
         const res =  await  axios.get(`${url}/getUser`);
-        console.log('getUser', res)
+       
         return dispatch({ type: GET_USER, payload: res })
     } catch (err) {
         return console.error(err);
@@ -64,50 +65,15 @@ export function getProduct (){
     
  } 
 
-//  export function  getActs(){
-//     return async function(dispatch){
-//        try {                            //https://countriesa-d.herokuapp.com/activities
-//            const res = await axios.get("https://countriesa-d.herokuapp.com/activities")
-//            return dispatch({ type: GET_ACTS, payload: res.data })
-//        } catch (error) {
-//            console.log(error)
-//        }
-//     }
-// }
 
+ export function addItem(value){
+    
+     return{
+         type:ADD_ITEM_TO_CART,
+         payload: value
+     }
+ }
 
-
-
-
-//  export function filterByContinent(value){
-//      return{
-//          type:FILTER_CONTINENT,
-//          payload: value
-//      }
-//  }
- 
-//  export function filterByPopulation(value){
-//      return{
-//        type: FILTER_POPULATION,
-//        payload: value
-//      }
-//  }
-
-//  export function filterAz(value){
-//      return{
-//          type: FILTERAZ,
-//          payload: value
-//      }
-       
-//  }
-
-//  export function filterActivity(value){
-//     return{
-//         type: FILTER_ACT,
-//         payload: value
-//     }
-
-// }
 
 
 

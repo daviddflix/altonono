@@ -1,15 +1,18 @@
-import { GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
+
+import { ADD_ITEM_TO_CART, GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
 
 
 const InicialState ={
   food: [],
   detail: {},
-  userDetails: []
+  userDetails: [],
+  cart: [],
+  cartFinal: []
 }
 
 
  const rootReducer = (state = InicialState, action) => {
-   console.log('reducer')
+  
    if(action.type === GET_PRODUCTS){
      return{
        ...state,
@@ -17,6 +20,7 @@ const InicialState ={
      }
    }
     if(action.type === GET_DETAILS){
+
     return{
       ...state,
       detail: action.payload
@@ -26,6 +30,20 @@ const InicialState ={
     return{
       ...state,
       userDetails: action.payload
+    }
+  }
+  if(action.type === ADD_ITEM_TO_CART){
+
+
+    
+    // const filterItem =  state.cartFinal?.filter(p => p.id === action.payload.id && action.payload)
+   
+   
+    return{
+      ...state,
+      cart: [...state.cart, action.payload]
+      // cartFinal: [...state.cartFinal,filterItem]
+      
     }
   }
    

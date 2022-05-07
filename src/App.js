@@ -11,6 +11,8 @@ import Categories from './Component/categories/categories';
 import { useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
+import {CartProvider} from './Component/context/cartContext'
+import ResumenCarrito from './Component/resumenCarrito/carrito';
 
 
 
@@ -19,10 +21,12 @@ import UserProfile from './Component/profile/userProfile';
 function App() {
 
     const [closeCart, setCloseCart] = useState(false)
-
+    
+  
 
   return (
     <Context.Provider value={{closeCart, setCloseCart }}>
+      <CartProvider>
     <div className="App">
        <Nav/>
        <Switch>
@@ -38,6 +42,10 @@ function App() {
 
          <Route exact path='/userProfile'>
         <UserProfile/>
+        </Route>  
+
+         <Route exact path='/carrito'>
+        <ResumenCarrito/>
         </Route>     
 
         <Route exact path='/detail/:id'>
@@ -53,6 +61,7 @@ function App() {
      <Chat/>
      </div>
     </div>
+    </CartProvider>
     </Context.Provider>
   );
 }
