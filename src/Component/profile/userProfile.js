@@ -26,7 +26,7 @@ export default function UserProfile(){
               isAuthenticated && (
                   <div>
                        <Typography variant="h4" align='center' gutterBottom component="div" sx={{ m: 2 }}>
-                        MY PROFILE
+                        MI PERFIL
                        </Typography>
                        <div>
                            <ProfilePicture src={user.picture} alt='picture'/>

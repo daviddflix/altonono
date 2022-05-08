@@ -5,6 +5,7 @@ export const NOT_FOUND = 'NOT_FOUND'
 export const GET_DETAILS = 'GET_DETAILS'
 export const GET_USER = 'GET_USER'
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
+export const DELETE_ITEM = 'DELETE_ITEM'
 
 const url = 'https://hit-pasta.herokuapp.com'
 
@@ -73,6 +74,14 @@ export function getProduct (){
          payload: value
      }
  }
+
+ export function DeleteItem(value){
+    
+    return{
+        type:DELETE_ITEM,
+        payload: value
+    }
+}
 
 
 

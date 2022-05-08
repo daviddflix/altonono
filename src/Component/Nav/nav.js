@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {  Cart, ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
+import {  Cart, ContainerCart, ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
 import Carrito from "../cart/cart";
 import logo from '../../image/119711044_788870178530785_8282321138516462315_n.jpg'
 import Context from "../context/Items";
@@ -10,13 +10,14 @@ import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 import { postUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import Badge from '@mui/material/Badge'
+import {AiOutlineClose} from 'react-icons/ai';
 
 export default function Nav(){ 
 
      const {isAuthenticated, user, loginWithPopup, logout , loginWithRedirect } = useAuth0();
      
      const [show, setShow] = useState(false)
+     
      const {closeCart, setCloseCart} = useContext(Context)
      const [anchorEl, setAnchorEl] = useState(null);
      const open = Boolean(anchorEl);
@@ -75,7 +76,9 @@ const onClose = () => {
 <MainContainer>
   <Wrapper>
 
-     <MobileIcon onClick={showRoutes}/>
+     {
+          show === false? <MobileIcon onClick={showRoutes}/> : <AiOutlineClose style={{boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', width: '20px', height: '20px'}} onClick={showRoutes}/>
+     }
 
     <LinkLogo to='/'>
       {/* <div> <ImgLogo src={logo} alt='logo'/></div> */}
@@ -103,16 +106,23 @@ const onClose = () => {
                <RedirectLink smooth to ='#envio' onClick={onClose}>
                ENVIOS
                </RedirectLink>
+          </ContainerRutas>
 
+          <ContainerRutas>
+               <Link to='/trabajaConNosotros' exact onClick={onClose}>
+               TRABAJA CON NOSOTROS
+               </Link>
           </ContainerRutas>
 
     </MenuBar>
 
      <div>
         
-    <MenuCart open={closeCart} >
+  
+   <MenuCart open={closeCart} >
         <Carrito/>
      </MenuCart>
+  
     
      
      {isAuthenticated ? (

@@ -26,19 +26,30 @@ export default function DetailProduct(){
         id: '',
         product: '',
         price: 0,
-        picture: ''
+        picture: '',
+        Comments: '',
+        finalPrice: 0
       });
 
       const backToProducts = () => {
-         history.push('/productos')
-         dispatch(addItem(options))
+         if(options.salsa.length){
+          dispatch(addItem(options))
+         }
          window.scroll(0,0)
+         history.push('/productos')
       }
 
       const carrito = () => {
         history.push('/carrito')
+       if(options.salsa.length){
         dispatch(addItem(options))
+       }
         window.scroll(0,0)
+      }
+
+      const handleComments = (e) => {
+        setOptions(prev => ({
+          ...prev, Comments:  e.target.value}))
       }
       
       const handleSalsa = (e) => {
@@ -81,11 +92,23 @@ export default function DetailProduct(){
       }
 
       useEffect(() => {
+
+      const producprice = options.price
+      const topprice = options.priceTopping 
+     
+          const total = topprice? producprice + topprice : producprice
+
+          setOptions(prev => ({...prev, finalPrice: total}))
+         
+      }, [options.price, options.priceTopping])
+     
+
+      useEffect(() => {
         
 
           const numberOfToppings = options.toppings_finals.length 
           const finalPrice = numberOfToppings !== 0? numberOfToppings * 90 : 0
-          console.log('number:',numberOfToppings)
+         
           setOptions(prev => ({...prev, priceTopping: finalPrice }))
           
         
@@ -145,7 +168,7 @@ export default function DetailProduct(){
 
             <MainBoxComentario>
               <h3>Comentarios</h3>
-              <BoxComentario type='text' placeholder="Agrega instrucciones o comentarios a tu orden"/>
+              <BoxComentario type='text' value={options.Comments} onChange={handleComments} placeholder="Agrega instrucciones o comentarios a tu orden"/>
             </MainBoxComentario>
 
             <div>

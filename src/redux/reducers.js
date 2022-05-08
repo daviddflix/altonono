@@ -1,5 +1,5 @@
 
-import { ADD_ITEM_TO_CART, GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
 
 
 const InicialState ={
@@ -33,16 +33,21 @@ const InicialState ={
     }
   }
   if(action.type === ADD_ITEM_TO_CART){
-
-
-    
-    // const filterItem =  state.cartFinal?.filter(p => p.id === action.payload.id && action.payload)
-   
    
     return{
       ...state,
       cart: [...state.cart, action.payload]
-      // cartFinal: [...state.cartFinal,filterItem]
+      
+    }
+  }
+
+  if(action.type === DELETE_ITEM){
+
+    const items = state.cart.filter(p => p.id != action.payload)
+   
+    return{
+      ...state,
+      cart: items
       
     }
   }

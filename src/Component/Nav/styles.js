@@ -39,6 +39,8 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         height: 20px;
         display: block;
         color: black;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+       
 }
 `;
 
@@ -74,16 +76,21 @@ export const ImgLogo = styled.img`
 
 export const Cart = styled(IoCartOutline)`
 
-width: 20px;
-height: 20px;
+width: 23px;
+height: 23px;
 display: block;
 overflow: hidden;
    
     @media screen and (max-width: 600px ) {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         display: block;
         color: black;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+        border-radius: 50%;
+        
+        z-index: 10;
+       
 }
 `;
 
@@ -110,10 +117,6 @@ export const MenuBar = styled.ul`
   
 
 export const ContainerRutas = styled.li`
-
-  
- 
- 
   width: 100%;
 
   @media screen and (max-width:600px){
@@ -125,6 +128,7 @@ export const ContainerRutas = styled.li`
      
   }
 `;
+
 
 export const Link = styled(NavLink)`
     
@@ -178,7 +182,7 @@ export const MenuCart = styled.ul`
 
    @media screen and (max-width: 600px){
     position: absolute;
-    top: 44px;
+   
     // border: 1px solid black; 
     width: 70%;
     height: 90vh;

@@ -69,7 +69,7 @@ export const InputOptions = styled.input`
         height: 20px;
         width: 20px;
         position: absolute;
-        left: 23rem;
+        left: 18rem;
         border: none;
         display: block;
         top: .4rem;
@@ -129,7 +129,11 @@ export const BoxComentario = styled.input`
  @media screen and (max-width: 600px) {
         padding: 30px;
         width: 90%;
-
+        
+        &::placeholder{
+                text-align: top;
+                
+        }
          
  }
 `;
@@ -154,7 +158,7 @@ export const PhotoProduct = styled.img`
         border-radius: 5px;
         position: absolute;
         top: 8rem;
-        right: 3rem;
+        right: 1rem;
          
  }
 `;
