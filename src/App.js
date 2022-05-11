@@ -13,6 +13,7 @@ import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
 import {CartProvider} from './Component/context/cartContext'
 import ResumenCarrito from './Component/resumenCarrito/carrito';
+import FormPago from './Component/formPago/formPago';
 
 
 
@@ -51,11 +52,15 @@ function App() {
         <Route exact path='/detail/:id'>
         <DetailProduct/>
         </Route> 
+
+        <Route exact path='/formPago'>
+        <FormPago/>
+        </Route>
        
         </Switch>  
       
-       {/* <CarouselProduct /> */}
        <Info/>
+       
       <Footer/>
      <div className='chat'>
      <Chat/>

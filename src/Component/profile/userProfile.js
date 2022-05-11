@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "../../redux/actions";
+
+
 import { ContainerInfo, MainContainer, MainContainerInfo, ProfilePicture } from "./styles";
 import TextField from '@mui/material/TextField';
 import { useAuth0 } from "@auth0/auth0-react";
@@ -9,16 +8,14 @@ import Typography from '@mui/material/Typography';
 
 export default function UserProfile(){
 
-    const dispatch = useDispatch()
-    const userDetails = useSelector(state => state.userDetails)
+    // const dispatch = useDispatch()
+    // const userDetails = useSelector(state => state.userDetails)
   
     const { isAuthenticated, user } = useAuth0();
     console.log(user)
 
 
-//     useEffect(() => {
-//         dispatch(getUser())
-// }, [])
+
 
    return(
        <MainContainer>

@@ -1,40 +1,45 @@
-import { MainContainer, TextoSlide, Menu, NavLink, ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ProductNumber, ArrowLeft, ArrowRight } from "./styles";
+import { MainContainer, TextoSlide,  ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ProductNumber, ArrowLeft, ArrowRight } from "./styles";
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { useParams } from "react-router-dom";
 import React, {  useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import {getProduct} from '../../redux/actions'
 import {IoIosArrowForward} from 'react-icons/io';
 import {IoIosArrowBack} from 'react-icons/io';
 import Rating from '@mui/material/Rating';
+import Loading from '../spinner/spinner'
+import { useAuth0 } from "@auth0/auth0-react";
 
 
  const CarouselProduct = () =>{
     
-    const [Number, setNumber] = useState(0)
+    const [Number, setNumber] = useState(1)
     const [value, setValue] = React.useState(5);
-    
+    const {isAuthenticated , loginWithRedirect } = useAuth0();
 
     const ProductNumberIncrement = () => {
         setNumber(Number + 1)
     }
 
     const ProductNumberDecrement = () => {
-        if(Number === 0 ){
-           return setNumber(0)
+        if(Number === 1 ){
+           return setNumber(1)
         }
         setNumber(Number - 1)
     }
 
-    const {id} = useParams()
+    
     const dispatch = useDispatch()
     const product = useSelector(state => state.food)
 
-    console.log('info', product)
+   
 
-    const handleClick = () => {
-        window.scroll(0,0)
+    const handleClick = async() => {
+        if(isAuthenticated){
+            window.scroll(0,0)
+        } else{
+          await loginWithRedirect()
+        }
       }
      
 
@@ -44,7 +49,7 @@ import Rating from '@mui/material/Rating';
         const data = async () => {
             dispatch(getProduct())
         }
-        console.log(data)
+        
         data()
         return () => {
             cancel = true
@@ -59,19 +64,20 @@ import Rating from '@mui/material/Rating';
          
              <CarouselProvider
                     naturalSlideWidth={100}
-                    naturalSlideHeight={150}
+                    naturalSlideHeight={153}
                     totalSlides={6}
                     isPlaying={false}
                     
                 >
                     <Slider>
                           {
-                              product?.map(p => {
+                            product? product?.map(p => {
                                  return(
                                    
-                                    <Slide  index={p.id} key={p.id}><a href="https://www.instagram.com/hitpasta/">
-                                    <img style={{borderRadius: '10px'}}  src={`https://hit-pasta.herokuapp.com/${p.image}`} alt="Img"/>
-                                </a>
+                                  <Slide  index={p.id} key={p.id}>
+                            {product.length?  <a href="https://www.instagram.com/hitpasta/">
+                                   <img style={{borderRadius: '10px'}}  src={`https://hit-pasta.herokuapp.com/${p.image}`} alt="Img"/>
+                                </a>: <Loading/>}
                                
                                 <TextoSlide >
                                 <Text>{p.description}</Text>
@@ -95,7 +101,7 @@ import Rating from '@mui/material/Rating';
                             </Slide>
                            
                                  )
-                              })
+                              }): <Loading/>
                             }
                     </Slider>
                    <ArrowLeft><IoIosArrowBack/></ArrowLeft>

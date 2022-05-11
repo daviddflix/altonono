@@ -22,6 +22,8 @@ export const  MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow:  20px 20px 60px #bebebe,
+             -20px -20px 60px #ffffff;
 
 }
 `;

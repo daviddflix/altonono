@@ -4,24 +4,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {store} from './redux/store';
-import { Auth0Provider } from "@auth0/auth0-react";
-
-const domain = process.env.REACT_APP_AUTH0_DOMAIN
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID
+import {store, persistor} from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react'
+import Auth0ProviderWithHistory from './Auth0WithRedirect';
 
 
 ReactDOM.render(
   <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
      <BrowserRouter>
-     <Auth0Provider
-    domain={domain}
-    clientId={clientId}
-    redirectUri={window.location.origin}
-  >
+     <Auth0ProviderWithHistory>
     <App />
-  </Auth0Provider>,
+    </Auth0ProviderWithHistory>
   </BrowserRouter>
+  </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

@@ -17,7 +17,7 @@ export const MainContainer = styled.div`
 
 export const Form = styled.form`
  
- width: 100%;
+        width: 100%;
 
 
 @media screen and (max-width:600px){
@@ -53,7 +53,7 @@ export const ContainerOption = styled.div`
  }
 `;
 
-export const ContainerOption_ = styled.div`
+export const ContainerOptionChild = styled.div`
  @media screen and (max-width: 600px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -69,11 +69,11 @@ export const InputOptions = styled.input`
         height: 20px;
         width: 20px;
         position: absolute;
-        left: 18rem;
+        left: 20rem;
         border: none;
         display: block;
         top: .4rem;
-
+        color: green;
          
  }
 `;
@@ -81,43 +81,27 @@ export const InputOptions = styled.input`
 export const MainBoxComentario = styled.div`
 
    @media screen and (max-width: 600px) {
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        width: 90vw;
+         
         margin-bottom: 2rem;
-       position: relative;
-       left: 1rem;
+         display: flex;
+        flex-direction: column;
+        align-items: center; 
        
    }
 
 `;
+
+
 
 export const BoxTitleAndPhoto = styled.div`
 
    @media screen and (max-width: 600px) {
         width: 100%;
         display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        position: relative;
-        justify-content: flex-start;
-       
-       
-   }
-
-`;
-
-export const BoxTitleAndPhoto_ = styled.div`
-
-   @media screen and (max-width: 600px) {
-        width: 100%;
-        display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
-        position: relative;
-        left: 2rem;
+        padding-left: 20px;
        
        
    }
@@ -158,7 +142,7 @@ export const PhotoProduct = styled.img`
         border-radius: 5px;
         position: absolute;
         top: 8rem;
-        right: 1rem;
+        right: 3rem;
          
  }
 `;

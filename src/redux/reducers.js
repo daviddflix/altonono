@@ -1,5 +1,5 @@
 
-import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER } from "./actions"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT } from "./actions"
 
 
 const InicialState ={
@@ -7,7 +7,8 @@ const InicialState ={
   detail: {},
   userDetails: [],
   cart: [],
-  cartFinal: []
+  cartFinal: [],
+  link: ''
 }
 
 
@@ -40,10 +41,18 @@ const InicialState ={
       
     }
   }
+  if(action.type === LINK_PAYMENT){
+   
+    return{
+      ...state,
+      link: action.payload
+      
+    }
+  }
 
   if(action.type === DELETE_ITEM){
 
-    const items = state.cart.filter(p => p.id != action.payload)
+    const items = state.cart.filter(p => p.id !== action.payload)
    
     return{
       ...state,

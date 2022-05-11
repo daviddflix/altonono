@@ -6,9 +6,10 @@ export const GET_DETAILS = 'GET_DETAILS'
 export const GET_USER = 'GET_USER'
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
+export const LINK_PAYMENT= 'LINK_PAYMENT'
 
 const url = 'https://hit-pasta.herokuapp.com'
-
+const ur = 'http://localhost:4000'
 
 export function getProduct (){   
        return async function (dispatch){
@@ -40,7 +41,8 @@ export function getProduct (){
  export function postUser (payload){
   return async function (dispatch){
          try {                          
-              const res = await axios.post(`${url}/user`, payload);
+              const res = await axios.post(`${url}/postuser`, payload);
+              console.log('respostUser', res)
               return res
           } catch (err) {
               return console.error('algo paso',err);
@@ -51,12 +53,39 @@ export function getProduct (){
    
 } 
 
+export function postCompra (payload){
+    return async function (dispatch){
+           try {                          
+                const res = await axios.post(`${url}/postcompras`, payload);
+                console.log('postcompras', res)
+                return res
+            } catch (err) {
+                return console.error('algo paso',err);
+            }
+                
+        } 
+     
+     
+  } 
+
+  export function getAllCompras (){
+    return async function (dispatch){
+           try {                          
+                const res = await axios.get(`${url}/getallcompras`);
+                
+            } catch (err) {
+                return console.error('algo paso',err);
+            }
+                
+        } 
+  } 
+
  
 
  export function getUser  (){
  return async function (dispatch){
     try {                       
-        const res =  await  axios.get(`${url}/getUser`);
+        const res =  await  axios.get(`${url}/getuser`);
        
         return dispatch({ type: GET_USER, payload: res })
     } catch (err) {
@@ -65,6 +94,20 @@ export function getProduct (){
  }
     
  } 
+
+ export function getLinkPayment  (payload){
+    return async function (dispatch){
+       try {                       
+           const res =  await  axios.post(`${url}/payment`,payload);
+        console.log('linkpayment', res.data.init_point)
+        return dispatch({ type: LINK_PAYMENT, payload: res.data.init_point })
+          
+       } catch (err) {
+           return console.error(err);
+       }
+    }
+       
+    } 
 
 
  export function addItem(value){

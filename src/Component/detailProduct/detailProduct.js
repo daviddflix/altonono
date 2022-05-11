@@ -2,13 +2,14 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, BoxTitleAndPhoto_, ButtonVerCarrito, ContainerOption, ContainerOption_, Form, Input, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
-
+import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function DetailProduct(){
-
+  const {isAuthenticated, user , loginWithRedirect } = useAuth0();
     const dispatch = useDispatch()
     const {id} = useParams()
+
     useEffect(() => {
         dispatch(getDetail(id))
     }, [dispatch, id])
@@ -20,15 +21,16 @@ export default function DetailProduct(){
 
     
       const [options, setOptions] = useState({
-        toppings_finals: [],
+        toppings: [],
         salsa: [],
         priceTopping: null,
         id: '',
-        product: '',
+        title: '',
         price: 0,
-        picture: '',
+        picture_url: '',
         Comments: '',
-        finalPrice: 0
+        unit_price: 0,
+        quantity: 1
       });
 
       const backToProducts = () => {
@@ -40,11 +42,17 @@ export default function DetailProduct(){
       }
 
       const carrito = () => {
-        history.push('/carrito')
-       if(options.salsa.length){
-        dispatch(addItem(options))
-       }
-        window.scroll(0,0)
+      
+        if(isAuthenticated){
+          if(options.salsa.length){
+            dispatch(addItem(options))
+           }
+            window.scroll(0,0)
+            history.push('/carrito')
+        } else{
+          loginWithRedirect()
+        }
+       
       }
 
       const handleComments = (e) => {
@@ -58,8 +66,8 @@ export default function DetailProduct(){
 
          if(checked === true){
         options.salsa.length<=1 && setOptions(prev => ({
-                ...prev, salsa: [...prev.salsa, name], picture: detail.image, 
-                id: detail.id, price: detail.price, product: detail.description
+                ...prev, salsa: [...prev.salsa, name], picture_url: detail.image, 
+                id: user.sub, price: detail.price, title: detail.description
               }))
         
       }
@@ -77,13 +85,13 @@ export default function DetailProduct(){
 
         if(checked === true){
           setOptions(prev => ({
-            ...prev, toppings_finals: [...prev.toppings_finals, name]
+            ...prev, toppings: [...prev.toppings, name]
           }))
         }
 
         if(checked === false){
           setOptions(prev => ({
-            ...prev, toppings_finals: prev.toppings_finals.filter(p => p !== name)
+            ...prev, toppings: prev.toppings.filter(p => p !== name)
           }))
         }
 
@@ -98,21 +106,19 @@ export default function DetailProduct(){
      
           const total = topprice? producprice + topprice : producprice
 
-          setOptions(prev => ({...prev, finalPrice: total}))
+          setOptions(prev => ({...prev, unit_price: total}))
          
       }, [options.price, options.priceTopping])
      
 
       useEffect(() => {
-        
-
-          const numberOfToppings = options.toppings_finals.length 
+          const numberOfToppings = options.toppings.length 
           const finalPrice = numberOfToppings !== 0? numberOfToppings * 90 : 0
          
           setOptions(prev => ({...prev, priceTopping: finalPrice }))
           
         
-      }, [options.toppings_finals])
+      }, [options.toppings])
 
      
 
@@ -124,40 +130,40 @@ export default function DetailProduct(){
             <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.image}`}/>
             <Form>
                <ContainerOption>
-              <BoxTitleAndPhoto>
-             <BoxTitleAndPhoto_>
+              {/* <BoxTitleAndPhoto> */}
+             <BoxTitleAndPhoto>
              <h3>Salsas</h3>
                <p>selecciona maximo 2</p>
-             </BoxTitleAndPhoto_>
-              </BoxTitleAndPhoto>
+             </BoxTitleAndPhoto>
+              {/* </BoxTitleAndPhoto> */}
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
-                            <ContainerOption_ key={p}>
+                            <ContainerOptionChild key={p}>
                                  <label>{p}</label>
                                 <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
-                            </ContainerOption_>
+                            </ContainerOptionChild>
                         )
                     })
                 }
                </ContainerOption>
 
                 <ContainerOption>
-                  <BoxTitleAndPhoto>
-                 <BoxTitleAndPhoto_>
+               
+                 <BoxTitleAndPhoto>
                  <h3 style={{fontWeight: '900'}}>Toppings</h3>
                 <p>Podes seleccionar todas las quieras</p>
-                 </BoxTitleAndPhoto_>
-                  </BoxTitleAndPhoto>
+                 </BoxTitleAndPhoto>
+                
                
                 {
                      detail && detail?.toppings?.option?.map(p => {
                         return(
-                            <ContainerOption_  key={p}>
+                            <ContainerOptionChild  key={p}>
                                  <label style={{fontWeight: '800'}}>{p}</label>
                                   <label>$ {detail.toppings.price}</label>
-                                 <InputOptions type='checkbox' name={p} checked={options.toppings_finals.index} key={p}  value={p} onChange={handleToppings}/>
-                            </ContainerOption_>
+                                 <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
+                            </ContainerOptionChild>
                         )
                     })
                 }

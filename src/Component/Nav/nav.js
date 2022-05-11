@@ -1,23 +1,37 @@
 import { useContext, useEffect, useState } from "react";
-import {  Cart, ContainerCart, ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
+import { ContainerRutas, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
 import Carrito from "../cart/cart";
-import logo from '../../image/119711044_788870178530785_8282321138516462315_n.jpg'
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import {AiOutlineClose} from 'react-icons/ai';
 
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';   
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+     '& .MuiBadge-badge': {
+       right: -3,
+       top: 13,
+       border: `2px solid ${theme.palette.background.paper}`,
+       padding: '0 4px',
+     },
+   }));
+
 export default function Nav(){ 
 
-     const {isAuthenticated, user, loginWithPopup, logout , loginWithRedirect } = useAuth0();
+     const {isAuthenticated, user, logout , loginWithRedirect } = useAuth0();
      
      const [show, setShow] = useState(false)
      
+     const cartItems = useSelector(state => state.cart)
      const {closeCart, setCloseCart} = useContext(Context)
      const [anchorEl, setAnchorEl] = useState(null);
      const open = Boolean(anchorEl);
@@ -29,7 +43,7 @@ export default function Nav(){
           if (isAuthenticated) {
             dispatch(postUser(user))
           }
-        }, [user, isAuthenticated])
+        }, [user, dispatch, isAuthenticated])
     
      const handleClickLogout = () => {
           logout();
@@ -85,7 +99,14 @@ const onClose = () => {
      <h1 style={{color: 'red',  fontFamily: 'Lobster'}}>HIT PASTA</h1>
     </LinkLogo>
 
-     <Cart onClick={cart}/>
+     {/* <Cart onClick={cart}/> */}
+     <div onClick={cart}>
+     <IconButton aria-label="cart">
+      <StyledBadge badgeContent={cartItems.length} color="primary">
+        <ShoppingCartIcon />
+      </StyledBadge>
+    </IconButton>
+    </div>
 
     
     <MenuBar open={show} >
@@ -119,9 +140,16 @@ const onClose = () => {
      <div>
         
   
+  
+    
    <MenuCart open={closeCart} >
         <Carrito/>
      </MenuCart>
+
+
+  
+
+   
   
     
      

@@ -39,7 +39,6 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         height: 20px;
         display: block;
         color: black;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
        
 }
 `;
@@ -86,7 +85,6 @@ overflow: hidden;
         height: 22px;
         display: block;
         color: black;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
         border-radius: 50%;
         
         z-index: 10;
@@ -177,17 +175,13 @@ export const RedirectLink = styled(HashLink)`
 export const MenuCart = styled.ul`
     display: flex;
     list-style: none;
-    /* justify-content: space-around; */
     height: 100%;
 
    @media screen and (max-width: 600px){
-    position: absolute;
-   
-    // border: 1px solid black; 
+    position: absolute; 
     width: 70%;
-    height: 90vh;
-    justify-content: center;
-    align-items: center;
+    height: 80vh;
+    
     flex-direction: column;
     transition: 0.8s all ease;
     background-color: #fff;

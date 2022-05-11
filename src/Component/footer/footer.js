@@ -1,4 +1,4 @@
-import { FacebookIcon, Header, Instagram, InstagramIcon, MainContainer } from "./styles";
+import { FacebookIcon, Header, InstagramIcon, MainContainer } from "./styles";
 
 
 export default function Footer (){

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {AiFillCloseCircle} from 'react-icons/ai';
 import {AiOutlineClose} from 'react-icons/ai'
 
-const query = '800px'
 
 export const BoxNoItem = styled.div`
   
@@ -14,7 +13,7 @@ export const BoxNoItem = styled.div`
       align-items: center;
       justify-content: center;
       
-      height: 100vh;
+      height: 80vh;
      
      
    } 
@@ -25,7 +24,8 @@ export const BoxItems = styled.div`
      display: flex;
      flex-direction: column;
      align-items: center;
-     justify-items: flex-start;
+     justify-content: center;
+     
   }
 `;
 
@@ -63,7 +63,8 @@ export const ContainerButtons = styled.div`
      bottom: 0;
      display: flex;
      flex-direction: column;
-     width: 70%;
+     
+     width: 80%;
     
    } 
 `; 
@@ -90,7 +91,7 @@ export const Img = styled.img`
     
 
     @media screen and (max-width: 700px){
-      width: 100%;
+      width: 50%;
       height: 100%;
       border-radius: 5px;
       position: relative;
@@ -100,26 +101,36 @@ export const Img = styled.img`
 
 export const Container = styled.div`
   @media screen and (max-width: 700px){
+     
+     
+     /* padding: 20px 2rem 10px 2rem; */
+     margin-bottom: 5px; 
      display: flex;
      flex-direction: row;
+     height: 60px;
+     width: 200px;
      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-     padding: 10px 2rem 10px 2rem;
-     border-radius: 5px;
      align-items: center;
      position: relative;
-    
-   
-     height: 60px;
-     width: 100%;
-     margin-bottom: 1rem;
+     
+     
      
   }
+`;
+
+export const ContainerProductGeneral = styled.div`
+@media screen and (max-width: 700px){
+   
+   
+  overflow-y: scroll;
+   
+}
 `;
 
 export const ContainerProduct = styled.div`
   @media screen and (max-width: 700px){
      
-     margin-left: 1rem;
+     margin-right: 2rem;
      ;
   }
 `;
@@ -134,8 +145,7 @@ export const ContainerButtonAndTitle = styled.div`
      display:flex;
      justify-content: space-around;
      align-items: center;
-     position: absolute;
-     top: 0;
+     margin-bottom: 8px;
      
      
    } 
