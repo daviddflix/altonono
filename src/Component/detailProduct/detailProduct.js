@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
 import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
+import {v4 as uuidv4} from 'uuid'
 
 export default function DetailProduct(){
   const {isAuthenticated, user , loginWithRedirect } = useAuth0();
@@ -54,6 +55,7 @@ export default function DetailProduct(){
         }
        
       }
+     
 
       const handleComments = (e) => {
         setOptions(prev => ({
@@ -67,7 +69,7 @@ export default function DetailProduct(){
          if(checked === true){
         options.salsa.length<=1 && setOptions(prev => ({
                 ...prev, salsa: [...prev.salsa, name], picture_url: detail.image, 
-                id: detail.id, price: detail.price, title: detail.description
+                id: uuidv4(), price: detail.price, title: detail.description
               }))
         
       }
@@ -127,7 +129,7 @@ export default function DetailProduct(){
     return(
         <MainContainer>
             <h1>{detail.description}</h1>
-            <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.image}`}/>
+            <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/>
             <Form>
                <ContainerOption>
               {/* <BoxTitleAndPhoto> */}

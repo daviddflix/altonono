@@ -1,7 +1,7 @@
 
 import WhatsAppWidget from "react-whatsapp-chat-widget";
 import "react-whatsapp-chat-widget/index.css";
-import img from '../../image/119711044_788870178530785_8282321138516462315_n-modified.png'
+import img from '../../image/favicon.ico'
 
 
 
@@ -25,13 +25,13 @@ export default function Chat (){
 			headerBgColor="#25d366"
 			headerTitle="Hit Pasta"
 			headerCaption={date >= 24 ? 'Offline': 'Online'}
-			bodyBgColor="#2b2b2b"
-			chatPersonName="Hit Pasta"
-			chatMessage={<>Hola, <br /> en que podemos ayudarte?</>}
-			footerBgColor="#2b2b2b"
+			bodyBgColor="#fff"
+			// chatPersonName="Hit Pasta"
+			chatMessage={<>Hola, como podemos ayudarte?</>}
+			footerBgColor="#FFF"
 			btnBgColor="#25d366"
 			btnTxtColor="black"
-			btnTxt="Start Chat"
+			btnTxt="Chatea con nosotros"
             />
            </div>
     )

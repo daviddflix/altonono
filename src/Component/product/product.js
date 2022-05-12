@@ -72,11 +72,11 @@ import { useAuth0 } from "@auth0/auth0-react";
                                    
                                   <Slide  index={p.id} key={p.id}>
                             {product.length?  <a href="https://www.instagram.com/hitpasta/">
-                                   <img style={{borderRadius: '10px'}}  src={`https://hit-pasta.herokuapp.com/${p.image}`} alt="Img"/>
+                                   <img style={{borderRadius: '10px'}}  src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
                                 </a>: <Loading/>}
                                
                                 <TextoSlide >
-                                <Text>{p.description}</Text>
+                                <Text>{p.title}</Text>
                                 <Rating
                                     name="simple-controlled"
                                     value={value}

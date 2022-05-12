@@ -28,7 +28,7 @@ export default function Categories(){
                    <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none'}}>
                   <Container >
                         <ContainerInfo >
-                          <Title>{p.description}</Title>
+                          <Title>{p.title}</Title>
                              <Rating
                               name="size-small"
                               value={value}
@@ -38,7 +38,7 @@ export default function Categories(){
                               />
                           <h4>$ {p.price}</h4>
                         </ContainerInfo>
-                        <Img src={`https://hit-pasta.herokuapp.com/${p.image}`} />
+                        <Img src={`https://hit-pasta.herokuapp.com/${p.picture.url}`} />
                 </Container>
                    </NavLink>
                  )

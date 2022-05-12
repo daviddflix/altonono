@@ -60,9 +60,9 @@ export default function Carrito(){
           cart.map((p, i) => {
             return(
               <Container key={i}>
-                <Img src={`https://hit-pasta.herokuapp.com/${p.image}`} alt='picture'/>
+                <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
-                <h5>{p.product}</h5>
+                <h5>{p.title}</h5>
                 <h6>${p.price}</h6>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>

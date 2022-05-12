@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { postCompra, getAllCompras } from "../../redux/actions";
-import { Container, ContainerProduct, Img } from "./styles"
+import { Container, ContainerProduct, Img, MainContainer } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -26,13 +26,13 @@ export default function ResumenCarrito (){
 
    
     return(
-        <div>
+        <MainContainer>
             <div>
         {
          cart.length && cart.map((p, i)=> {
             return(
               <Container key={i}>
-                <Img src={`https://hit-pasta.herokuapp.com/${p.image}`} alt='picture'/>
+                <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
                 <h3>{p.title}</h3>
                 <h4>${p.unit_price}</h4>
@@ -42,7 +42,7 @@ export default function ResumenCarrito (){
           })
         }
       </div>
-      <button onClick={ProcederAlPago}>FINALIZAR COMPRA</button>
-        </div>
+      <button onClick={ProcederAlPago} disabled={!cart.length}>FINALIZAR COMPRA</button>
+        </MainContainer>
     )
 }

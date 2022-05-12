@@ -1,9 +1,11 @@
-import { Anchor, IconMap, HeaderPi, MainContainer, Text, IconPayment, IconGeo, Container, MercadoPagoIcon } from "./styles";
+import { Anchor, IconMap, HeaderPi, MainContainer, Text, IconPayment, IconGeo, Container, ImagesPayments } from "./styles";
 import img from './image/google-maps-color-codes.svg'
 import { useEffect } from "react";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 import mp from './image/icons8-mercado-pago-96.png'
+import visa from './image/visa-payment-card1873.jpg'
+import master from './image/logo_mastercard-despues.jpg'
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWRkZmxpeCIsImEiOiJjbDJyOXFnMHEwbXVvM2NxcmtpNmJmanZkIn0.UCpw9jgs42SyipHfaGRQQQ';
 //eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
@@ -98,8 +100,11 @@ export default function Info (){
                    <IconPayment/>
                    <h2>Metodos de pago</h2>
                    <Text>Podes pagar con mercado pago o en efectivo en cualquiera de nuestras sucursales</Text>
-                   <MercadoPagoIcon src={mp}/>
-                   
+                  <div>
+                  <ImagesPayments src={mp}/>
+                   <ImagesPayments src={master}/>
+                   <ImagesPayments src={visa}/>
+                  </div>
                </Container>
 
            </MainContainer>

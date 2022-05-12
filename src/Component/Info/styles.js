@@ -6,7 +6,7 @@ import {FaMoneyBillWave} from 'react-icons/fa'
 export const  MainContainer = styled.div`
 
 
-    @media screen and (max-width: 600px ) {
+    @media screen and (max-width: 900px ) {
     /* background-color: #bcb8b1; */
     padding: 1rem;
     height: 100%;
@@ -14,7 +14,7 @@ export const  MainContainer = styled.div`
 `;
 
 export const  Container = styled.div`
-  @media screen and (max-width: 600px ) {
+  @media screen and (max-width: 900px ) {
     margin: 3rem;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ export const  Container = styled.div`
 
 export const  Text = styled.h4`
 
-  @media screen and (max-width: 600px ) {
+  @media screen and (max-width: 900px ) {
     color: black;
     font-size: 15px;
    }
@@ -36,7 +36,7 @@ export const  Text = styled.h4`
 
 export const  Anchor = styled.a`
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
   /* text-decoration: none; */
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@ export const  IconPayment = styled(MdOutlinePayment)`
    height: 50px;
    color: black;
 
-   @media screen and (max-width: 600px ) {
+   @media screen and (max-width: 900px ) {
       width: 30px;
       height: 30px;
       color: black;
@@ -71,7 +71,7 @@ export const  HeaderPi = styled.h4`
     color: black;
     font-size:  20px;
 
-  @media screen and (max-width: 600px ) {
+  @media screen and (max-width: 900px ) {
     color: black;
     font-size: 10px;
 }
@@ -82,7 +82,7 @@ export const  HeaderPi = styled.h4`
 export const  MoneyIcon = styled(FaMoneyBillWave)`
 
 
-    @media screen and (max-width: 600px ) {
+    @media screen and (max-width: 900px ) {
       color: green;
       width: 40px;
       height: 40px;
@@ -90,10 +90,10 @@ export const  MoneyIcon = styled(FaMoneyBillWave)`
 `;
 
 
-export const  MercadoPagoIcon = styled.img`
+export const  ImagesPayments = styled.img`
 
 
-    @media screen and (max-width: 600px ) {
+    @media screen and (max-width: 900px ) {
       margin-right: 15px;
       width: 40px;
       height: 40px;
