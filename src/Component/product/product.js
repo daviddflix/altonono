@@ -35,11 +35,7 @@ import { useAuth0 } from "@auth0/auth0-react";
    
 
     const handleClick = async() => {
-        if(isAuthenticated){
-            window.scroll(0,0)
-        } else{
-          await loginWithRedirect()
-        }
+        window.scroll(0,0)
       }
      
 
@@ -95,7 +91,7 @@ import { useAuth0 } from "@auth0/auth0-react";
                                          <ProductNumber>{Number}</ProductNumber>
                                         <Arrow onClick={ProductNumberIncrement}>+</Arrow>
                                     </Buttons>
-                                    <ButtonAddToCart onClick={handleClick} to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
+                                    <ButtonAddToCart to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
                                 </ContainerButton>
                             </TextoSlide>
                             </Slide>

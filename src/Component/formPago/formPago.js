@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import {  getLinkPayment, postUser } from "../../redux/actions";
+import {  getLinkPayment, postCompra, postUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 
 
@@ -22,22 +22,23 @@ export default function FormPago (){
         sub: ""
     })
 
-    useEffect(() => {
-     if(user){
-         setInput(prev => ({...prev, sub: user.sub}))
-     }
-    },[user])
+    // useEffect(() => {
+    //  if(user){
+    //      setInput(prev => ({...prev, sub: user.sub}))
+    //  }
+    // },[user])
 
-    useEffect(() => {
-       if(input.direccion && input.email && input.nombre && input.numero && input.sub){
-        dispatch(postUser(input))
-       }
-    }, [input, dispatch])
+    // useEffect(() => {
+    //    if(input.direccion && input.email && input.nombre && input.numero && input.sub){
+    //     dispatch(postUser(input))
+    //    }
+    // }, [input, dispatch])
 
   
     const submitform = (e) => {
         e.preventDefault()
-        dispatch(getLinkPayment(cart))
+        dispatch(postCompra({cart, user}))
+        dispatch(getLinkPayment({cart, user}))
        
     }
 
@@ -50,6 +51,7 @@ export default function FormPago (){
     const priceProduct =   total.reduce((prev, curr) => {
      return prev + curr 
     }, 0)
+
     return(
         <div>
             <form onSubmit={(e) => submitform(e)}>

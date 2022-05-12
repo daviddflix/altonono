@@ -8,8 +8,8 @@ export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT= 'LINK_PAYMENT'
 
-const url = 'https://hit-pasta.herokuapp.com'
-const ur = 'http://localhost:4000'
+const ur = 'https://hit-pasta.herokuapp.com'
+const url = 'http://localhost:4001'
 
 export function getProduct (){   
        return async function (dispatch){
@@ -39,6 +39,7 @@ export function getProduct (){
  }
 
  export function postUser (payload){
+     console.log('payloaduser:', payload)
   return async function (dispatch){
          try {                          
               const res = await axios.post(`${url}/postuser`, payload);

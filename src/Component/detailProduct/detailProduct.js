@@ -67,7 +67,7 @@ export default function DetailProduct(){
          if(checked === true){
         options.salsa.length<=1 && setOptions(prev => ({
                 ...prev, salsa: [...prev.salsa, name], picture_url: detail.image, 
-                id: user.sub, price: detail.price, title: detail.description
+                id: detail.id, price: detail.price, title: detail.description
               }))
         
       }

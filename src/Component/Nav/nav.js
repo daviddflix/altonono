@@ -37,13 +37,7 @@ export default function Nav(){
      const open = Boolean(anchorEl);
      const history = useHistory()
 
-     const dispatch = useDispatch()
-
-     useEffect(() => {
-          if (isAuthenticated) {
-            dispatch(postUser(user))
-          }
-        }, [user, dispatch, isAuthenticated])
+ 
     
      const handleClickLogout = () => {
           logout();
@@ -148,7 +142,7 @@ const onClose = () => {
 
 
   
-
+    
    
   
     

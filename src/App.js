@@ -14,20 +14,24 @@ import UserProfile from './Component/profile/userProfile';
 import {CartProvider} from './Component/context/cartContext'
 import ResumenCarrito from './Component/resumenCarrito/carrito';
 import FormPago from './Component/formPago/formPago';
-
-
-
-
+import Checkout from './Component/addressform/Checkout'
+import userContext from './Component/context/userContext';
 
 function App() {
 
     const [closeCart, setCloseCart] = useState(false)
-    
+    const [input, setInput] = useState({
+      nombre: "",
+      direccion: "",
+      numero: "",
+      email: "",
+      sub: ""
+  })
   
 
   return (
     <Context.Provider value={{closeCart, setCloseCart }}>
-      <CartProvider>
+     <userContext.Provider value={{input, setInput}}>
     <div className="App">
        <Nav/>
        <Switch>
@@ -43,30 +47,35 @@ function App() {
 
          <Route exact path='/userProfile'>
         <UserProfile/>
-        </Route>  
+        </Route> 
+       
 
          <Route exact path='/carrito'>
         <ResumenCarrito/>
-        </Route>     
+        </Route>  
+
+         <Route exact path='/formPago'>
+        <Checkout/>
+        </Route>    
 
         <Route exact path='/detail/:id'>
         <DetailProduct/>
         </Route> 
 
-        <Route exact path='/formPago'>
+        {/* <Route exact path='/formPago'>
         <FormPago/>
-        </Route>
+        </Route> */}
        
         </Switch>  
       
        <Info/>
        
-      <Footer/>
+      <Footer />
      <div className='chat'>
      <Chat/>
      </div>
     </div>
-    </CartProvider>
+    </userContext.Provider>
     </Context.Provider>
   );
 }

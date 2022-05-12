@@ -15,12 +15,9 @@ export default function ResumenCarrito (){
   const dispatch = useDispatch()
   const history = useHistory()
 
-  const postDataCompra = async () => {
-    isAuthenticated && cart.length &&  dispatch(postCompra(cart))  
-
-    if(isAuthenticated){
+  const ProcederAlPago = async () => {
       history.push('/formPago')
-    }
+      window.scroll(0,0)
   }
 
   useEffect(() => {
@@ -35,7 +32,7 @@ export default function ResumenCarrito (){
          cart.length && cart.map((p, i)=> {
             return(
               <Container key={i}>
-                <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
+                <Img src={`https://hit-pasta.herokuapp.com/${p.image}`} alt='picture'/>
                 <ContainerProduct>
                 <h3>{p.title}</h3>
                 <h4>${p.unit_price}</h4>
@@ -45,7 +42,7 @@ export default function ResumenCarrito (){
           })
         }
       </div>
-      <button onClick={postDataCompra}>FINALIZAR COMPRA</button>
+      <button onClick={ProcederAlPago}>FINALIZAR COMPRA</button>
         </div>
     )
 }
