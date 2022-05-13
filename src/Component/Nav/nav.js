@@ -90,13 +90,13 @@ const onClose = () => {
 
     <LinkLogo to='/'>
       {/* <div> <ImgLogo src={logo} alt='logo'/></div> */}
-     <h1 style={{color: 'red',  fontFamily: 'Lobster'}}>HIT PASTA</h1>
+     <h1 style={{color: 'red',  fontFamily: 'Asap Condensed'}}>HIT PASTA</h1>
     </LinkLogo>
 
      {/* <Cart onClick={cart}/> */}
      <div onClick={cart}>
      <IconButton aria-label="cart">
-      <StyledBadge badgeContent={cartItems.length} color="primary">
+      <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

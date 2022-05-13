@@ -12,6 +12,7 @@ export const MainContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+       
 }
 `;
 
@@ -26,6 +27,7 @@ export const Form = styled.form`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        
 }
 `;
 
@@ -57,17 +59,19 @@ export const ContainerOptionChild = styled.div`
  @media screen and (max-width: 600px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        border-bottom: 1px solid #fff;
+        /* border-bottom: 1px solid #fff; */
         padding: 10px;
         width: 100%;
         position: relative;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-top: none;
  }
 `;
 
 export const InputOptions = styled.input`
  @media screen and (max-width: 600px) {
-        height: 20px;
-        width: 20px;
+        height: 22px;
+        width: 22px;
         position: absolute;
         left: 20rem;
         border: none;
@@ -102,6 +106,8 @@ export const BoxTitleAndPhoto = styled.div`
         flex-direction: column;
         align-items: flex-start;
         padding-left: 20px;
+        /* background-color: #ec7505; */
+        color: red;
        
        
    }
@@ -109,15 +115,16 @@ export const BoxTitleAndPhoto = styled.div`
 `;
 
 
-export const BoxComentario = styled.input`
- @media screen and (max-width: 600px) {
+export const BoxComentario = styled.textarea`
+ @media screen and (max-width: 900px) {
         padding: 30px;
-        width: 90%;
-        
-        &::placeholder{
-                text-align: top;
-                
-        }
+        width: 100%;
+        height: 8rem;
+        background-color: #ebb3a9;
+        border: 0;
+        /* font-family: 'Roboto', sans-serif; */
+        font-size: .9rem;
+       font-weight: 800;
          
  }
 `;
@@ -137,13 +144,20 @@ export const ButtonVerCarrito = styled.button`
 
 export const PhotoProduct = styled.img`
  @media screen and (max-width: 600px) {
-        width: 150px;
-        height: 100px;
-        border-radius: 5px;
-        position: absolute;
-        top: 8rem;
-        right: 3rem;
-         
+        width: 100%;
+        height: 300px;
+
+ }
+`;
+
+
+export const LabelProductName = styled.label`
+ @media screen and (max-width: 600px) {
+        
+     &::first-line{
+             border: none;
+     }
+
  }
 `;
 

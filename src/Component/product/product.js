@@ -54,9 +54,11 @@ import { useAuth0 } from "@auth0/auth0-react";
     }, [dispatch])
 
     return( 
-         <MainContainer>
+         <MainContainer >
+             <div >
              <h3>Nuestros productos</h3>
             <h4>Podes elegir una pasta y dos salsas a eleccion</h4>
+             </div>
          
              <CarouselProvider
                     naturalSlideWidth={100}

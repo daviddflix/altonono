@@ -5,12 +5,13 @@ import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
 import { Container, ContainerInfo, Img, MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
-
+import Valoraciones from './valoraciones'
 
 
 export default function Categories(){
 
     const productos = useSelector(state => state.food)
+    console.log('productos:', productos)
     const dispatch = useDispatch()
     const [value, setValue] = useState(5);
    
@@ -38,12 +39,14 @@ export default function Categories(){
                               />
                           <h4>$ {p.price}</h4>
                         </ContainerInfo>
-                        <Img src={`https://hit-pasta.herokuapp.com/${p.picture.url}`} />
+                        <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
                 </Container>
                    </NavLink>
                  )
                }): <Loading/>
            }
+
+           {/* <Valoraciones/> */}
           
         </MainContainer>
     )

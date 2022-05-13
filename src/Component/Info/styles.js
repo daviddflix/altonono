@@ -7,7 +7,7 @@ export const  MainContainer = styled.div`
 
 
     @media screen and (max-width: 900px ) {
-    /* background-color: #bcb8b1; */
+    /* background-color: #fdf0d5; */
     padding: 1rem;
     height: 100%;
    }
@@ -30,7 +30,9 @@ export const  Text = styled.h4`
 
   @media screen and (max-width: 900px ) {
     color: black;
-    font-size: 15px;
+    font-size: 1rem;
+    width: 80vw;
+    
    }
 `;
 
@@ -69,11 +71,11 @@ export const  IconGeo = styled(BsFillGeoAltFill)`
 
 export const  HeaderPi = styled.h4`
     color: black;
-    font-size:  20px;
+    font-size:  2rem;
 
   @media screen and (max-width: 900px ) {
     color: black;
-    font-size: 10px;
+    font-size: 1rem;
 }
 `;
 

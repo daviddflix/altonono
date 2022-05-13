@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 
@@ -17,6 +17,7 @@ export default function DetailProduct(){
 
     
      const detail = useSelector(state => state.detail)
+     console.log('detail:', detail)
      const history = useHistory()
      
 
@@ -68,8 +69,8 @@ export default function DetailProduct(){
 
          if(checked === true){
         options.salsa.length<=1 && setOptions(prev => ({
-                ...prev, salsa: [...prev.salsa, name], picture_url: detail.image, 
-                id: uuidv4(), price: detail.price, title: detail.description
+                ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
+                id: uuidv4(), price: detail.price, title: detail.title
               }))
         
       }
@@ -128,21 +129,20 @@ export default function DetailProduct(){
     
     return(
         <MainContainer>
-            <h1>{detail.description}</h1>
+            {/* <h1>{detail.title}</h1> */}
             <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/>
             <Form>
                <ContainerOption>
-              {/* <BoxTitleAndPhoto> */}
              <BoxTitleAndPhoto>
-             <h3>Salsas</h3>
-               <p>selecciona maximo 2</p>
+               <h3>Salsas</h3>
+               <h4 style={{margin: '7px'}}>selecciona maximo 2</h4>
              </BoxTitleAndPhoto>
               {/* </BoxTitleAndPhoto> */}
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
                             <ContainerOptionChild key={p}>
-                                 <label>{p}</label>
+                                 <LabelProductName>{p}</LabelProductName>
                                 <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
                             </ContainerOptionChild>
                         )
@@ -154,7 +154,7 @@ export default function DetailProduct(){
                
                  <BoxTitleAndPhoto>
                  <h3 style={{fontWeight: '900'}}>Toppings</h3>
-                <p>Podes seleccionar todas las quieras</p>
+                <h4 style={{margin: '7px'}}>Podes seleccionar todos las quieras</h4>
                  </BoxTitleAndPhoto>
                 
                

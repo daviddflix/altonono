@@ -13,7 +13,7 @@ export const BoxNoItem = styled.div`
       align-items: center;
       justify-content: center;
       
-      height: 80vh;
+      height: 70vh;
      
      
    } 
@@ -63,7 +63,7 @@ export const ContainerButtons = styled.div`
      bottom: 0;
      display: flex;
      flex-direction: column;
-     
+     right: 2rem;
      width: 80%;
     
    } 
@@ -73,10 +73,10 @@ export const ContainerButtons = styled.div`
 export const ButtonClose = styled(AiFillCloseCircle)`
     
 
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 900px){
      position: relative;
      
-     left: 12px;
+     left: -3px;
      color: #e63946;
      height: 20px;
      width: 20px
@@ -128,10 +128,10 @@ export const ContainerProductGeneral = styled.div`
 `;
 
 export const ContainerProduct = styled.div`
-  @media screen and (max-width: 700px){
+  @media screen and (max-width: 900px){
      
      margin-right: 2rem;
-     ;
+     width: 50%;
   }
 `;
 
@@ -139,14 +139,35 @@ export const ContainerButtonAndTitle = styled.div`
     
 
     @media screen and (max-width: 700px){
-      width: 70%;
+      width: 100%;
       height: 40px;
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
      display:flex;
-     justify-content: space-around;
+     justify-content:  space-between;
      align-items: center;
-     margin-bottom: 8px;
      
+     margin-bottom: 8px;
+     position: absolute;
+     top: 0;
+     right: 0
+     
+   } 
+`; 
+
+export const ContainerButtonAndTitleRelative = styled.div`
+    
+
+    @media screen and (max-width: 700px){
+      width: 100%;
+      height: 40px;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     display:flex;
+     justify-content: space-between;
+     align-items: center;
+     
+     margin-bottom: 8px;
+     position: relative;
+     right: 1rem;
      
    } 
 `; 

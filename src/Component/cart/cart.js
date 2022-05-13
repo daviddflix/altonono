@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DeleteItem } from "../../redux/actions";
 import Context from "../context/Items";
-import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems} from "./styles";
+import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems} from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Carrito(){
@@ -51,10 +51,10 @@ export default function Carrito(){
     return(
      
       cart.length? <BoxItems>
-         <ContainerButtonAndTitle>
+         <ContainerButtonAndTitleRelative>
             <h3>TUS PEDIDOS</h3>
             <ButtonClose onClick={() => setCloseCart(!closeCart)} />
-          </ContainerButtonAndTitle>
+          </ContainerButtonAndTitleRelative>
         {/* <ContainerProductGeneral> */}
         {
           cart.map((p, i) => {
@@ -62,8 +62,8 @@ export default function Carrito(){
               <Container key={i}>
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
-                <h5>{p.title}</h5>
-                <h6>${p.price}</h6>
+                <h5 style={{margin: '1px'}}>{p.title}</h5>
+                <h6 style={{margin: '0'}}>${p.price}</h6>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>
               </Container>
@@ -72,7 +72,7 @@ export default function Carrito(){
         }
         {/* </ContainerProductGeneral> */}
         <ContainerButtons>
-         <div style={{display: 'flex', justifyContent: 'space-around'}}>
+         <div style={{display: 'flex', justifyContent: 'space-around', backgroundColor: 'black', color: '#fff'}}>
          <h4>SUBTOTAL</h4>
          <h4>${priceProduct}</h4>
          </div>
