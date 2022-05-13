@@ -32,13 +32,12 @@ export default class Carouselp extends Component {
 
     <CarouselProvider
     naturalSlideWidth={100}
-    naturalSlideHeight={125}
-    totalSlides={3}
+    naturalSlideHeight={150}
+    totalSlides={1}
+    
   >
     <Slider>
       <Slide index={0}> <img src={img}/> </Slide>
-      <Slide index={1}> <img src={img}/> </Slide>
-      <Slide index={2}> <img src={img}/> </Slide>
     </Slider>
     <ArrowLeft><IoIosArrowBack/></ArrowLeft>
     <ArrowRight><IoIosArrowForward/></ArrowRight>
