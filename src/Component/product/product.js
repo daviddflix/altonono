@@ -55,9 +55,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
     return( 
          <MainContainer >
-             <div >
+             <div style={{ color: '#000000', width: '100%'}}>
              <h3>Nuestros productos</h3>
-            <h4>Podes elegir una pasta y dos salsas a eleccion</h4>
+             <h4>Podes elegir una pasta y dos salsas a eleccion</h4>
              </div>
          
              <CarouselProvider
@@ -65,7 +65,8 @@ import { useAuth0 } from "@auth0/auth0-react";
                     naturalSlideHeight={153}
                     totalSlides={6}
                     isPlaying={false}
-                    
+                    hasMasterSpinner={product? false : true}
+                    infinite={true}
                 >
                     <Slider>
                           {
@@ -74,7 +75,7 @@ import { useAuth0 } from "@auth0/auth0-react";
                                    
                                   <Slide  index={p.id} key={p.id}>
                             {product.length?  <a href="https://www.instagram.com/hitpasta/">
-                                   <img style={{borderRadius: '10px'}}  src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
+                                   <img src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
                                 </a>: <Loading/>}
                                
                                 <TextoSlide >
@@ -86,7 +87,7 @@ import { useAuth0 } from "@auth0/auth0-react";
                                     setValue(newValue);
                                     }}
                                 />
-                                 <Text>$ {p.price}</Text>
+                                 <Text>${p.price}</Text>
                                 <ContainerButton>
                                     <Buttons>
                                         <Arrow onClick={ProductNumberDecrement}>-</Arrow>
@@ -102,8 +103,8 @@ import { useAuth0 } from "@auth0/auth0-react";
                               }): <Loading/>
                             }
                     </Slider>
-                   <ArrowLeft><IoIosArrowBack/></ArrowLeft>
-                   <ArrowRight><IoIosArrowForward/></ArrowRight>
+                   <ArrowLeft><IoIosArrowBack style={{width: '22px', height: '22px'}}/></ArrowLeft>
+                   <ArrowRight><IoIosArrowForward style={{width: '22px', height: '22px'}}/></ArrowRight>
                 </CarouselProvider>
                 </MainContainer>
 

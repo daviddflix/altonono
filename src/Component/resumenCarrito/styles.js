@@ -1,18 +1,20 @@
 import styled from 'styled-components';
-import img from '../carousel/image/spaguetti 1500x.jpg'
+import img from '../carousel/image/spaguetti 1500x.jpg';
+import {AiOutlineClose} from 'react-icons/ai'
 
 export const MainContainer = styled.div`
 @media screen and (max-width: 900px){
  min-height: 70%;
-
+ 
 }
 `;
 
 export const Img = styled.img`
 @media screen and (max-width: 900px){
   width: 30%;
-  height: 100%;
-  
+  height: 40%;
+  position: relative;
+  left: 1rem;
 } 
 `; 
 
@@ -20,13 +22,13 @@ export const Container = styled.div`
 @media screen and (max-width: 900px){
  display: flex;
  flex-direction: row;
- border: 1px solid black;
- /* padding: 10px 2rem 10px 2rem;
- border-radius: 5px; */
+ /* border-bottom: 1px solid #dddddd; */
  align-items: center;
  margin-bottom: 1rem;
- /* justify-content: space-between; */
- 
+ margin:0;
+ box-shadow:  
+             -20px -20px 60px #dddddd;
+ position: relative;
 }
 `;
 
@@ -34,7 +36,10 @@ export const ContainerProduct = styled.div`
 @media screen and (max-width: 900px){
  display: flex;
  flex-direction: column;
- margin-left: 1rem;
+ align-items: center;
+ justify-content: center;
+ margin: 0;
+ width: 70%
 
 }
 `;
@@ -68,6 +73,33 @@ export const Flex = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  justify-content: space-evenly;
   width: 100%;
+  
 }
 `;
+
+export const FlexOptions = styled.div`
+@media screen and (max-width: 900px){
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+ 
+  margin: 0;
+}
+`;
+
+export const ButtonItemDelete = styled(AiOutlineClose)`
+    
+
+    @media screen and (max-width: 700px){
+     position: absolute;
+     top: -10px;
+     right: 5px;
+     border: none;
+     margin-top: 1rem;
+    
+   } 
+`; 

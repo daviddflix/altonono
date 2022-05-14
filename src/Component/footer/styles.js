@@ -4,15 +4,21 @@ import {BsInstagram} from 'react-icons/bs'
 import {FaFacebookSquare} from 'react-icons/fa'
 
 export const  MainContainer = styled.div`
-    background-color: #000000;
+    background-color: #111111;
     padding: 1rem;
-    
+    margin-top: 2rem;
+    position: relative;
 `;
 
 
 export const  Header = styled.h1`
   color: #fff;
   font-family: Asap Condensed ;
+  position: absolute;
+  top: -1rem;
+  left: .2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
 `;
 
 
@@ -29,13 +35,13 @@ export const  InstagramIcon = styled(BsInstagram)`
   width: 25px;
   height: 25px;
   border-radius: 5px;
-  color: #ebb3a9
+  color: #fff
 `;
 
 export const FacebookIcon = styled(FaFacebookSquare)`
 width: 25px;
 height: 25px;
-color: #ebb3a9
+color: #fff
 `;
 
 

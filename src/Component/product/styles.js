@@ -25,6 +25,8 @@ export const  MainContainer = styled.div`
     box-shadow:  20px 20px 60px #bebebe,
              -20px -20px 60px #ffffff;
 
+    margin-top: 0;
+
 }
 `;
 
@@ -101,11 +103,13 @@ export const  Buttons = styled.div`
 }
 `;
 
-export const  Text = styled.h3`
+export const  Text = styled.h2`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
   color: black;
+  margin: 1rem;
+  padding: 0;
 }
 `;
 
@@ -114,7 +118,7 @@ export const  ButtonAddToCart = styled(Link)`
 
 @media screen and (max-width: 600px ) {
     color: #fff;
-    padding: 8px;
+    padding: 1rem 2rem;
     font-size: 14px;
     border: none;
     background-color: black;
@@ -186,7 +190,7 @@ export const  ArrowRight = styled(ButtonNext)`
 @media screen and (max-width: 900px ) {
     position: absolute;
     top: 0;
-    right: 10px;
+    right: 15px;
     height: 70%;
     width: 0;
     background-color: transparent;

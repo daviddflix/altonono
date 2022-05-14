@@ -7,6 +7,7 @@ export const GET_USER = 'GET_USER'
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT= 'LINK_PAYMENT'
+export const CLEAR_STORAGE = 'CLEAR_STORAGE'
 
 const url = 'https://hit-pasta.herokuapp.com'
 const ur = 'http://localhost:4001'
@@ -124,6 +125,12 @@ export function postCompra (payload){
     return{
         type:DELETE_ITEM,
         payload: value
+    }
+}
+
+export function resetCart(){
+    return{
+        type: CLEAR_STORAGE
     }
 }
 

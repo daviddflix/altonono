@@ -22,7 +22,8 @@ export default function Categories(){
 
     return(
         <MainContainer>
-           
+           <h2>ELIGE TU HIT</h2>
+           <div>
            {
               productos? productos.map(p => {
                  return(
@@ -45,6 +46,7 @@ export default function Categories(){
                  )
                }): <Loading/>
            }
+           </div>
 
            {/* <Valoraciones/> */}
           

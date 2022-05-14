@@ -1,5 +1,6 @@
 
-import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT } from "./actions"
+import storage from "redux-persist/lib/storage"
+import { ADD_ITEM_TO_CART, CLEAR_STORAGE, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT } from "./actions"
 
 
 const InicialState ={
@@ -12,7 +13,9 @@ const InicialState ={
 }
 
 
- const rootReducer = (state = InicialState, action) => {
+
+
+ const appReducer = (state = InicialState, action) => {
   
    if(action.type === GET_PRODUCTS){
      return{
@@ -67,4 +70,14 @@ const InicialState ={
 
 }
 
-export default rootReducer
+export default appReducer
+
+
+export const rootReducer = (state = InicialState, action) => {
+  if(action.type === CLEAR_STORAGE) {
+      storage.removeItem('key:root')
+      return appReducer(undefined, action)
+  }
+  return appReducer(state, action)
+}
+

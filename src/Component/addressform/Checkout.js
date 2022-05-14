@@ -17,7 +17,7 @@ import PaymentForm from './PaymentForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from "@auth0/auth0-react";
 import userContext from '../context/userContext';
-import { getLinkPayment, postCompra } from '../../redux/actions';
+import { getLinkPayment, postCompra, resetCart } from '../../redux/actions';
 
 function Copyright() {
   return (
@@ -32,7 +32,7 @@ function Copyright() {
   );
 }
 
-const steps = ['Direccion de envio', 'Finalizar pago'];
+const steps = ['Datos de envio', 'Finalizar pago'];
 
 function getStepContent(step) {
   switch (step) {
@@ -70,6 +70,11 @@ export default function Checkout() {
     e.preventDefault()
     dispatch(postCompra({cart, user}))
     dispatch(getLinkPayment({cart, user}))
+
+    if(link.length){
+      dispatch(resetCart())
+    }
+
    
 }
 
@@ -106,9 +111,7 @@ export default function Checkout() {
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Gracias por tu compra, te avisaremos cuando tu pedido haya sido despachado
                 </Typography>
               </React.Fragment>
             ) : (
@@ -129,7 +132,7 @@ export default function Checkout() {
                     sx={{ mt: 3, ml: 1 }}
                     href={link}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'PAGAR CON MERCADO PAGO' : 'Next'}
                   </Button>
                 </Box>
               </React.Fragment>

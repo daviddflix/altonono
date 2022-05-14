@@ -52,7 +52,7 @@ export default function Carrito(){
      
       cart.length? <BoxItems>
          <ContainerButtonAndTitleRelative>
-            <h3>TUS PEDIDOS</h3>
+            <h3 style={{position: 'relative', left: '1rem'}}>TUS PEDIDOS</h3>
             <ButtonClose onClick={() => setCloseCart(!closeCart)} />
           </ContainerButtonAndTitleRelative>
         {/* <ContainerProductGeneral> */}
@@ -84,11 +84,11 @@ export default function Carrito(){
        
           <BoxNoItem>
           <ContainerButtonAndTitle>
-            <h3>TUS PEDIDOS</h3>
+            <h3 style={{position: 'relative', left: '1rem'}}>TUS PEDIDOS</h3>
             <ButtonClose onClick={() => setCloseCart(!closeCart)} />
           </ContainerButtonAndTitle>
       
-          <div>
+          <div style={{position: 'relative', right: '1rem'}}>
             <h4>NO HAY PRODUCTOS PARA MOSTRAR</h4>
             <Button onClick={handleClic}>ARMA TU HIT</Button>
           </div>

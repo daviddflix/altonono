@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import img from './image/tiposDePasta.jpg'
-import img3 from './image/tagliatellie 1000x1000.jpg'
-import img4 from './image/noquis 1900x1200.webp'
+import img from './image/10.jpg'
+import img2 from './image/11.jpg'
+
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -32,16 +32,20 @@ export default class Carouselp extends Component {
 
     <CarouselProvider
     naturalSlideWidth={100}
-    naturalSlideHeight={150}
-    totalSlides={1}
-    
+    naturalSlideHeight={100}
+    totalSlides={2}
+    hasMasterSpinner={img? false : true}
+    infinite={true}
+    isPlaying={true}
   >
-    <Slider>
-      <Slide index={0}> <img src={img}/> </Slide>
+    <Slider >
+      <Slide index={0}> <img  src={img}/> </Slide>
+      <Slide index={1}> <img  src={img2}/> </Slide>
     </Slider>
     <ArrowLeft><IoIosArrowBack/></ArrowLeft>
     <ArrowRight><IoIosArrowForward/></ArrowRight>
   </CarouselProvider>
+ 
         );
     }
 };

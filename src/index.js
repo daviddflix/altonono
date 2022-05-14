@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import {store, persistor} from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import Auth0ProviderWithHistory from './Auth0WithRedirect';
+import ScrollToTop from './Component/carousel/ScrollToTop';
 
 
 ReactDOM.render(
@@ -14,7 +15,9 @@ ReactDOM.render(
     <PersistGate loading={null} persistor={persistor}>
      <BrowserRouter>
      <Auth0ProviderWithHistory>
+     <ScrollToTop>
     <App />
+    </ScrollToTop>
     </Auth0ProviderWithHistory>
   </BrowserRouter>
   </PersistGate>

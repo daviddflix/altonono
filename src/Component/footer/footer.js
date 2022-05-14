@@ -23,7 +23,7 @@ export default function Footer (){
      <MainContainer>
          <Header>Hit Pasta</Header>
          <div>
-             <h4 style={{color: '#fff'}}>ENCONTRANOS EN LAS REDES</h4>
+             <h4 style={{color: '#fff', marginTop: '2rem'}}>ENCONTRANOS EN LAS REDES</h4>
          <div>
              <a style={{marginRight: '10px'}} href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
             <a href="https://www.facebook.com/hitpasta"><FacebookIcon/></a>

@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import { NavLink as Link } from "react-router-dom";
 
 export const MainContainer = styled.div`
-    height: 100vh;
+    
     width: 100%;
     display: flex;
     flex-direction: column;
 
 @media screen and (max-width:600px){
-    height: 100vh;
+    
     width: 100%;
     position: relative;
     display: flex;
@@ -39,7 +39,7 @@ export const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     height: 110px;
-    width: 90%;
+    width: 100%;
     
     border-radius: 5px;
     
@@ -62,18 +62,19 @@ export const ContainerInfo = styled.div`
 `;
 
 export const NavLink = styled(Link)`
-    height: 100vh;
+    
     width: 100%;
     display: flex;
     flex-direction: column;
 
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-   
+    margin-bottom: 1rem;
+    width: 100vw;
 }
 `;
 
@@ -82,7 +83,7 @@ export const NavLink = styled(Link)`
 export const Title = styled.h2`
    
 
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
     color: black;
     font-size: 1rem;
    
