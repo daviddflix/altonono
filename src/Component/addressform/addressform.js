@@ -56,7 +56,8 @@ export default function AddressForm() {
 
 
   return (
-    <React.Fragment>
+    <div style={{minHeight: '50vh'}}>
+      <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Direccion de envio
       </Typography>
@@ -122,5 +123,6 @@ export default function AddressForm() {
         </Grid> */}
       </Grid>
     </React.Fragment>
+    </div>
   );
 }

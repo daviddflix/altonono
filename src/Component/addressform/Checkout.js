@@ -99,7 +99,7 @@ export default function Checkout() {
 // }, [link])
 
   return (
-    <div style={{height: '50vh'}}>
+    <div style={{height: '85vh'}}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar
