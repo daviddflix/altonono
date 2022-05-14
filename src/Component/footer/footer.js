@@ -23,16 +23,16 @@ export default function Footer (){
      <MainContainer>
          <Header>@Hit Pasta</Header>
          <div>
-             <h4 style={{color: '#fff', marginTop: '2rem'}}>ENCONTRANOS EN LAS REDES</h4>
+             <h4 style={{color: '#ebb3a9', marginTop: '2rem'}}>ENCONTRANOS EN LAS REDES</h4>
          <div>
              <a style={{marginRight: '10px'}} href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
             <a href="https://www.facebook.com/hitpasta"><FacebookIcon/></a>
           </div>
           
           <ContainerInfo>
-              <h4 style={{color: '#fff'}}>Productos</h4>
-              <h4 style={{color: '#fff'}}>Trabaja con nosotros</h4>
-              <h4 style={{color: '#fff'}}>Estamos abiertos todos los dias, de 12hs a 24hs</h4>
+              <h4 style={{color: '#ebb3a9'}}>Productos</h4>
+              <h4 style={{color: '#ebb3a9'}}>Trabaja con nosotros</h4>
+              <h4 style={{color: '#ebb3a9'}}>Estamos abiertos todos los dias, de 12hs a 24hs</h4>
           </ContainerInfo>
              <Copyright/>
          </div>

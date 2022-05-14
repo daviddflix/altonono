@@ -35,7 +35,7 @@ function Copyright() {
   );
 }
 
-const steps = ['Datos de envio', 'Finalizar pago'];
+const steps = ['Direccion de envio', 'Finalizar pago'];
 
 function getStepContent(step) {
   switch (step) {
@@ -99,7 +99,8 @@ export default function Checkout() {
 // }, [link])
 
   return (
-    <ThemeProvider theme={theme}>
+    <div style={{height: '50vh'}}>
+      <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar
         position="absolute"
@@ -108,16 +109,17 @@ export default function Checkout() {
         sx={{
           position: 'relative',
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
+          
         }}
       >
        
       </AppBar>
-      <Container component="main" maxWidth="sm"  sx={{ mb: 4, height: '70%' }}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6, height: '70%' }, p: { xs: 2, md: 3, height: '70%' } }}>
+      <Container component="main" maxWidth="sm"  sx={{ mb: 4}}>
+        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6, height: '70%' }, p: { xs: 2, md: 3} }}>
           {/* <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography> */}
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, height: '70%' }}>
+          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5}}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -139,7 +141,7 @@ export default function Checkout() {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 {
-                   !cart.length?<Box sx={{ display: 'flex', justifyContent: 'flex-end', height: '70%' }}>
+                   activeStep === 0? <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1}}>
                       Atras
@@ -165,10 +167,12 @@ export default function Checkout() {
             )}
           </React.Fragment>
         </Paper>
-       {link && cart.length ? <LinkMP href={link} onClick={resetCart}>
+      
+      </Container>
+      {link && activeStep === steps.length - 1  ? <LinkMP href={link} onClick={resetCart}>
                       PAGAR CON MERCADO PAGO
                     </LinkMP> : <></>}
-      </Container>
     </ThemeProvider>
+    </div>
   );
 }

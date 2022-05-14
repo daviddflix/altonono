@@ -36,13 +36,13 @@ export const  InstagramIcon = styled(BsInstagram)`
   width: 25px;
   height: 25px;
   border-radius: 5px;
-  color: #fff
+  color: #ebb3a9
 `;
 
 export const FacebookIcon = styled(FaFacebookSquare)`
 width: 25px;
 height: 25px;
-color: #fff
+color: #ebb3a9
 `;
 
 

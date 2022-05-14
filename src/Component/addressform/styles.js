@@ -17,7 +17,7 @@ export const ButtonHacerOtroPedido = styled.button`
 export const LinkMP = styled.a`
  @media screen and (max-width: 900px) {
         padding: 20px 30px;
-        margin-bottom: 100px;
+        margin-bottom: 200px;
         background-color: #009ee3;
         color: #fff;
         border: none;

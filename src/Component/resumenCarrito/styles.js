@@ -4,7 +4,7 @@ import {AiOutlineClose} from 'react-icons/ai'
 
 export const MainContainer = styled.div`
 @media screen and (max-width: 900px){
- min-height: 50vh;
+ min-height: 70vh;
  display: flex;
  flex-direction: column;
  justify-content: space-around;
@@ -57,6 +57,7 @@ export const BtnFinalizarCompra = styled.button`
         border: none;
         margin-left: 1rem;
         width: 50%;
+        margin-bottom: 5rem;
 }
 `;
 
