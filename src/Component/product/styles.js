@@ -22,10 +22,13 @@ export const  MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    /* box-shadow:  80px 80px 80px #bebebe,
+             -80px -80px 80px #ffffff; */
 
     margin-top: 0;
+    box-shadow: 28px 28px 56px #006f9f,
+             -28px -28px 56px #00cdff;
+    
 
 }
 `;

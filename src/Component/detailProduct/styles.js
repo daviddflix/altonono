@@ -60,7 +60,7 @@ export const ContainerOptionChild = styled.div`
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         /* border-bottom: 1px solid #fff; */
-        padding: 10px;
+        padding: 15px;
         width: 100%;
         position: relative;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

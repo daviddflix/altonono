@@ -99,6 +99,7 @@ export default function AddressForm() {
             variant="standard"
             onChange={handleInput}
             value={input.numero}
+            type='number'
           />
         </Grid>
         <Grid item xs={12} sm={6}>

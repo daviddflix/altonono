@@ -18,6 +18,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from "@auth0/auth0-react";
 import userContext from '../context/userContext';
 import { getLinkPayment, postCompra, resetCart } from '../../redux/actions';
+import { ButtonHacerOtroPedido, LinkMP } from './styles';
+import { height } from '@mui/system';
+
 
 function Copyright() {
   return (
@@ -53,10 +56,13 @@ export default function Checkout() {
 
   const dispatch = useDispatch()
 
+
   const { user } = useAuth0();
     let cart = useSelector(state => state.cart);
     const {input, setInput} = React.useContext(userContext)
     let link = useSelector(state => state.link);
+
+    
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -66,17 +72,31 @@ export default function Checkout() {
     setActiveStep(activeStep - 1);
   };
 
-  const submitOrder = (e) => {
+  const submitOrder = async(e) => {
     e.preventDefault()
-    dispatch(postCompra({cart, user}))
+    dispatch(postCompra({cart, input}))
     dispatch(getLinkPayment({cart, user}))
-
-    if(link.length){
-      dispatch(resetCart())
-    }
-
-   
 }
+
+  const resetCart = () => {
+    dispatch(resetCart())
+  }
+
+// React.useEffect(() => {
+
+//   if(link){
+//     let cancel = false
+//   const reset = async () => {
+//       dispatch(resetCart())
+//   }
+ 
+//   reset()
+//   return () => {
+//       cancel = true
+// }
+//   }
+  
+// }, [link])
 
   return (
     <ThemeProvider theme={theme}>
@@ -92,12 +112,12 @@ export default function Checkout() {
       >
        
       </AppBar>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
-        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
+      <Container component="main" maxWidth="sm"  sx={{ mb: 4, height: '70%' }}>
+        <Paper variant="outlined" sx={{ my: { xs: 3, md: 6, height: '70%' }, p: { xs: 2, md: 3, height: '70%' } }}>
           {/* <Typography component="h1" variant="h4" align="center">
             Checkout
           </Typography> */}
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5, height: '70%' }}>
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -107,39 +127,47 @@ export default function Checkout() {
           <React.Fragment>
             {activeStep === steps.length ? (
               <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                {/* <Typography variant="h5" gutterBottom>
+                 Gracias por tu compra
                 </Typography>
                 <Typography variant="subtitle1">
-                  Gracias por tu compra, te avisaremos cuando tu pedido haya sido despachado
-                </Typography>
+                  Te avisaremos cuando tu pedido haya sido despachado
+                </Typography> */}
+                
               </React.Fragment>
             ) : (
               <React.Fragment>
                 {getStepContent(activeStep)}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                {
+                   !cart.length?<Box sx={{ display: 'flex', justifyContent: 'flex-end', height: '70%' }}>
                   {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Back
+                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1}}>
+                      Atras
                     </Button>
                   )}
 
+                
                   <Button
-                    onClickCapture={submitOrder}
-                    disabled={!input.email || !input.direccion || !input.email || !input.nombre || !input.numero || !input.sub}
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                    href={link}
-                  >
-                    {activeStep === steps.length - 1 ? 'PAGAR CON MERCADO PAGO' : 'Next'}
-                  </Button>
-                </Box>
+                onClickCapture={submitOrder}
+                disabled={!input.email || !input.direccion || !input.email || !input.nombre || !input.numero || !input.sub}
+                variant="contained"
+                onClick={handleNext}
+                sx={{ mt: 3, ml: 1 }}
+                href={link}
+              >
+                {activeStep === steps.length - 1 ? '' : 'Siguiente'}
+              </Button>    
+                
+                
+                </Box> :   <></>
+                }
               </React.Fragment>
             )}
           </React.Fragment>
         </Paper>
-       
+       {link && cart.length ? <LinkMP href={link} onClick={resetCart}>
+                      PAGAR CON MERCADO PAGO
+                    </LinkMP> : <></>}
       </Container>
     </ThemeProvider>
   );

@@ -4,13 +4,14 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
+// style={{minHeigt: '100vh'}}
 export default function PaymentForm() {
   return (
-    <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+   <div style={{minHeigt: '100vh'}}>
+      <React.Fragment>
+      {/* <Typography variant="h6" gutterBottom>
         Mercado Pago
-      </Typography>
+      </Typography> */}
       {/* <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
@@ -61,5 +62,6 @@ export default function PaymentForm() {
         </Grid>
       </Grid> */}
     </React.Fragment>
+   </div>
   );
 }

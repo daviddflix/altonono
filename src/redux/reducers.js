@@ -52,6 +52,12 @@ const InicialState ={
       
     }
   }
+      if(action.type === CLEAR_STORAGE) {
+        storage.removeItem('persist:root')
+        return {
+          cart: []
+        }
+       }
 
   if(action.type === DELETE_ITEM){
 
@@ -75,7 +81,7 @@ export default appReducer
 
 export const rootReducer = (state = InicialState, action) => {
   if(action.type === CLEAR_STORAGE) {
-      storage.removeItem('key:root')
+      storage.removeItem('persist:root')
       return appReducer(undefined, action)
   }
   return appReducer(state, action)

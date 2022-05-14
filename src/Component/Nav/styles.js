@@ -3,19 +3,22 @@ import { IoCartOutline} from 'react-icons/io5'
 import { NavLink } from "react-router-dom";
 import { AiOutlineMenu} from 'react-icons/ai'
 import {HashLink} from 'react-router-hash-link'
+import img from '../carousel/image/tiposDePasta.jpg'
 
 
 
 export const  MainContainer = styled.div`
     width: 100%;
     height: 60px;
-    background-color: #ffff;
+   
     border-bottom: 1px solid ;
     border-color: #b7b7a4;
     position: sticky;
     top: 0;
     z-index: 300;
-    background-color: #fff;  
+    background-color: #fff;
+    /* background: linear-gradient(rgba(5,7,12,0.75), rgba(5,7,12,0.75));
+    background-image: url(${img}); */
     //#161a1d 
 `
 

@@ -21,7 +21,7 @@ export default function Footer (){
     return(
       
      <MainContainer>
-         <Header>Hit Pasta</Header>
+         <Header>@Hit Pasta</Header>
          <div>
              <h4 style={{color: '#fff', marginTop: '2rem'}}>ENCONTRANOS EN LAS REDES</h4>
          <div>

@@ -6,18 +6,19 @@ import {FaFacebookSquare} from 'react-icons/fa'
 export const  MainContainer = styled.div`
     background-color: #111111;
     padding: 1rem;
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
     position: relative;
+    font-family: Roboto;
 `;
 
 
 export const  Header = styled.h1`
-  color: #fff;
-  font-family: Asap Condensed ;
+  color: #ebb3a9;
+  font-family: Roboto ;
   position: absolute;
-  top: -1rem;
+  top: -.2rem;
   left: .2rem;
-  margin-bottom: 1rem;
+ 
   font-size: 1.4rem;
 `;
 
