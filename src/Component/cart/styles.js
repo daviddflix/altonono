@@ -112,6 +112,7 @@ export const Container = styled.div`
      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
      align-items: center;
      position: relative;
+    
      
      
      
@@ -141,7 +142,7 @@ export const ContainerButtonAndTitle = styled.div`
     @media screen and (max-width: 700px){
       width: 100%;
       height: 40px;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-bottom: 1px solid #f5f6f8;
      display:flex;
      justify-content:  space-between;
      align-items: center;
@@ -160,7 +161,7 @@ export const ContainerButtonAndTitleRelative = styled.div`
     @media screen and (max-width: 700px){
       width: 100%;
       height: 40px;
-      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      border-bottom: 1px solid #f5f6f8;
      display:flex;
      justify-content: space-between;
      align-items: center;
