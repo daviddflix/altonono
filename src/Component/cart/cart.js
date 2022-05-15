@@ -9,7 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Carrito(){
 
-  const {isAuthenticated , loginWithRedirect } = useAuth0();
+  const {isAuthenticated , user, loginWithRedirect } = useAuth0();
   const history = useHistory()
   const {closeCart, setCloseCart} = useContext(Context);
   const dispatch = useDispatch()
@@ -25,12 +25,13 @@ export default function Carrito(){
   }
 
   const verCarrito = async() => {
-    if(isAuthenticated){
+    if(user){
       history.push('/carrito')
       window.scroll(0,0)
       setCloseCart(!closeCart)
-    } 
-    await loginWithRedirect()
+    } else {
+      loginWithRedirect()
+    }
    
  }
 

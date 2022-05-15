@@ -81,7 +81,7 @@ export default appReducer
 
 export const rootReducer = (state = InicialState, action) => {
   if(action.type === CLEAR_STORAGE) {
-      storage.removeItem('persist:root')
+      storage.removeItem('key:root')
       return appReducer(undefined, action)
   }
   return appReducer(state, action)

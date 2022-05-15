@@ -99,7 +99,7 @@ export default function Checkout() {
 // }, [link])
 
   return (
-    <div style={{height: '85vh'}}>
+    <div style={{height: '100vh'}}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar
@@ -141,7 +141,7 @@ export default function Checkout() {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 {
-                   activeStep === 0? <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                   activeStep === 0? <Box sx={{  display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1}}>
                       Atras

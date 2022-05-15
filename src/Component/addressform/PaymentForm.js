@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 // style={{minHeigt: '100vh'}}
 export default function PaymentForm() {
   return (
-   <div style={{minHeigt: '100vh'}}>
+   <div >
       <React.Fragment>
       {/* <Typography variant="h6" gutterBottom>
         Mercado Pago
