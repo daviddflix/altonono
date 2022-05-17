@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from './image/10.jpg'
+import img from './image/tiposDePasta.jpg'
 import img2 from './image/11.jpg'
 
 
@@ -30,21 +30,22 @@ export default class Carouselp extends Component {
     //        </div>
     //    </Carousel> : <Loading/>
 
-    <CarouselProvider
-    naturalSlideWidth={100}
-    naturalSlideHeight={100}
-    totalSlides={2}
-    hasMasterSpinner={img? false : true}
-    infinite={true}
-    isPlaying={true}
-  >
-    <Slider >
-      <Slide index={0}> <img  src={img}/> </Slide>
-      <Slide index={1}> <img  src={img2}/> </Slide>
-    </Slider>
-    <ArrowLeft><IoIosArrowBack/></ArrowLeft>
-    <ArrowRight><IoIosArrowForward/></ArrowRight>
-  </CarouselProvider>
+  //   <CarouselProvider
+  //   naturalSlideWidth={100}
+  //   naturalSlideHeight={100}
+  //   totalSlides={2}
+  //   hasMasterSpinner={img? false : true}
+  //   infinite={true}
+  //   isPlaying={true}
+  // >
+  //   <Slider >
+  //     <Slide index={0}> <img  src={img}/> </Slide>
+  //     <Slide index={1}> <img  src={img2}/> </Slide>
+  //   </Slider>
+  //   <ArrowLeft><IoIosArrowBack/></ArrowLeft>
+  //   <ArrowRight><IoIosArrowForward/></ArrowRight>
+  // </CarouselProvider>
+  <img src={img} style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', width: '100%'}} alt=''/>
  
         );
     }

@@ -17,9 +17,7 @@ export const  MainContainer = styled.div`
     top: 0;
     z-index: 300;
     background-color: #fff;
-    /* background: linear-gradient(rgba(5,7,12,0.75), rgba(5,7,12,0.75));
-    background-image: url(${img}); */
-    //#161a1d 
+   
 `
 
 export const Wrapper = styled.div`
@@ -37,7 +35,7 @@ export  const MobileIcon = styled(AiOutlineMenu)`
 
     display: none;
    
-    @media screen and (max-width: 600px ) {
+    @media screen and (max-width: 900px ) {
         width: 20px;
         height: 20px;
         display: block;
@@ -49,9 +47,9 @@ export  const MobileIcon = styled(AiOutlineMenu)`
 export const LinkLogo = styled(NavLink)`
     
    text-decoration: none;
-   color: black;
+   color: #ff595a;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
        display: flex;  
        flex-direction : row;
        justify-content: center;
@@ -64,7 +62,7 @@ export const ImgLogo = styled.img`
    text-decoration: none;
    color: black;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 900px) {
        border-radius: 50% ;
        height: 2rem;
        width: 2rem;
@@ -83,7 +81,7 @@ height: 23px;
 display: block;
 overflow: hidden;
    
-    @media screen and (max-width: 600px ) {
+    @media screen and (max-width: 900px ) {
         width: 22px;
         height: 22px;
         display: block;
@@ -102,7 +100,7 @@ export const MenuBar = styled.ul`
     overflow: hidden;
 
 
-   @media screen and (max-width: 600px){
+   @media screen and (max-width: 900px){
     position: absolute;
     top: 44px;
     width: 60%;
@@ -123,9 +121,10 @@ export const ContainerRutas = styled.li`
   @media screen and (max-width:600px){
         position: relative;
         right:2.7rem ; 
-        height: 40px;
+        height: 55px;
         width: 300px;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
+        border-bottom: 1px solid #f5f6f8;
      
   }
 `;
@@ -191,8 +190,8 @@ export const MenuCart = styled.ul`
     top: ${({open}) => open? "44px" : "-3000%"} ;
     right: 0;
     z-index: 50;
-    border: 1px #ade8f4 solid;
-    
+    /* border: 1px #ade8f4 solid;
+     */
    }
 `; 
 

@@ -9,6 +9,7 @@ import {IoIosArrowBack} from 'react-icons/io';
 import Rating from '@mui/material/Rating';
 import Loading from '../spinner/spinner'
 import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink } from "react-router-dom";
 
 
  const CarouselProduct = () =>{
@@ -57,12 +58,12 @@ import { useAuth0 } from "@auth0/auth0-react";
          <MainContainer >
              <div style={{ color: '#000000', width: '100%'}}>
              <h3>Nuestros productos</h3>
-             <h4>Podes elegir una pasta y dos salsas a eleccion</h4>
+             <h4>Podes elegir una pasta y dos salsas a elección</h4>
              </div>
-         
+        
              <CarouselProvider
                     naturalSlideWidth={100}
-                    naturalSlideHeight={153}
+                    naturalSlideHeight={143}
                     totalSlides={6}
                     isPlaying={false}
                     hasMasterSpinner={product? false : true}
@@ -70,12 +71,12 @@ import { useAuth0 } from "@auth0/auth0-react";
                 >
                     <Slider>
                           {
-                            product? product?.map(p => {
+                            product? product?.map((p, i)=> {
                                  return(
-                                   
+                                    <NavLink key={i} to={`detail/${p.id}`}>
                                   <Slide  index={p.id} key={p.id}>
                             {product.length?  <a href="https://www.instagram.com/hitpasta/">
-                                   <img src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
+                                   <img style={{height: '350px', width: '95%', borderRadius:'5px'}} src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
                                 </a>: <Loading/>}
                                
                                 <TextoSlide >
@@ -88,17 +89,10 @@ import { useAuth0 } from "@auth0/auth0-react";
                                     }}
                                 />
                                  <Text>${p.price}</Text>
-                                <ContainerButton>
-                                    <Buttons>
-                                        <Arrow onClick={ProductNumberDecrement}>-</Arrow>
-                                         <ProductNumber>{Number}</ProductNumber>
-                                        <Arrow onClick={ProductNumberIncrement}>+</Arrow>
-                                    </Buttons>
-                                    <ButtonAddToCart to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
-                                </ContainerButton>
+                                 <ButtonAddToCart to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
                             </TextoSlide>
                             </Slide>
-                           
+                            </NavLink>
                                  )
                               }): <Loading/>
                             }

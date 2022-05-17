@@ -39,7 +39,7 @@ export const Container = styled.div`
     justify-content: space-around;
     align-items: center;
     height: 110px;
-    width: 100%;
+    width: 90%;
     
     border-radius: 5px;
     

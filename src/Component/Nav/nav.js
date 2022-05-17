@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ContainerRutas, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
+import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
 import Carrito from "../cart/cart";
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -14,7 +14,8 @@ import {AiOutlineClose} from 'react-icons/ai';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';   
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; 
+import logo from './Logos/arma tu hit2.png'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
      '& .MuiBadge-badge': {
@@ -85,15 +86,15 @@ const onClose = () => {
   <Wrapper>
 
      {
-          show === false? <MobileIcon onClick={showRoutes}/> : <AiOutlineClose style={{boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px', width: '20px', height: '20px'}} onClick={showRoutes}/>
+          show === false? <MobileIcon onClick={showRoutes}/> : <AiOutlineClose style={{width: '20px', height: '20px'}} onClick={showRoutes}/>
      }
 
     <LinkLogo to='/'>
-      {/* <div> <ImgLogo src={logo} alt='logo'/></div> */}
-     <h1 style={{color: 'red',  fontFamily: 'Asap Condensed'}}>HIT PASTA</h1>
+     <h1 style={{color: '#ff595'}}>HIT PASTA</h1>
+     {/* <img src={logo} style={{width: '100px', height: '40px'}}  alt='logo'/> */}
     </LinkLogo>
 
-     {/* <Cart onClick={cart}/> */}
+    
      <div onClick={cart}>
      <IconButton aria-label="cart">
       <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
@@ -129,25 +130,9 @@ const onClose = () => {
                </Link>
           </ContainerRutas>
 
-    </MenuBar>
-
-     <div>
-        
-  
-  
-    
-   <MenuCart open={closeCart} >
-        <Carrito/>
-     </MenuCart>
-
-
-  
-    
-   
-  
-    
-     
-     {isAuthenticated ? (
+          <ContainerRutas>
+               <Link to='/login' exact onClick={onClose}>
+          {isAuthenticated ? (
 
           <div>
           <Button
@@ -156,7 +141,7 @@ const onClose = () => {
           aria-haspopup='true'
           aria-expanded={open ? 'true' : undefined}
           onClick={handleClick}
-          
+
           >
           <PictureAuth0  src={user.picture} alt='picture' />
           </Button>
@@ -180,11 +165,23 @@ const onClose = () => {
           Log In 
           </Button>
           )}
-     </div>
+               </Link>
+          </ContainerRutas>
+
+    </MenuBar>
+
+   
+        
+    
+    
+   <MenuCart open={closeCart} >
+        <Carrito/>
+     </MenuCart>
+
+    
 
      
    
-
 
   
   </Wrapper>

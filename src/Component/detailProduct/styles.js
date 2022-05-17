@@ -63,8 +63,9 @@ export const ContainerOptionChild = styled.div`
         padding: 15px;
         width: 100%;
         position: relative;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
         border-top: none;
+        border-bottom:  1px solid #f5f6f8;
  }
 `;
 
@@ -107,7 +108,7 @@ export const BoxTitleAndPhoto = styled.div`
         align-items: flex-start;
         padding-left: 20px;
         /* background-color: #ec7505; */
-        color: red;
+        color: #ff595a;
        
        
    }
@@ -133,10 +134,11 @@ export const ButtonVerCarrito = styled.button`
  @media screen and (max-width: 600px) {
         padding: 20px 30px;
         margin-bottom: 2rem;
-        background-color: black;
+        background-color: #282828;
         color: #fff;
         border: none;
         margin-left: 1rem;
+        border-radius: 5px;
         
          
  }
@@ -146,6 +148,7 @@ export const PhotoProduct = styled.img`
  @media screen and (max-width: 600px) {
         width: 100%;
         height: 300px;
+        border-radius: 0px 0px 10px 10px;
 
  }
 `;

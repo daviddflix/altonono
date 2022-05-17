@@ -17,18 +17,19 @@ export const Titulo = styled.p`
 export const  MainContainer = styled.div`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* box-shadow:  80px 80px 80px #bebebe,
-             -80px -80px 80px #ffffff; */
-
+    // background: #e0e0e0;
+box-shadow:  6px 6px 12px #bebebe,
+             -6px -6px 12px #ffffff;
+    border-radius: 5px;
     margin-top: 0;
-    box-shadow: 28px 28px 56px #006f9f,
-             -28px -28px 56px #00cdff;
-    
+    // box-shadow: 28px 28px 56px #006f9f,
+    //          -28px -28px 56px #00cdff;
+  
 
 }
 `;
@@ -69,11 +70,15 @@ export const  NavLink = styled(Link)`
 export const TextoSlide = styled.div`
 	
 	@media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
 		background: #fff;
 		color: '#fff';
 		width: 100%;
 		padding: 1px ;
 		text-align: center;
+        justify-content: center;
+        align-items: center;
 		position: relative;
 		bottom: 0;
         margin-bottom: 3rem;
@@ -111,7 +116,7 @@ export const  Text = styled.h2`
 
 @media screen and (max-width: 900px ) {
   color: black;
-  margin: 1rem;
+  margin: .7rem;
   padding: 0;
 }
 `;
@@ -124,11 +129,12 @@ export const  ButtonAddToCart = styled(Link)`
     padding: 1rem 2rem;
     font-size: 14px;
     border: none;
-    background-color: black;
+    background-color: #282828;
     margin-left: 19px;
     text-decoration: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
+   
 
     &:hover{
         background-color: black;
@@ -180,7 +186,7 @@ export const  ArrowLeft = styled(ButtonBack)`
     position: absolute;
     top: 0;
     left: 0;
-    height: 70%;
+    height: 60%;
     width: 0;
     background-color: transparent;
     border: none;
@@ -194,7 +200,7 @@ export const  ArrowRight = styled(ButtonNext)`
     position: absolute;
     top: 0;
     right: 15px;
-    height: 70%;
+    height: 60%;
     width: 0;
     background-color: transparent;
     border: none;

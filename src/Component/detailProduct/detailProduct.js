@@ -5,6 +5,7 @@ import { addItem, getDetail } from "../../redux/actions"
 import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
+import Loading from "../spinner/spinner"
 
 export default function DetailProduct(){
   const {isAuthenticated, user , loginWithRedirect } = useAuth0();
@@ -65,21 +66,29 @@ export default function DetailProduct(){
       
       const handleSalsa = (e) => {
       
-         const {name, checked} = e.target
-
-         if(checked === true){
-        options.salsa.length<=1 && setOptions(prev => ({
-                ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
+        //  const {name, checked, disabled} = e.target
+           
+               
+         if(e.target.checked === true){
+        options.salsa.length <=1 && setOptions(prev => ({
+                ...prev, salsa: [...prev.salsa, e.target.name], picture_url: detail.picture_url, 
                 id: uuidv4(), price: detail.price, title: detail.title
               }))
-        
+              
+             
       }
 
-         if(checked === false){
+      if(options.salsa.length <=2){
+        e.target.checked = false
+      }
+
+         if(e.target.checked === false){
            setOptions(prev => ({
-             ...prev, salsa: prev.salsa.filter(p => p !== name)
+             ...prev, salsa: prev.salsa.filter(p => p !== e.target.name)
            }))
          }
+
+ 
       }    
 
       const handleToppings = async (e) => {
@@ -123,14 +132,25 @@ export default function DetailProduct(){
         
       }, [options.toppings])
 
-     
+     const limit = (n = 2) => {
+       if(options.salsa.length === n){
+         return false
+       }
+       return options.salsa.index
+     }
 
     
     
     return(
         <MainContainer>
             {/* <h1>{detail.title}</h1> */}
-            <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/>
+
+           <div style={{width: '100%', height: '300px'}}>
+           {
+            detail.picture_url?  <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
+           }
+           </div>
+           
             <Form>
                <ContainerOption>
              <BoxTitleAndPhoto>
@@ -143,7 +163,7 @@ export default function DetailProduct(){
                         return(
                             <ContainerOptionChild key={p}>
                                  <LabelProductName>{p}</LabelProductName>
-                                <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
+                                <InputOptions type='checkbox' disabled=''   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
                             </ContainerOptionChild>
                         )
                     })
@@ -162,7 +182,7 @@ export default function DetailProduct(){
                      detail && detail?.toppings?.option?.map(p => {
                         return(
                             <ContainerOptionChild  key={p}>
-                                 <label style={{fontWeight: '800'}}>{p}</label>
+                                 <LabelProductName>{p}</LabelProductName>
                                   <label>$ {detail.toppings.price}</label>
                                  <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
                             </ContainerOptionChild>
@@ -180,7 +200,7 @@ export default function DetailProduct(){
             </MainBoxComentario>
 
             <div>
-            <ButtonVerCarrito onClick={carrito}>VER CARRITO</ButtonVerCarrito>
+            <ButtonVerCarrito onClick={carrito}>OKAY</ButtonVerCarrito>
             <ButtonVerCarrito onClick={backToProducts}>ARMA OTRO HIT</ButtonVerCarrito>
             </div>
 
