@@ -89,7 +89,7 @@ import { NavLink } from "react-router-dom";
                                     }}
                                 />
                                  <Text>${p.price}</Text>
-                                 <ButtonAddToCart to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
+                                 <ButtonAddToCart  to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
                             </TextoSlide>
                             </Slide>
                             </NavLink>

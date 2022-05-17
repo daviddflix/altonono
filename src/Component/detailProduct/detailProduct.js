@@ -6,6 +6,7 @@ import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, Lab
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 import Loading from "../spinner/spinner"
+import { motion } from "framer-motion/dist/framer-motion"
 
 export default function DetailProduct(){
   const {isAuthenticated, user , loginWithRedirect } = useAuth0();
@@ -142,12 +143,12 @@ export default function DetailProduct(){
     
     
     return(
-        <MainContainer>
+        <MainContainer as={motion.div}  initial={{width: 0, opacity: 0, transition: {duration: '0.1'}}}  animate={{width: '100%', opacity: 1}} exit={{x: window.innerWidth, opacity: 0}}>
             {/* <h1>{detail.title}</h1> */}
 
            <div style={{width: '100%', height: '300px'}}>
            {
-            detail.picture_url?  <PhotoProduct src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
+            detail.picture_url?  <PhotoProduct as={motion.img}  initial={{width: 0, transition: {duration: '0.5'}}}  animate={{width: '100%'}} exit={{x: window.innerWidth}} src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
            </div>
            

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from './image/tiposDePasta.jpg'
+import img from './image/tipos2.jpg'
 import img2 from './image/11.jpg'
 
 
