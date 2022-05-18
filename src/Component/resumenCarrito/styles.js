@@ -18,6 +18,7 @@ export const Img = styled.img`
   height: 40%;
   position: relative;
   left: 1rem;
+  border-radius: 10px;
 } 
 `; 
 
@@ -25,13 +26,14 @@ export const Container = styled.div`
 @media screen and (max-width: 900px){
  display: flex;
  flex-direction: row;
- /* border-bottom: 1px solid #dddddd; */
+ border: 1px solid #ff595a;
  align-items: center;
  margin-bottom: 1rem;
  margin:0;
- box-shadow:  
-             -20px -20px 60px #dddddd;
+ /* box-shadow:  
+             -20px -20px 60px #dddddd; */
  position: relative;
+ border-radius: 10px;
 }
 `;
 
@@ -52,12 +54,13 @@ export const BtnFinalizarCompra = styled.button`
 
   padding: 20px 30px;
         /* margin: 2rem; */
-        background-color: black;
+        background-color: #282828;
         color: #fff;
         border: none;
         margin-left: 1rem;
         width: 50%;
         margin-bottom: 5rem;
+        border-radius: 10px;
 }
 `;
 
@@ -104,6 +107,12 @@ export const ButtonItemDelete = styled(AiOutlineClose)`
      right: 5px;
      border: none;
      margin-top: 1rem;
+     width: 20px;
+     height: 25px;
+     box-shadow:  6px 6px 12px #bebebe,
+             -6px -6px 12px #ffffff;
+    border-radius: 40%;
+   
     
    } 
 `; 

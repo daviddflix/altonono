@@ -60,7 +60,7 @@ export const ContainerInfo = styled.div`
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    right: 2.5rem;
+    right: 3.5rem;
     
     
       

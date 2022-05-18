@@ -46,7 +46,7 @@ export default function ResumenCarrito (){
                         <ContainerProduct>
                         <h3>{p.title}</h3>
                         <Flex>
-                        <h4>TOPPINGS:</h4>
+                        <h4>SALSAS:</h4>
                          <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
                          {
                             p.salsa.map((i, index) => {
@@ -60,19 +60,22 @@ export default function ResumenCarrito (){
                          </div>
                         </Flex>
                         <Flex>
-                        <h4>SALSAS:</h4>
+                        <h4>TOPPINGS:</h4>
                           <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
                           {
                             p.toppings.map((i, index) => {
                               return(
                                 <FlexOptions key={index}>
                                   <h4 style={{margin: '0', }}>{i}</h4>
+                                  <h4 style={{margin: '0', }}>{p.priceTopping}</h4>
                                 </FlexOptions>
                               )
                             })
                           }
                           </div>
                         </Flex>
+                     
+                     
                         <Flex>
                           <h4>SUBTOTAL</h4>
                           <CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />

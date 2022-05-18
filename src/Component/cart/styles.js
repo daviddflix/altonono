@@ -3,6 +3,7 @@ import {AiFillCloseCircle} from 'react-icons/ai';
 import {AiOutlineClose} from 'react-icons/ai'
 
 
+
 export const BoxNoItem = styled.div`
   
 
@@ -38,7 +39,8 @@ export const Button = styled.button`
      color: #fff;
      background-color: #e63946;
      border: none;
-     margin-top: .6rem;
+     margin: .6rem;
+     border-radius: 10px;
    } 
 `; 
 
@@ -158,7 +160,7 @@ export const ContainerButtonAndTitle = styled.div`
 export const ContainerButtonAndTitleRelative = styled.div`
     
 
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 900px){
       width: 100%;
       height: 40px;
       border-bottom: 1px solid #f5f6f8;
@@ -172,3 +174,13 @@ export const ContainerButtonAndTitleRelative = styled.div`
      
    } 
 `; 
+
+
+export const ContainerSubtotal = styled.div`
+@media screen and (max-width: 900px){
+ display: flex;
+ justify-content: space-around;
+ border-top: 1px solid #c1c1c1;
+
+}
+`;

@@ -131,7 +131,7 @@ export const  ButtonAddToCart = styled(Link)`
     font-size: 14px;
     border: none;
     background-color: #282828;
-    margin-left: 19px;
+   
     text-decoration: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;

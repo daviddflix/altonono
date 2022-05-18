@@ -2,7 +2,7 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 import Loading from "../spinner/spinner"
@@ -67,25 +67,22 @@ export default function DetailProduct(){
       
       const handleSalsa = (e) => {
       
-        //  const {name, checked, disabled} = e.target
+         const {name, checked} = e.target
            
                
-         if(e.target.checked === true){
+         if(checked === true){
         options.salsa.length <=1 && setOptions(prev => ({
-                ...prev, salsa: [...prev.salsa, e.target.name], picture_url: detail.picture_url, 
+                ...prev, salsa: [...prev.salsa, name], picture_url: detail.picture_url, 
                 id: uuidv4(), price: detail.price, title: detail.title
               }))
               
              
       }
 
-      if(options.salsa.length <=2){
-        e.target.checked = false
-      }
-
-         if(e.target.checked === false){
+  
+         if(checked === false){
            setOptions(prev => ({
-             ...prev, salsa: prev.salsa.filter(p => p !== e.target.name)
+             ...prev, salsa: prev.salsa.filter(p => p !== name)
            }))
          }
 
@@ -144,13 +141,15 @@ export default function DetailProduct(){
     
     return(
         <MainContainer as={motion.div}  initial={{width: 0, opacity: 0, transition: {duration: '0.1'}}}  animate={{width: '100%', opacity: 1}} exit={{x: window.innerWidth, opacity: 0}}>
-            {/* <h1>{detail.title}</h1> */}
+           
 
-           <div style={{width: '100%', height: '300px'}}>
+           <div style={{position: 'relative',width: '100%', height: '300px'}}>
+            <ProductName>{detail.title}</ProductName>
            {
             detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
-           </div>
+          <Like/>
+          </div>
            
             <Form>
                <ContainerOption>
@@ -164,7 +163,7 @@ export default function DetailProduct(){
                         return(
                             <ContainerOptionChild key={p}>
                                  <LabelProductName>{p}</LabelProductName>
-                                <InputOptions type='checkbox' disabled=''   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
+                                <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
                             </ContainerOptionChild>
                         )
                     })
@@ -182,7 +181,7 @@ export default function DetailProduct(){
                 {
                      detail && detail?.toppings?.option?.map(p => {
                         return(
-                            <ContainerOptionChild style={{}}  key={p}>
+                            <ContainerOptionChild  key={p}>
                                  <LabelProductName>{p}</LabelProductName>
                                   <label>$ {detail.toppings.price}</label>
                                  <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>

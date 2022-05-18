@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DeleteItem } from "../../redux/actions";
 import Context from "../context/Items";
-import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems} from "./styles";
+import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal} from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Carrito(){
@@ -73,10 +73,10 @@ export default function Carrito(){
         }
         {/* </ContainerProductGeneral> */}
         <ContainerButtons>
-         <div style={{display: 'flex', justifyContent: 'space-around', backgroundColor: 'black', color: '#fff'}}>
+         <ContainerSubtotal>
          <h4>SUBTOTAL</h4>
          <h4>${priceProduct}</h4>
-         </div>
+         </ContainerSubtotal>
         <Button onClick={verCarrito}>VER CARRITO</Button>
         </ContainerButtons>
       </BoxItems> :

@@ -174,7 +174,7 @@ const onClose = () => {
         
     
     
-   <MenuCart open={closeCart} onTouchStart={closeCart} onScroll={closeCart}>
+   <MenuCart open={closeCart} >
         <Carrito/>
      </MenuCart>
 

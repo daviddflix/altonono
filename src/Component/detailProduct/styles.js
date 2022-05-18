@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {BsHeart} from 'react-icons/bs'
 
 
 export const MainContainer = styled.div`
@@ -167,6 +168,37 @@ export const LabelProductName = styled.label`
      }
 
  }
+`;
+
+export const Like = styled(BsHeart)`
+   
+
+@media screen and (max-width:900px){
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #ff595a;
+   
+    width: 23px;
+    height: 23px;
+   
+}
+`;
+
+export const ProductName = styled.h3`
+   
+
+@media screen and (max-width:900px){
+    position: absolute;
+    bottom: -1.5rem;
+    right: 2rem;
+    color: #282828;
+    background-color: #fff;
+    padding: 8px 18px;
+  
+    border-radius: 10px;
+    border: 1px solid #282828;
+}
 `;
 
 
