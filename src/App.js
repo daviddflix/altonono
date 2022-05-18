@@ -71,7 +71,7 @@ function App() {
             
             </Switch>  
           
-            <Footer />
+            {/* <Footer /> */}
 
             <div className='chat'>
             <Chat/>

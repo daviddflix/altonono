@@ -82,7 +82,7 @@ const onClose = () => {
 
      return( 
 
-<MainContainer>
+<MainContainer >
   <Wrapper>
 
      {
@@ -90,15 +90,15 @@ const onClose = () => {
      }
 
     <LinkLogo to='/'>
-     <h1 style={{color: '#ff595'}}>HIT PASTA</h1>
-     {/* <img src={logo} style={{width: '100px', height: '40px'}}  alt='logo'/> */}
+     {/* <h1 style={{color: '#ff595'}}>HIT PASTA</h1> */}
+     <img src={logo}   alt='logo'/>
     </LinkLogo>
 
     
      <div onClick={cart}>
      <IconButton aria-label="cart">
       <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
-        <ShoppingCartIcon />
+        <ShoppingCartIcon style={{color: '#282828'}}/>
       </StyledBadge>
     </IconButton>
     </div>
@@ -174,7 +174,7 @@ const onClose = () => {
         
     
     
-   <MenuCart open={closeCart} >
+   <MenuCart open={closeCart} onTouchStart={closeCart} onScroll={closeCart}>
         <Carrito/>
      </MenuCart>
 

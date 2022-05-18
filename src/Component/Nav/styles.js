@@ -12,11 +12,11 @@ export const  MainContainer = styled.div`
     height: 60px;
    
     border-bottom: 1px solid ;
-    border-color: #b7b7a4;
+    border-color: #e5e5e5;
     position: sticky;
     top: 0;
     z-index: 300;
-    background-color: #fff;
+    background-color: #fff ;
    
 `
 
@@ -39,7 +39,7 @@ export  const MobileIcon = styled(AiOutlineMenu)`
         width: 20px;
         height: 20px;
         display: block;
-        color: black;
+        color: #282828;
        
 }
 `;

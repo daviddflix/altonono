@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { Container, ContainerInfo, Img, MainContainer, NavLink, Title } from "./styles";
+import { Container, ContainerInfo, Img, Li, Like, MainContainer, Menu, NavLink, Title, Ul } from "./styles";
 import Rating from '@mui/material/Rating';
-import Valoraciones from './valoraciones'
+
+
 
 
 
@@ -41,7 +42,14 @@ export default function Categories(){
 
     return(
         <MainContainer>
-           <h2>ELIGE TU HIT</h2>
+          <Menu>
+            <Ul>
+              <Li>Pastas</Li>
+              <Li>Postres</Li>
+              <Li>Bebidas</Li>
+            </Ul>
+          </Menu>
+           <h3>ELIGE TU HIT</h3>
            <div>
            {
               productos? productos.map(p => {
@@ -49,6 +57,8 @@ export default function Categories(){
                    <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none'}}>
                  
                   <Container >
+                  <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
+                  
                         <ContainerInfo >
                           <Title>{p.title}</Title>
                              <Rating
@@ -58,9 +68,9 @@ export default function Categories(){
                               setValue(newValue);
                               }}
                               />
-                          <h4>$ {p.price}</h4>
+                          <h4 style={{margin: '7px'}}>$ {p.price}</h4>
                         </ContainerInfo>
-                        <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
+                        <Like/>
                 </Container>
                   </NavLink>
                  

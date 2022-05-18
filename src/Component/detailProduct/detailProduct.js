@@ -148,7 +148,7 @@ export default function DetailProduct(){
 
            <div style={{width: '100%', height: '300px'}}>
            {
-            detail.picture_url?  <PhotoProduct as={motion.img}  initial={{width: 0, transition: {duration: '0.5'}}}  animate={{width: '100%'}} exit={{x: window.innerWidth}} src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
+            detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
            </div>
            
@@ -182,7 +182,7 @@ export default function DetailProduct(){
                 {
                      detail && detail?.toppings?.option?.map(p => {
                         return(
-                            <ContainerOptionChild  key={p}>
+                            <ContainerOptionChild style={{}}  key={p}>
                                  <LabelProductName>{p}</LabelProductName>
                                   <label>$ {detail.toppings.price}</label>
                                  <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>

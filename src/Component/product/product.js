@@ -68,13 +68,14 @@ import { NavLink } from "react-router-dom";
                     isPlaying={false}
                     hasMasterSpinner={product? false : true}
                     infinite={true}
+                   
                 >
                     <Slider>
                           {
                             product? product?.map((p, i)=> {
                                  return(
                                     <NavLink key={i} to={`detail/${p.id}`}>
-                                  <Slide  index={p.id} key={p.id}>
+                                  <Slide index={p.id} key={p.id}>
                             {product.length?  <a href="https://www.instagram.com/hitpasta/">
                                    <img style={{height: '350px', width: '95%', borderRadius:'5px'}} src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
                                 </a>: <Loading/>}

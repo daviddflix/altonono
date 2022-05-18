@@ -22,13 +22,13 @@ export const  MainContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // background: #e0e0e0;
-box-shadow:  6px 6px 12px #bebebe,
+    margin-bottom: .5rem;
+    box-shadow:  6px 6px 12px #bebebe,
              -6px -6px 12px #ffffff;
     border-radius: 5px;
     margin-top: 0;
-    // box-shadow: 28px 28px 56px #006f9f,
-    //          -28px -28px 56px #00cdff;
+ 
+  
   
 
 }
@@ -82,6 +82,7 @@ export const TextoSlide = styled.div`
 		position: relative;
 		bottom: 0;
         margin-bottom: 3rem;
+      
         
 	} 
 `;

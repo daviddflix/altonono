@@ -1,8 +1,8 @@
-import React, { useEffect, Fragment } from 'react';
+import React, {  Fragment, useLayoutEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 function ScrollToTop({ history, children }) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const unlisten = history.listen(() => {
       window.scrollTo(0, 0);
     });

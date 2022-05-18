@@ -6,12 +6,13 @@ export const MainContainer = styled.div`
  width: 100%;
 
 
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
         height: 100%;
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        
        
 }
 `;
@@ -23,7 +24,7 @@ export const Form = styled.form`
 
 @media screen and (max-width:600px){
         
-        width: 100%;
+        width: 95%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -56,16 +57,18 @@ export const ContainerOption = styled.div`
 `;
 
 export const ContainerOptionChild = styled.div`
- @media screen and (max-width: 600px) {
+ @media screen and (max-width: 900px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        /* border-bottom: 1px solid #fff; */
+       
         padding: 15px;
         width: 100%;
         position: relative;
-        /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-top: none;
-        border-bottom:  1px solid #f5f6f8;
+        /* border-bottom:  1px solid #c1c1c1; */
+        background-color: #fff;
+        border-radius: 10px;
  }
 `;
 
@@ -109,6 +112,7 @@ export const BoxTitleAndPhoto = styled.div`
         padding-left: 20px;
         /* background-color: #ec7505; */
         color: #ff595a;
+        background-color: #fff;
        
        
    }
@@ -121,7 +125,7 @@ export const BoxComentario = styled.textarea`
         padding: 30px;
         width: 100%;
         height: 8rem;
-        background-color: #ebb3a9;
+        background-color: #e5e5e5;
         border: 0;
         /* font-family: 'Roboto', sans-serif; */
         font-size: .9rem;
@@ -131,7 +135,7 @@ export const BoxComentario = styled.textarea`
 `;
 
 export const ButtonVerCarrito = styled.button`
- @media screen and (max-width: 600px) {
+ @media screen and (max-width: 900px) {
         padding: 20px 30px;
         margin-bottom: 2rem;
         background-color: #282828;
@@ -145,10 +149,11 @@ export const ButtonVerCarrito = styled.button`
 `;
 
 export const PhotoProduct = styled.img`
- @media screen and (max-width: 600px) {
-        width: 100%;
-        height: 300px;
-        border-radius: 0px 0px 10px 10px;
+ @media screen and (max-width: 900px) {
+        width: 95vw;
+        height: 280px;
+        border-radius: 10px;
+        margin-top: .5rem;
 
  }
 `;
