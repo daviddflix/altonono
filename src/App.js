@@ -7,7 +7,7 @@ import Footer from './Component/footer/footer';
 import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
-import Categories from './Component/categories/categories';
+import Categories from './Component/categories/Categories';
 import { useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
@@ -26,7 +26,8 @@ function App() {
       direccion: "",
       numero: "",
       email: "",
-      sub: ""
+      sub: "",
+      zona: ""
   })
   
 

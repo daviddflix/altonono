@@ -137,7 +137,7 @@ export const Ul = styled.ul`
 }
 `;
 
-export const Li = styled.li`
+export const Li = styled.input`
    
 
 @media screen and (max-width:900px){
@@ -150,6 +150,18 @@ export const Li = styled.li`
     border: 1px solid #ff595a;
     border-radius: 10px;
     padding: 10px;
+    color: #282828;
+    background-color: #fff;
+
+    &:hover{
+      background-color: #ff595a;
+      color: #fff;
+    }
+
+   :active{
+       background-color: #ff595a;
+      color: #fff;
+   }
 
 }
 `;

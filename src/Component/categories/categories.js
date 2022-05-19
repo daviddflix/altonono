@@ -1,89 +1,36 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useCallback, useState } from "react";
+import Dessert from "./dessert";
+import Pastas from "./pastas";
+import { Li, Menu, Ul } from "./styles";
 
-import { getProduct } from "../../redux/actions";
-import Loading from "../spinner/spinner";
-import { Container, ContainerInfo, Img, Li, Like, MainContainer, Menu, NavLink, Title, Ul } from "./styles";
-import Rating from '@mui/material/Rating';
-
+export default function Categories () {
 
 
+    const [product, setProduct] = useState('pastas')
+    
 
-
-export default function Categories(){
-
-    const productos = useSelector(state => state.food)
-    console.log('productos:', productos)
-    const dispatch = useDispatch()
-    const [value, setValue] = useState(5);
-
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-
-    const style = {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      width: 400,
-      bgcolor: 'background.paper',
-      border: '2px solid #000',
-      boxShadow: 24,
-      p: 4,
-      height: '90vh'
-    };
-   
- 
-    useEffect(() => {
-      dispatch(getProduct())
-    }, [dispatch])
+     const handleProducts = (e) => {
+         setProduct(e.target.id)
+     }
 
     return(
-        <MainContainer>
-          <Menu>
-            <Ul>
-              <Li>Pastas</Li>
-              <Li>Postres</Li>
-              <Li>Bebidas</Li>
-            </Ul>
-          </Menu>
-           <h3>ELIGE TU HIT</h3>
-           <div>
-           {
-              productos? productos.map(p => {
-                 return(
-                   <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none'}}>
-                 
-                  <Container >
-                  <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
-                  
-                        <ContainerInfo >
-                          <Title>{p.title}</Title>
-                             <Rating
-                              name="size-small"
-                              value={value}
-                              onChange={(event, newValue) => {
-                              setValue(newValue);
-                              }}
-                              />
-                          <h4 style={{margin: '7px'}}>$ {p.price}</h4>
-                        </ContainerInfo>
-                        <Like/>
-                </Container>
-                  </NavLink>
-                 
-                 )
-               }): <Loading/>
-           }
-           </div>
-
-           <div>
-     
-    
-    </div>
-          
-        </MainContainer>
+        <div>
+            <Menu>
+        <Ul>
+          {/* <Li type='text' value='pastas'  onClick={handleProducts}>Pastas</Li>
+          <Li id='postres' value='postres'  onClick={handleProducts}>Postres</Li>
+          <Li id='bebidas' value='bebidas'  onClick={handleProducts}>Bebidas</Li> */}
+          <Li sel type='button' id='pastas' value='Pastas' placeholder="Pastas"  onClick={handleProducts}/>
+          <Li  type='button'  id='postres' value='Postres' placeholder="Postres"  onClick={handleProducts}/>
+          <Li type='button' id='bebidas' value='Bebidas' placeholder="Bebidas"  onClick={handleProducts}/>
+        </Ul>        
+      </Menu>
+        {
+            product === 'pastas' && <Pastas/>
+        }
+        {
+            product === 'postres' && <Dessert/>
+        }
+        </div>
     )
 }

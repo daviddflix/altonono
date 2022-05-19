@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper } from "./styles";
+import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper, Greeting } from "./styles";
 import Carrito from "../cart/cart";
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -28,6 +28,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function Nav(){ 
 
+     const onClose = () => {
+          setShow(false)
+          
+     }
+
      const {isAuthenticated, user, logout , loginWithRedirect } = useAuth0();
      
      const [show, setShow] = useState(false)
@@ -42,11 +47,13 @@ export default function Nav(){
     
      const handleClickLogout = () => {
           logout();
+          onClose();
         };
 
         const handleClickProfile = () => {
           history.push('/userProfile')
           setAnchorEl(null)
+          onClose();
         };
 
         const handleClick = (event) => {
@@ -75,10 +82,7 @@ export default function Nav(){
        }
 }
 
-const onClose = () => {
-     setShow(false)
-     window.scroll(0,0)
-}
+
 
      return( 
 
@@ -90,8 +94,8 @@ const onClose = () => {
      }
 
     <LinkLogo to='/'>
-     {/* <h1 style={{color: '#ff595'}}>HIT PASTA</h1> */}
-     <img src={logo}   alt='logo'/>
+     {/* <h1 style={{color: 'black', fontWeight: '800'}}>HIT PASTA</h1> */}
+     <img src={logo} style={{width: '20%', height: '20%'}}  alt='logo'/>
     </LinkLogo>
 
     
@@ -118,11 +122,7 @@ const onClose = () => {
                </Link>
           </ContainerRutas>
      
-          <ContainerRutas>
-               <RedirectLink smooth to ='#envio' onClick={onClose}>
-               ENVIOS
-               </RedirectLink>
-          </ContainerRutas>
+        
 
           <ContainerRutas>
                <Link to='/trabajaConNosotros' exact onClick={onClose}>
@@ -130,8 +130,8 @@ const onClose = () => {
                </Link>
           </ContainerRutas>
 
-          <ContainerRutas>
-               <Link to='/login' exact onClick={onClose}>
+          <ContainerRutasLogin>
+               {/* <Link to='/login' exact > */}
           {isAuthenticated ? (
 
           <div>
@@ -144,6 +144,7 @@ const onClose = () => {
 
           >
           <PictureAuth0  src={user.picture} alt='picture' />
+          <Greeting>Hola, {user.name}</Greeting>
           </Button>
           <Menu
           style={{marginTop: '10px', marginLeft: '6px'}}
@@ -162,11 +163,11 @@ const onClose = () => {
           </div>
           ) : (
           <Button variant='outlined' size="small" color='success'  onClick={() => loginWithRedirect()}>
-          Log In 
+          Log In/Register
           </Button>
           )}
-               </Link>
-          </ContainerRutas>
+               {/* </Link> */}
+          </ContainerRutasLogin>
 
     </MenuBar>
 

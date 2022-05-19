@@ -10,6 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {  getLinkPayment, postCompra, postUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import userContext from '../context/userContext';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 
 export default function AddressForm() {
@@ -53,10 +57,14 @@ export default function AddressForm() {
      return prev + curr 
     }, 0)
 
+    const handleZona = (e) => {
+      setInput(prev => ({...prev, zona: e.target.value }))
+    }
+
 
 
   return (
-    <div >
+    <div  >
       <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Direccion de envio
@@ -89,6 +97,28 @@ export default function AddressForm() {
             
           />
         </Grid>
+        <div style={{position: 'relative', left: '1rem'}}>
+        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-standard-label">Zona</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={input.zona}
+          onChange={handleZona}
+          label="zona"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem  value='Belgrano'>Belgrano</MenuItem>
+          <MenuItem value='San Isidro'>San Isidro</MenuItem>
+          <MenuItem value='Martinez'>Martinez</MenuItem>
+          <MenuItem value='Las Cañitas'>Las Cañitas</MenuItem>
+        
+        </Select>
+      </FormControl>
+        </div>
+
         <Grid item xs={12} sm={6}>
           <TextField
             required

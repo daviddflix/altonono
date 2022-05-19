@@ -29,11 +29,13 @@ export const Container = styled.div`
  border: 1px solid #ff595a;
  align-items: center;
  margin-bottom: 1rem;
- margin:0;
+ margin:1rem;
  /* box-shadow:  
              -20px -20px 60px #dddddd; */
  position: relative;
  border-radius: 10px;
+ width: 90%;
+ justify-content: center;
 }
 `;
 
@@ -53,12 +55,12 @@ export const BtnFinalizarCompra = styled.button`
 @media screen and (max-width: 900px){
 
   padding: 20px 30px;
-        /* margin: 2rem; */
+      
         background-color: #282828;
         color: #fff;
         border: none;
-        margin-left: 1rem;
-        width: 50%;
+        margin-left: 2rem;
+        width: 40%;
         margin-bottom: 5rem;
         border-radius: 10px;
 }
@@ -101,7 +103,7 @@ export const FlexOptions = styled.div`
 export const ButtonItemDelete = styled(AiOutlineClose)`
     
 
-    @media screen and (max-width: 700px){
+    @media screen and (max-width: 900px){
      position: absolute;
      top: -10px;
      right: 5px;
@@ -116,3 +118,18 @@ export const ButtonItemDelete = styled(AiOutlineClose)`
     
    } 
 `; 
+
+
+export const ButtonVerCarrito = styled.button`
+ @media screen and (max-width: 900px) {
+        background-color: #282828;
+        color: #fff;
+        border: none;
+        margin-left: 1rem;
+        width: 40%;
+        margin-bottom: 5rem;
+        border-radius: 10px;
+       
+         
+ }
+`;

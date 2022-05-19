@@ -11,12 +11,13 @@ export const  MainContainer = styled.div`
     width: 100%;
     height: 60px;
    
-    border-bottom: 1px solid ;
-    border-color: #e5e5e5;
+    border-bottom: 0.3rem solid ;
+    border-color: #ff595a;
     position: sticky;
     top: 0;
     z-index: 300;
     background-color: #fff ;
+    border-radius: 10px;
    
 `
 
@@ -123,9 +124,30 @@ export const ContainerRutas = styled.li`
         right:2.7rem ; 
         height: 55px;
         width: 300px;
-        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; 
         border-bottom: 1px solid #f5f6f8;
      
+  }
+`;
+
+export const ContainerRutasLogin = styled.li`
+   width: 100%;
+
+  @media screen and (max-width:900px){
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        right: 2.2rem;
+  }
+`;
+
+export const Greeting = styled.h5`
+   width: 100%;
+
+  @media screen and (max-width:900px){
+       color: #282828;
+       text-decoration: none;
+       margin-left: 10px;
   }
 `;
 

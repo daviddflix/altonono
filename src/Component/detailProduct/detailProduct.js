@@ -2,11 +2,12 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ButtonVerCarrito, ContainerOption, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 import Loading from "../spinner/spinner"
 import { motion } from "framer-motion/dist/framer-motion"
+import {GiWaterDrop} from 'react-icons/gi'
 
 export default function DetailProduct(){
   const {isAuthenticated, user , loginWithRedirect } = useAuth0();
@@ -41,7 +42,6 @@ export default function DetailProduct(){
          if(options.salsa.length){
           dispatch(addItem(options))
          }
-         window.scroll(0,0)
          history.push('/productos')
       }
 
@@ -51,7 +51,6 @@ export default function DetailProduct(){
           if(options.salsa.length){
             dispatch(addItem(options))
            }
-            window.scroll(0,0)
             history.push('/carrito')
         } else{
           loginWithRedirect()
@@ -79,12 +78,16 @@ export default function DetailProduct(){
              
       }
 
-  
          if(checked === false){
            setOptions(prev => ({
              ...prev, salsa: prev.salsa.filter(p => p !== name)
            }))
          }
+
+         if(options.salsa.length >=2){
+          e.target.checked = false
+                
+        }
 
  
       }    
@@ -130,12 +133,6 @@ export default function DetailProduct(){
         
       }, [options.toppings])
 
-     const limit = (n = 2) => {
-       if(options.salsa.length === n){
-         return false
-       }
-       return options.salsa.index
-     }
 
     
     
@@ -162,7 +159,11 @@ export default function DetailProduct(){
                      detail && detail?.salsas?.map((p, index) => {
                         return(
                             <ContainerOptionChild key={p}>
+                             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
+                             <GiWaterDrop style={{marginRight: '10px', color: '#ff595a'}}/>
                                  <LabelProductName>{p}</LabelProductName>
+                             </div>
+                          
                                 <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
                             </ContainerOptionChild>
                         )
@@ -199,10 +200,12 @@ export default function DetailProduct(){
               <BoxComentario type='text' value={options.Comments} onChange={handleComments} placeholder="Agrega instrucciones o comentarios a tu orden"/>
             </MainBoxComentario>
 
-            <div>
-            <ButtonVerCarrito onClick={carrito}>OKAY</ButtonVerCarrito>
-            <ButtonVerCarrito onClick={backToProducts}>ARMA OTRO HIT</ButtonVerCarrito>
-            </div>
+           
+           <div>
+           <Okay onClick={carrito}>OKAY</Okay>
+            <BtnArmarOtroHit onClick={backToProducts}>ARMA OTRO HIT</BtnArmarOtroHit>
+           </div>
+           
 
 
         </MainContainer>

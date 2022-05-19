@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { postCompra, getAllCompras, DeleteItem } from "../../redux/actions";
-import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete } from "./styles"
+import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete, ButtonVerCarrito } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 
@@ -18,7 +18,7 @@ export default function ResumenCarrito (){
 
   const ProcederAlPago = async () => {
       history.push('/formPago')
-      window.scroll(0,0)
+      
   }
 
   useEffect(() => {
@@ -30,6 +30,9 @@ export default function ResumenCarrito (){
    return prev + curr 
   }, 0)
 
+  const backToProducts = () => {
+    history.push('/productos')
+ }
    
     return(
         <MainContainer>
@@ -92,9 +95,12 @@ export default function ResumenCarrito (){
               <CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
            </Flex>
 
-            <BtnFinalizarCompra 
+           <div style={{display:'flex', width: '100%'}}>
+           <BtnFinalizarCompra 
               onClick={ProcederAlPago} 
               disabled={!cart.length}>FINALIZAR COMPRA</BtnFinalizarCompra>
+               <ButtonVerCarrito onClick={backToProducts}>ARMA OTRO HIT</ButtonVerCarrito>
+           </div>
 
         </MainContainer>
     )

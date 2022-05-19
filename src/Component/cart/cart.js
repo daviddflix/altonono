@@ -40,7 +40,7 @@ export default function Carrito(){
    const priceProduct =   total.reduce((prev, curr) => {
     return prev + curr 
    }, 0)
-   console.log('total:',priceProduct)
+
    
  
  
@@ -64,7 +64,7 @@ export default function Carrito(){
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
                 <h5 style={{margin: '1px'}}>{p.title}</h5>
-                <h6 style={{margin: '0'}}>${p.price}</h6>
+                <h6 style={{margin: '0'}}>${p.unit_price}</h6>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>
               </Container>

@@ -89,7 +89,7 @@ export default function Info (){
                <Container>
                    <IconGeo/>
                    <h2>Puntos de Pick Up</h2>
-                   <HeaderPi>Podes hacer tu pedido por Whatsapp y pasar a buscarlo</HeaderPi>
+                   <HeaderPi>Podes hacer tu pedido y pasar a buscarlo</HeaderPi>
                   <Anchor href="https://goo.gl/maps/FH46g2sfJuPotPnY8" > <IconMap src={img} /><Text>Ladislao Martínez 40, Martínez, Provincia de Buenos Aires</Text></Anchor>
                   <Anchor href="https://goo.gl/maps/NNLvnZSWAMTC5Z2d9"> <IconMap src={img}/><Text>Soldado de la Independencia 1073, CABA</Text></Anchor>
                   <div id='mapContainer' 
