@@ -14,12 +14,9 @@ export default function Categories () {
      }
 
     return(
-        <div>
-            <Menu>
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+       <Menu>
         <Ul>
-          {/* <Li type='text' value='pastas'  onClick={handleProducts}>Pastas</Li>
-          <Li id='postres' value='postres'  onClick={handleProducts}>Postres</Li>
-          <Li id='bebidas' value='bebidas'  onClick={handleProducts}>Bebidas</Li> */}
           <Li sel type='button' id='pastas' value='Pastas' placeholder="Pastas"  onClick={handleProducts}/>
           <Li  type='button'  id='postres' value='Postres' placeholder="Postres"  onClick={handleProducts}/>
           <Li type='button' id='bebidas' value='Bebidas' placeholder="Bebidas"  onClick={handleProducts}/>

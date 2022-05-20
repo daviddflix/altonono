@@ -16,7 +16,7 @@ import ResumenCarrito from './Component/resumenCarrito/carrito';
 import FormPago from './Component/formPago/formPago';
 import Checkout from './Component/addressform/Checkout'
 import userContext from './Component/context/userContext';
-import ScrollToTop from './Component/carousel/ScrollToTop';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 
 function App() {
 
@@ -57,9 +57,7 @@ function App() {
             </Route> 
           
 
-            <Route exact path='/carrito'>
-            <ResumenCarrito/>
-            </Route>  
+             <ProtectedRoute path="/carrito" component={ResumenCarrito} /> 
 
             <Route exact path='/formPago'>
             <Checkout/>
@@ -72,7 +70,7 @@ function App() {
             
             </Switch>  
           
-            {/* <Footer /> */}
+            <Footer />
 
             <div className='chat'>
             <Chat/>

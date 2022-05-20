@@ -113,12 +113,8 @@ export const Menu = styled.div`
    
 
 @media screen and (max-width:900px){
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    height: 80px ;
-    align-items: center;
    
+    width: 100%;
    
 }
 `;
@@ -128,7 +124,7 @@ export const Ul = styled.ul`
 
 @media screen and (max-width:900px){
     display: flex;
-    justify-content: space-around;
+    justify-content:center;
     align-items: center;
     text-decoration: none;
     position: relative;
@@ -146,12 +142,12 @@ export const Li = styled.input`
     justify-content: space-around;
     text-decoration: none;
     margin-left: 1rem;
-    width: 100%;
+     width: 100%;
     border: 1px solid #ff595a;
     border-radius: 10px;
     padding: 10px;
     color: #282828;
-    background-color: #fff;
+    background-color: #fff; 
 
     &:hover{
       background-color: #ff595a;

@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 import {IoIosArrowDropleftCircle} from 'react-icons/io'
+import {IoCartOutline} from 'react-icons/io5'
 
 
 export const MainContainer = styled.div`
- height: 100vh;
+
  width: 100%;
 
 
 @media screen and (max-width:900px){
-        height: 100%;
+        /* height: 100vh; */
         width: 90%;
         display: flex;
         flex-direction: column;
         align-items: center;
-      
+       text-align: left;
 
         
        
@@ -72,6 +73,7 @@ export const ContainerOptionChild = styled.div`
         /* border-bottom:  1px solid #c1c1c1; */
         background-color: #fff;
         border-radius: 10px;
+        
  }
 `;
 
@@ -146,7 +148,10 @@ export const Okay = styled.button`
         border: none;
         margin-left: 1rem;
         border-radius: 5px;
-        
+        cursor: pointer;
+        display: flex;
+       
+        align-items: center;
          
  }
 `;
@@ -160,7 +165,8 @@ export const BtnArmarOtroHit = styled.button`
         border: none;
         margin-left: 1rem;
         border-radius: 5px;
-        
+        cursor: pointer;
+        z-index: 10;
          
  }
 `;
@@ -195,8 +201,8 @@ export const Like = styled(IoIosArrowDropleftCircle)`
     left: 1rem;
     color: #ff595a;
    
-    width: 27px;
-    height: 27px;
+    width: 32px;
+    height: 32px;
    
 }
 `;
@@ -214,6 +220,19 @@ export const ProductName = styled.h3`
   
     border-radius: 10px;
     border: 1px solid rgba(0,0,0,0.75);
+}
+`;
+
+
+export const CartIcon = styled(IoCartOutline)`
+@media screen and (max-width:900px){
+        width: 22px;
+        height: 22px;
+       
+        color: #fff;
+        border-radius: 50%;
+        margin-left: .5rem;
+        z-index: 10;
 }
 `;
 

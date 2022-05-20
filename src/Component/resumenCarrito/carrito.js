@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom";
 import { postCompra, getAllCompras, DeleteItem } from "../../redux/actions";
 import { BtnFinalizarCompra, Container, ContainerProduct, Flex, Img, MainContainer,FlexOptions, Title, ButtonItemDelete, ButtonVerCarrito } from "./styles"
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 
 
@@ -105,3 +105,4 @@ export default function ResumenCarrito (){
         </MainContainer>
     )
 }
+

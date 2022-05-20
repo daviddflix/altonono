@@ -2,15 +2,19 @@ import {  useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 import Loading from "../spinner/spinner"
 import { motion } from "framer-motion/dist/framer-motion"
-import {GiWaterDrop} from 'react-icons/gi'
+import {BiDroplet} from 'react-icons/bi'
+import { IoCartOutline} from 'react-icons/io5'
+
+
+
 
 export default function DetailProduct(){
-  const {isAuthenticated, user , loginWithRedirect } = useAuth0();
+  const {isAuthenticated , loginWithRedirect,  } = useAuth0();
     const dispatch = useDispatch()
     const {id} = useParams()
 
@@ -38,14 +42,15 @@ export default function DetailProduct(){
         quantity: 1
       });
 
-      const backToProducts = () => {
+      const BackToProducts = () => {
          if(options.salsa.length){
           dispatch(addItem(options))
          }
          history.push('/productos')
+      
       }
 
-      const carrito = () => {
+      const Carrito = () => {
       
         if(isAuthenticated){
           if(options.salsa.length){
@@ -145,7 +150,7 @@ export default function DetailProduct(){
            {
             detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
-          <Like/>
+          <Like onClick={() => {history.push('/productos')}}/>
           </div>
            
             <Form>
@@ -154,13 +159,13 @@ export default function DetailProduct(){
                <h3>Salsas</h3>
                <h4 style={{margin: '7px'}}>selecciona maximo 2</h4>
              </BoxTitleAndPhoto>
-              {/* </BoxTitleAndPhoto> */}
+             
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
                             <ContainerOptionChild key={p}>
-                             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}}>
-                             <GiWaterDrop style={{marginRight: '10px', color: '#ff595a'}}/>
+                             <div style={{display: 'flex', width: '100%'}}>
+                             <BiDroplet style={{marginRight: '10px', color: '#ff595a', marginRight: '2rem'}}/>
                                  <LabelProductName>{p}</LabelProductName>
                              </div>
                           
@@ -184,7 +189,7 @@ export default function DetailProduct(){
                         return(
                             <ContainerOptionChild  key={p}>
                                  <LabelProductName>{p}</LabelProductName>
-                                  <label>$ {detail.toppings.price}</label>
+                                  <label style={{marginLeft: '2rem'}}>$ {detail.toppings.price}</label>
                                  <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
                             </ContainerOptionChild>
                         )
@@ -201,10 +206,16 @@ export default function DetailProduct(){
             </MainBoxComentario>
 
            
-           <div>
-           <Okay onClick={carrito}>OKAY</Okay>
-            <BtnArmarOtroHit onClick={backToProducts}>ARMA OTRO HIT</BtnArmarOtroHit>
-           </div>
+      
+        
+              <div style={{display: 'flex', justifyContent: 'center'}}>
+           
+              <Okay onClick={Carrito} >OKAY <CartIcon /></Okay>
+               
+              <BtnArmarOtroHit onClick={BackToProducts}>ARMAR OTRO HIT</BtnArmarOtroHit>  
+             </div>        
+        
+         
            
 
 

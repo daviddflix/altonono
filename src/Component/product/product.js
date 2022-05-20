@@ -1,5 +1,5 @@
-import { MainContainer, TextoSlide,  ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ProductNumber, ArrowLeft, ArrowRight } from "./styles";
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import { MainContainer, TextoSlide,  ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ArrowLeft, ArrowRight } from "./styles";
+import { CarouselProvider, Slider, Slide,  } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import React, {  useEffect, useState } from "react";
 import {useDispatch, useSelector} from 'react-redux'
@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
     
     const [Number, setNumber] = useState(1)
     const [value, setValue] = React.useState(5);
-    const {isAuthenticated , loginWithRedirect } = useAuth0();
+   
 
     const ProductNumberIncrement = () => {
         setNumber(Number + 1)
@@ -35,10 +35,6 @@ import { NavLink } from "react-router-dom";
 
    
 
-    const handleClick = async() => {
-        window.scroll(0,0)
-      }
-     
 
 
     useEffect(() => {
@@ -76,9 +72,9 @@ import { NavLink } from "react-router-dom";
                                  return(
                                     <NavLink key={i} to={`detail/${p.id}`}>
                                   <Slide index={p.id} key={p.id}>
-                            {product.length?  <a href="https://www.instagram.com/hitpasta/">
+                            {product.length?  
                                    <img style={{height: '350px', width: '95%', borderRadius:'5px'}} src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
-                                </a>: <Loading/>}
+                               : <Loading/>}
                                
                                 <TextoSlide >
                                 <Text>{p.title}</Text>

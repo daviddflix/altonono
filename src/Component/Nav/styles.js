@@ -11,13 +11,13 @@ export const  MainContainer = styled.div`
     width: 100%;
     height: 60px;
    
-    border-bottom: 0.3rem solid ;
+    border-bottom: 0.1rem solid ;
     border-color: #ff595a;
     position: sticky;
     top: 0;
     z-index: 300;
     background-color: #fff ;
-    border-radius: 10px;
+  
    
 `
 
