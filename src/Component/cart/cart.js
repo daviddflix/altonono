@@ -6,6 +6,7 @@ import { DeleteItem } from "../../redux/actions";
 import Context from "../context/Items";
 import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal} from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
+import CurrencyFormat from 'react-currency-format';
 
 export default function Carrito(){
 
@@ -64,7 +65,8 @@ export default function Carrito(){
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
                 <h5 style={{margin: '1px'}}>{p.title}</h5>
-                <h6 style={{margin: '0'}}>${p.unit_price}</h6>
+              
+                 <h6 style={{margin: '0', width: '88px'}}><CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'SUBTOTAL: $'} /></h6>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>
               </Container>

@@ -18,16 +18,7 @@ import { NavLink } from "react-router-dom";
     const [value, setValue] = React.useState(5);
    
 
-    const ProductNumberIncrement = () => {
-        setNumber(Number + 1)
-    }
-
-    const ProductNumberDecrement = () => {
-        if(Number === 1 ){
-           return setNumber(1)
-        }
-        setNumber(Number - 1)
-    }
+  
 
     
     const dispatch = useDispatch()

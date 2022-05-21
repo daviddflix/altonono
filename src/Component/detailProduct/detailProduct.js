@@ -1,14 +1,13 @@
-import {  useEffect, useState } from "react"
+import {  useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addItem, getDetail } from "../../redux/actions"
-import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon } from "./styles"
+import { BoxComentario, BoxTitleAndPhoto, ContainerOption, BtnArmarOtroHit, Description, BoxTitleAndPhoto2Child, LabelProductName, ContainerOptionChild, Form, InputOptions, MainBoxComentario, MainContainer, PhotoProduct, Like, ProductName, Okay, CartIcon, Drop } from "./styles"
 import { useAuth0 } from "@auth0/auth0-react";
 import {v4 as uuidv4} from 'uuid'
 import Loading from "../spinner/spinner"
 import { motion } from "framer-motion/dist/framer-motion"
-import {BiDroplet} from 'react-icons/bi'
-import { IoCartOutline} from 'react-icons/io5'
+import OrderContext from "../context/orderContext"
 
 
 
@@ -28,19 +27,8 @@ export default function DetailProduct(){
      const history = useHistory()
      
 
-    
-      const [options, setOptions] = useState({
-        toppings: [],
-        salsa: [],
-        priceTopping: null,
-        id: '',
-        title: '',
-        price: 0,
-        picture_url: '',
-        Comments: '',
-        unit_price: 0,
-        quantity: 1
-      });
+     const {options, setOptions} = useContext(OrderContext);
+     
 
       const BackToProducts = () => {
          if(options.salsa.length){
@@ -145,8 +133,8 @@ export default function DetailProduct(){
         <MainContainer as={motion.div}  initial={{width: 0, opacity: 0, transition: {duration: '0.1'}}}  animate={{width: '100%', opacity: 1}} exit={{x: window.innerWidth, opacity: 0}}>
            
 
-           <div style={{position: 'relative',width: '100%', height: '300px'}}>
-            <ProductName>{detail.title}</ProductName>
+           <div style={{position: 'relative',width: '100%', height: '260px'}}>
+           
            {
             detail.picture_url?  <PhotoProduct  src={`https://hit-pasta.herokuapp.com/${detail.picture_url}`}/> : <Loading/>
            }
@@ -156,20 +144,24 @@ export default function DetailProduct(){
             <Form>
                <ContainerOption>
              <BoxTitleAndPhoto>
-               <h3>Salsas</h3>
-               <h4 style={{margin: '7px'}}>selecciona maximo 2</h4>
+              <div>
+              <h3 style={{marginTop: '1rem'}}>Salsas</h3>
+               <h4 style={{margin: '0'}}>selecciona maximo 2</h4>
+              </div>
+               <ProductName>{detail.title}</ProductName>
              </BoxTitleAndPhoto>
              
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
                             <ContainerOptionChild key={p}>
-                             <div style={{display: 'flex', width: '100%'}}>
-                             <BiDroplet style={{marginRight: '10px', color: '#ff595a', marginRight: '2rem'}}/>
-                                 <LabelProductName>{p}</LabelProductName>
+                             <div style={{display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
+                                 <Drop />
+                                 <LabelProductName>{p.sauce}</LabelProductName>
+                            
                              </div>
-                          
                                 <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
+                                <Description>{p.description}</Description>
                             </ContainerOptionChild>
                         )
                     })
@@ -178,10 +170,12 @@ export default function DetailProduct(){
 
                 <ContainerOption>
                
-                 <BoxTitleAndPhoto>
-                 <h3 style={{fontWeight: '900'}}>Toppings</h3>
+                 <BoxTitleAndPhoto2Child>
+                <div>
+                <h3 style={{fontWeight: '900'}}>Toppings</h3>
                 <h4 style={{margin: '7px'}}>Podes seleccionar todos las quieras</h4>
-                 </BoxTitleAndPhoto>
+                </div>
+                 </BoxTitleAndPhoto2Child>
                 
                
                 {
@@ -189,7 +183,7 @@ export default function DetailProduct(){
                         return(
                             <ContainerOptionChild  key={p}>
                                  <LabelProductName>{p}</LabelProductName>
-                                  <label style={{marginLeft: '2rem'}}>$ {detail.toppings.price}</label>
+                                  <label style={{marginLeft: '2rem'}}>${detail.toppings.price}</label>
                                  <InputOptions type='checkbox' name={p} checked={options.toppings.index} key={p}  value={p} onChange={handleToppings}/>
                             </ContainerOptionChild>
                         )

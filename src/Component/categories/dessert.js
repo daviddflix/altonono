@@ -1,41 +1,125 @@
 
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { ContainerOptionChild, InputOptions, LabelProductName } from "../detailProduct/styles";
+import {  useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { MainContainer } from "./styles";
+import { MainContainer, BoxOptions, BoxOptionsChild, Img, Buttons, P, CartIcon, ButtonAddToCart } from "./dessertStyles"
+import {v4 as uuidv4} from 'uuid';
 
 export default function Dessert () {
 
   const products = useSelector(state => state.food)
-  console.log('0', products[0])
-  const [options, setOptions] = useState()
+  
+  // const [dessert, setDessert] = useState({
+  //   dessert: '',
+  //   quantity: 0,
+  //   total: 0
+  // })
+// console.log('d', dessert)
+ 
+//   const ProductNumberIncrement = () => {
+//     setDessert(prev => ({...prev, quantity: dessert.quantity + 1 }))
+// }
 
-  const handlePostre = (e) => {
-     setOptions(e.target.value)
-  }
+// const ProductNumberDecrement = () => {
+//   if(dessert.quantity === 0){
+//     setDessert(prev => ({...prev, quantity: 0 }))
+//   } else{
+//     setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
+//   }
+// }
+
+
+// const totalPrice = dessert.quantity * 400
+
+// useEffect(() => {
+//   if(dessert.quantity){
+//     setDessert(prev => ({...prev, total: totalPrice}))
+//   }
+// }, [dessert.quantity])
     return(
         <MainContainer>
        
          <h3>ELIGE TUS POSTRES</h3>
-         <div style={{position: 'relative', right: '3rem'}}>
+         <BoxOptions>
          {
             products? products[0].dessert.dessert.map((p, i) => {
-              console.log(p)
+            
                return(
-                <ContainerOptionChild key={i}>
-              
-                    <LabelProductName>{p}</LabelProductName>
-                    <InputOptions type='checkbox'  key={p} name={p}  value={p} onChange={handlePostre}/> 
-                  
-                 
-               </ContainerOptionChild>
+                <Card key={i} 
+                img={`https://hit-pasta.herokuapp.com/${p.picture_url}`}
+                product={p.title}
+                price={products[0].dessert.dessertPrice}
+                quantity={0}
+                picture_url={p.picture_url}
+                />
              )
          }): <Loading/>
         }
-         </div>
+         </BoxOptions>
 
       </MainContainer>
 
     )
+}
+
+function Card({img, product, price, quantity, picture_url}){
+
+  const dispatch = useDispatch()
+  const [dessert, setDessert] = useState({
+    title: product,
+    quantity: quantity,
+    unit_price: 0,
+    id: '',
+    picture_url
+  })
+  console.log('d', dessert)
+
+    const ProductNumberIncrement = () => {
+      setDessert(prev => ({...prev, quantity: dessert.quantity + 1 }))
+  }
+    const ProductNumberDecrement = () => {
+      if(dessert.quantity === 0){
+        setDessert(prev => ({...prev, quantity: 0 }))
+      } else{
+        setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
+      }
+    }
+
+    const AddItemsToCart = () => {
+      if(dessert.quantity){
+       dispatch(addItem(dessert))
+      }
+    setDessert(prev => ({...prev,quantity: 0, id: uuidv4()}))
+   }
+  
+
+  useEffect(() => {
+      const totalPrice = dessert.quantity !== 0? dessert.quantity * 400: 0
+    setDessert(prev => ({...prev, unit_price: totalPrice}))
+ 
+}, [dessert.quantity])
+
+  return(
+    <BoxOptionsChild>
+    <Img src={img}/>
+   
+   <div>
+
+   <div>
+   <h4 style={{marginTop: '.5rem', marginBottom: '.5rem'}}>{product}</h4>
+    <h4  style={{margin: '0'}}>${price}</h4>
+   </div>
+
+   <div style={{display: 'flex', alignItems: 'center'}}>
+     <Buttons onClick={ProductNumberDecrement}>-</Buttons>
+     <P>{dessert.quantity}</P>
+     <Buttons onClick={ProductNumberIncrement}>+</Buttons>
+   </div>
+   <ButtonAddToCart onClick={AddItemsToCart} disabled={dessert.quantity === 0}> <CartIcon /></ButtonAddToCart>
+  </div>
+  
+ 
+</BoxOptionsChild>
+  )
 }

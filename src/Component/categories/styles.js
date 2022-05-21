@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { NavLink as Link } from "react-router-dom";
 import {BsFillHeartFill} from 'react-icons/bs'
+import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 
 export const MainContainer = styled.div`
     
@@ -8,7 +9,7 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
     
     width: 100%;
     position: relative;
@@ -25,11 +26,11 @@ export const Img = styled.img`
     height: 150px;
     width: 150px;
 @media screen and (max-width:600px){
-        height: 100px;
+        height: 100%;
         width: 35%;
         border-radius: 5px;
         position: relative;
-        left: 5px;
+       
        
 }
 `;
@@ -46,6 +47,7 @@ export const Container = styled.div`
     width: 90%;
     position: relative;
     border-radius: 5px;
+   
     
       
 }
@@ -113,8 +115,9 @@ export const Menu = styled.div`
    
 
 @media screen and (max-width:900px){
-   
+    transition: .5s ease;
     width: 100%;
+    border-radius: 0 0 10px 10px;
    
 }
 `;
@@ -143,22 +146,32 @@ export const Li = styled.input`
     text-decoration: none;
     margin-left: 1rem;
      width: 100%;
-    border: 1px solid #ff595a;
+    border: none;
     border-radius: 10px;
     padding: 10px;
-    color: #282828;
-    background-color: #fff; 
+    color: #fff;
+    background-color: transparent; 
 
     &:hover{
-      background-color: #ff595a;
+      border-bottom: 2px solid #282828;
       color: #fff;
     }
 
-   :active{
-       background-color: #ff595a;
-      color: #fff;
-   }
+ 
 
+}
+`;
+
+export const ArrowGo = styled(BsFillArrowRightSquareFill)`
+@media screen and (max-width:900px){
+     position: absolute;
+    color: #282828;
+    bottom: 5px;
+    right: 5px;
+    width: 26px;
+    height: 25px;
+    pointer-events: none;
+   
 }
 `;
 

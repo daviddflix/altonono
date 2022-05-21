@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import {IoIosArrowDropleftCircle} from 'react-icons/io'
+import {RiArrowLeftSLine} from 'react-icons/ri'
 import {IoCartOutline} from 'react-icons/io5'
+import {BiDroplet} from 'react-icons/bi'
 
 
 export const MainContainer = styled.div`
@@ -15,7 +16,8 @@ export const MainContainer = styled.div`
         flex-direction: column;
         align-items: center;
        text-align: left;
-
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI';
+        background-color: #fbfcfc;
         
        
 }
@@ -26,12 +28,16 @@ export const Form = styled.form`
         width: 100%;
 
 
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
         
-        width: 95%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        border-radius: 100px 0 0 0;
+       
+        z-index: 10;
+        background-color: #fff;
         
 }
 `;
@@ -56,6 +62,7 @@ export const ContainerOption = styled.div`
          flex-direction: column;
          align-items: flex-start;
          width: 100%;
+         position: relative;
         
  }
 `;
@@ -63,16 +70,21 @@ export const ContainerOption = styled.div`
 export const ContainerOptionChild = styled.div`
  @media screen and (max-width: 900px) {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-       
+        grid-template-columns: repeat(3, 2fr);
+        grid-column-gap: 1rem;
+        justify-content: center;
+        align-content: center;
         padding: 15px;
-        width: 100%;
+        width: 90%;
+        height: 70px;
         position: relative;
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        // box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         border-top: none;
-        /* border-bottom:  1px solid #c1c1c1; */
         background-color: #fff;
-        border-radius: 10px;
+        // border-radius: 10px;
+        border-bottom: 1px solid #f5f6f8;
+        position: relative;
+        left: 1rem;
         
  }
 `;
@@ -80,13 +92,13 @@ export const ContainerOptionChild = styled.div`
 export const InputOptions = styled.input`
  @media screen and (max-width: 600px) {
         height: 22px;
-        width: 22px;
-        position: absolute;
-        left: 20rem;
         border: none;
-        display: block;
-        top: .4rem;
-        color: green;
+        width: 22px;
+         position: absolute;
+        left: 19rem;
+       
+        top: 1.4rem; 
+       
          
  }
 `;
@@ -112,14 +124,23 @@ export const BoxTitleAndPhoto = styled.div`
    @media screen and (max-width: 600px) {
         width: 100%;
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
-        padding-left: 20px;
-       
+        padding-left: 4rem; 
         color: #ff595a;
-        /* background-color: #fff; */
-       z-index: 10;
-       
+       z-index: 10;      
+   }
+
+`;
+
+export const BoxTitleAndPhoto2Child = styled.div`
+
+   @media screen and (max-width: 600px) {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        padding-left: 10px; 
+        color: #ff595a;
+      z-index: 10;      
    }
 
 `;
@@ -173,18 +194,19 @@ export const BtnArmarOtroHit = styled.button`
 
 export const PhotoProduct = styled.img`
  @media screen and (max-width: 900px) {
-        width: 95vw;
-        height: auto;
-        border-radius: 10px;
-        margin-top: .5rem;
-
+        width: 100%;
+        height: 350px;
+        border-radius: 0 0 10px 10px;
+        
+        
  }
 `;
 
 
 export const LabelProductName = styled.label`
- @media screen and (max-width: 600px) {
-        
+ @media screen and (max-width: 900px) {
+        width: 150px;
+        ;
      &::first-line{
              border: none;
      }
@@ -192,7 +214,7 @@ export const LabelProductName = styled.label`
  }
 `;
 
-export const Like = styled(IoIosArrowDropleftCircle)`
+export const Like = styled(RiArrowLeftSLine)`
    
 
 @media screen and (max-width:900px){
@@ -200,9 +222,10 @@ export const Like = styled(IoIosArrowDropleftCircle)`
     top: 1rem;
     left: 1rem;
     color: #ff595a;
-   
+  
     width: 32px;
     height: 32px;
+    
    
 }
 `;
@@ -211,15 +234,13 @@ export const ProductName = styled.h3`
    
 
 @media screen and (max-width:900px){
-    position: absolute;
-    bottom: -1.5rem;
-    right: 2rem;
-    color: #282828;
-    background-color: #fff;
-    padding: 8px 18px;
+   background-color: #ffd803;
+   color: #282828;
+   border-radius: 5px;
+   padding: 15px;
+   margin-left: 1rem;
   
-    border-radius: 10px;
-    border: 1px solid rgba(0,0,0,0.75);
+   
 }
 `;
 
@@ -235,6 +256,33 @@ export const CartIcon = styled(IoCartOutline)`
         z-index: 10;
 }
 `;
+
+export const Drop = styled(BiDroplet)`
+@media screen and (max-width:900px){
+        width: 22px;
+        height: 22px;
+       
+        color: #ff595a;
+        border-radius: 50%;
+        margin-right: .8rem;
+        z-index: 10;
+}
+`;
+
+
+export const Description = styled.p`
+@media screen and (max-width:900px){
+        position: absolute;
+        width: 100%;
+        bottom: -1rem;
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-left: 1rem;
+}
+`;
+
 
 
 

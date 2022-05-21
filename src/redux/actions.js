@@ -16,7 +16,7 @@ export function getProduct (){
        return async function (dispatch){
           try {                            
                const res = await axios.get(url); 
-              
+               console.log('res:', res)
                if(res.data.status === 404){
                  dispatch({ type: NOT_FOUND, payload: true });
                } else {

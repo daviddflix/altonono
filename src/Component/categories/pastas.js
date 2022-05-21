@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { Container, ContainerInfo, Img, Like, MainContainer, NavLink, Title } from "./styles";
+import { ArrowGo, Container, ContainerInfo, Img, Like, MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
 
 
@@ -51,7 +51,7 @@ export default function Pastas(){
            {
               productos? productos.map(p => {
                  return(
-                   <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none'}}>
+                   <NavLink key={p.id}   to={`/detail/${p.id}`} style={{textDecoration:'none', }}>
                  
                   <Container >
                   <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} />
@@ -65,9 +65,10 @@ export default function Pastas(){
                               setValue(newValue);
                               }}
                               />
-                          <h4 style={{margin: '7px'}}>$ {p.price}</h4>
+                          <h4 style={{margin: '7px', color: '#282828'}}>$ {p.price}</h4>
                         </ContainerInfo>
                         <Like/>
+                        <ArrowGo/>
                 </Container>
                   </NavLink>
                  

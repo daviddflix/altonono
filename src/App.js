@@ -17,6 +17,7 @@ import FormPago from './Component/formPago/formPago';
 import Checkout from './Component/addressform/Checkout'
 import userContext from './Component/context/userContext';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import OrderContext from './Component/context/orderContext';
 
 function App() {
 
@@ -29,11 +30,25 @@ function App() {
       sub: "",
       zona: ""
   })
+
+  const [options, setOptions] = useState({
+    toppings: [],
+    salsa: [],
+    priceTopping: null,
+    id: '',
+    title: '',
+    price: 0,
+    picture_url: '',
+    Comments: '',
+    unit_price: 0,
+    quantity: 1,
+  });
   
 
   return (
     <Context.Provider value={{closeCart, setCloseCart }}>
      <userContext.Provider value={{input, setInput}}>
+       <OrderContext.Provider value={{options, setOptions}}>
     <div className="App">
       
        <Nav/>
@@ -78,6 +93,7 @@ function App() {
         
     
     </div>
+    </OrderContext.Provider>
     </userContext.Provider>
     </Context.Provider>
   );
