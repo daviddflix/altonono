@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Switch, Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Nav from './Component/Nav/nav';
 import Chat from './Component/chat/whatsapp';
 import Info from './Component/Info/info';
@@ -11,9 +11,8 @@ import Categories from './Component/categories/Categories';
 import { useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
-import {CartProvider} from './Component/context/cartContext'
 import ResumenCarrito from './Component/resumenCarrito/carrito';
-import FormPago from './Component/formPago/formPago';
+
 import Checkout from './Component/addressform/Checkout'
 import userContext from './Component/context/userContext';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
