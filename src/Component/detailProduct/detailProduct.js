@@ -154,13 +154,13 @@ export default function DetailProduct(){
                 {
                      detail && detail?.salsas?.map((p, index) => {
                         return(
-                            <ContainerOptionChild key={p}>
+                            <ContainerOptionChild key={index}>
                              <div style={{display: 'flex', width: '100%', justifyContent: 'flex-start'}}>
                                  <Drop />
                                  <LabelProductName>{p.sauce}</LabelProductName>
                             
                              </div>
-                                <InputOptions type='checkbox'   checked={options.salsa.index} key={p} name={p}  value={p} onChange={handleSalsa}/>
+                                <InputOptions type='checkbox'   checked={options.salsa.index} key={index} name={p.sauce}  value={p.sauce} onChange={handleSalsa}/>
                                 <Description>{p.description}</Description>
                             </ContainerOptionChild>
                         )

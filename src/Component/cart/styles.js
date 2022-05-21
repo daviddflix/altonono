@@ -13,7 +13,7 @@ export const BoxNoItem = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      
+     
       height: 70vh;
      
      
@@ -26,7 +26,7 @@ export const BoxItems = styled.div`
      flex-direction: column;
      align-items: center;
      justify-content: center;
-     
+    
   }
 `;
 
@@ -66,6 +66,7 @@ export const ContainerButtons = styled.div`
      display: flex;
      flex-direction: column;
      right: 2rem;
+     
      width: 80%;
     
    } 
@@ -132,9 +133,10 @@ export const ContainerProductGeneral = styled.div`
 
 export const ContainerProduct = styled.div`
   @media screen and (max-width: 900px){
-     
-     margin-right: 2rem;
+     position: relative;
+     right: 2.2rem;
      width: 50%;
+     margin-right:2.2rem ;
   }
 `;
 
@@ -181,6 +183,26 @@ export const ContainerSubtotal = styled.div`
  display: flex;
  justify-content: space-around;
  border-top: 1px solid #c1c1c1;
-
+ height: 40px;
 }
 `;
+
+export const P = styled.p`
+@media screen and (max-width: 900px){
+ font-size: 10px;
+}
+`;
+
+export const H5 = styled.h5`
+@media screen and (max-width: 900px){
+  margin: 1px;
+  width: 150px;
+}
+`;
+
+export const H6= styled.h6`
+@media screen and (max-width: 900px){
+  
+}
+`;
+

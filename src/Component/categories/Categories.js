@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import Drinks from "./bebidas";
 import Dessert from "./dessert";
 import Pastas from "./pastas";
 import { Li, Menu, Ul } from "./styles";
@@ -10,7 +11,7 @@ export default function Categories () {
 
     const [product, setProduct] = useState('pastas')
     
-     const color = product === 'pastas'? '#ffd803' : '#d9376e' 
+     const color = product === 'pastas'? '#ffd803' : product === 'postres'? '#d9376e' : '#ff595a' 
 
      const handleProducts = (e) => {
         
@@ -31,6 +32,9 @@ export default function Categories () {
         }
         {
             product === 'postres' && <Dessert/>
+        }
+        {
+            product === 'bebidas' && <Drinks/>
         }
         </div>
     )

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DeleteItem } from "../../redux/actions";
 import Context from "../context/Items";
-import { Button, ButtonClose,  Container, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal} from "./styles";
+import { Button, ButtonClose,  Container, P, H5, H6, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal} from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 
@@ -43,7 +43,7 @@ export default function Carrito(){
    }, 0)
 
    
- 
+ const CartFilter = cart.slice(0, 5)
  
 
 
@@ -57,24 +57,29 @@ export default function Carrito(){
             <h3 style={{position: 'relative', left: '1rem'}}>TUS PEDIDOS</h3>
             <ButtonClose onClick={() => setCloseCart(!closeCart)} />
           </ContainerButtonAndTitleRelative>
-        {/* <ContainerProductGeneral> */}
+      
         {
-          cart.map((p, i) => {
+          CartFilter.map((p, i) => {
             return(
               <Container key={i}>
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
-                <h5 style={{margin: '1px'}}>{p.title}</h5>
-              
-                 <h6 style={{margin: '0', width: '88px'}}><CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'SUBTOTAL: $'} /></h6>
+                <H5>{p.title}</H5>
+                 <div style={{display: 'flex', alignItems: 'center', position: 'relative', left: '1.5rem'}}>
+                  <P>SUBTOTAL: </P>
+                 <h6 style={{margin: '0', width: '88px'}}><CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h6>
+                 </div>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>
               </Container>
             )
           })
         }
-        {/* </ContainerProductGeneral> */}
+       
         <ContainerButtons>
+          {
+            cart.length>5 && <h4>Podes ver toda tu orden en el carrito</h4>
+          }
          <ContainerSubtotal>
          <h4>SUBTOTAL</h4>
          <h4>${priceProduct}</h4>

@@ -116,7 +116,7 @@ export const MenuBar = styled.ul`
 export const ContainerRutas = styled.li`
   width: 100%;
 
-  @media screen and (max-width:600px){
+  @media screen and (max-width:900px){
         position: relative;
         right:2.7rem ; 
         height: 55px;
@@ -153,7 +153,7 @@ export const Link = styled(NavLink)`
     
     
 
-    @media screen and (max-width:600px){
+    @media screen and (max-width:900px){
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -178,7 +178,7 @@ export const RedirectLink = styled(HashLink)`
     height: 100%;
    
 
-    @media screen and (max-width:600px){
+    @media screen and (max-width:900px){
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -198,11 +198,12 @@ export const MenuCart = styled.ul`
     list-style: none;
     height: 100%;
 
-   @media screen and (max-width: 600px){
+   @media screen and (max-width: 900px){
     position: absolute; 
-    width: 70%;
-    height: 80vh;
-    
+    width: 75%;
+    height: 85vmax;
+    border-radius: 0 0 10px 10px;
+    overflow-y: hidden;
     flex-direction: column;
     transition: 0.8s all ease;
     background-color: #fff;

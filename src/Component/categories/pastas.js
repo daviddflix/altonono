@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { ArrowGo, Container, ContainerInfo, Img, Like, MainContainer, NavLink, Title } from "./styles";
+import { ArrowGo, Container, ContainerInfo, Heart, Img, ContainerHeart, MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
 
 
@@ -67,8 +67,11 @@ export default function Pastas(){
                               />
                           <h4 style={{margin: '7px', color: '#282828'}}>$ {p.price}</h4>
                         </ContainerInfo>
-                        <Like/>
-                        <ArrowGo/>
+                       <ContainerHeart>
+                       <Heart/>
+                       </ContainerHeart>
+
+                        {/* <ArrowGo/> */}
                 </Container>
                   </NavLink>
                  

@@ -34,7 +34,7 @@ export const Form = styled.form`
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        border-radius: 100px 0 0 0;
+        border-radius: 50px 50px 0 0;
        
         z-index: 10;
         background-color: #fff;
@@ -91,13 +91,13 @@ export const ContainerOptionChild = styled.div`
 
 export const InputOptions = styled.input`
  @media screen and (max-width: 600px) {
-        height: 22px;
+        height: 24px;
         border: none;
-        width: 22px;
+        width: 24px;
          position: absolute;
         left: 19rem;
        
-        top: 1.4rem; 
+        top: 1.2rem; 
        
          
  }
@@ -127,7 +127,8 @@ export const BoxTitleAndPhoto = styled.div`
         align-items: flex-start;
         padding-left: 4rem; 
         color: #ff595a;
-       z-index: 10;      
+       z-index: 10; 
+       position: relative;     
    }
 
 `;
@@ -138,7 +139,7 @@ export const BoxTitleAndPhoto2Child = styled.div`
         width: 100%;
         display: flex;
         align-items: flex-start;
-        padding-left: 10px; 
+        padding-left: 2rem; 
         color: #ff595a;
       z-index: 10;      
    }
@@ -234,12 +235,15 @@ export const ProductName = styled.h3`
    
 
 @media screen and (max-width:900px){
-   background-color: #ffd803;
+   background-color: #fff;
    color: #282828;
-   border-radius: 5px;
-   padding: 15px;
-   margin-left: 1rem;
-  
+   border-radius: 50px;
+   padding: 15px 20px;
+   position: absolute;
+   top: -2.6rem;
+   left: 15rem;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
    
 }
 `;
@@ -273,13 +277,13 @@ export const Drop = styled(BiDroplet)`
 export const Description = styled.p`
 @media screen and (max-width:900px){
         position: absolute;
-        width: 100%;
-        bottom: -1rem;
+        width: 80%;
+        bottom: -.5rem;
         font-size: 13px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        margin-left: 1rem;
+        left: 3.2rem;
 }
 `;
 

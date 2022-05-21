@@ -37,12 +37,14 @@ export const BoxOptionsChild = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border: 1px solid #282828;
+    /* border: 1px solid #282828; */
     border-radius: 10px;
     margin: 10px;
     background-color: #fff;
     position: relative;
     left: 1rem;
+    border: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    
 }
 `;

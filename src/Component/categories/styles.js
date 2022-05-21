@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink as Link } from "react-router-dom";
-import {BsFillHeartFill} from 'react-icons/bs'
+import {BsHeart} from 'react-icons/bs'
 import {BsFillArrowRightSquareFill} from 'react-icons/bs'
 
 export const MainContainer = styled.div`
@@ -17,6 +17,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: #f3fbfb;
    
     // background-color: #bcb8b1;
 }
@@ -44,7 +45,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 110px;
-    width: 90%;
+    width: 87%;
     position: relative;
     border-radius: 5px;
    
@@ -62,7 +63,7 @@ export const ContainerInfo = styled.div`
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    right: 3.5rem;
+    right: 4rem;
     
     
       
@@ -98,15 +99,34 @@ export const Title = styled.h2`
 }
 `;
 
-export const Like = styled(BsFillHeartFill)`
+export const Heart = styled(BsHeart)`
+   
+
+@media screen and (max-width:900px){
+    position: relative;
+    right: 1px;
+  
+    color: #ff595a;
+   
+   
+}
+`;
+
+export const ContainerHeart = styled.div`
    
 
 @media screen and (max-width:900px){
     position: absolute;
-    top: 5px;
-    right: 5px;
-    color: #ff595a;
-    border-color:  #ff595a;
+    top: -5px;
+    right: -5px;
+    color: #fff;
+    border-radius: 100%;
+    padding: 5px;
+    border: 2px solid #ff595a;
+    background-color: #fff;
+    width: 28px;
+    height: 28px;
+    
    
 }
 `;

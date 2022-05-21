@@ -9,34 +9,7 @@ import {v4 as uuidv4} from 'uuid';
 export default function Dessert () {
 
   const products = useSelector(state => state.food)
-  
-  // const [dessert, setDessert] = useState({
-  //   dessert: '',
-  //   quantity: 0,
-  //   total: 0
-  // })
-// console.log('d', dessert)
  
-//   const ProductNumberIncrement = () => {
-//     setDessert(prev => ({...prev, quantity: dessert.quantity + 1 }))
-// }
-
-// const ProductNumberDecrement = () => {
-//   if(dessert.quantity === 0){
-//     setDessert(prev => ({...prev, quantity: 0 }))
-//   } else{
-//     setDessert(prev => ({...prev, quantity: dessert.quantity - 1 }))
-//   }
-// }
-
-
-// const totalPrice = dessert.quantity * 400
-
-// useEffect(() => {
-//   if(dessert.quantity){
-//     setDessert(prev => ({...prev, total: totalPrice}))
-//   }
-// }, [dessert.quantity])
     return(
         <MainContainer>
        
@@ -66,6 +39,8 @@ export default function Dessert () {
 function Card({img, product, price, quantity, picture_url}){
 
   const dispatch = useDispatch()
+  
+
   const [dessert, setDessert] = useState({
     title: product,
     quantity: quantity,
@@ -90,13 +65,14 @@ function Card({img, product, price, quantity, picture_url}){
       if(dessert.quantity){
        dispatch(addItem(dessert))
       }
-    setDessert(prev => ({...prev,quantity: 0, id: uuidv4()}))
+    setDessert(prev => ({...prev,quantity: 0}))
    }
   
 
   useEffect(() => {
+    
       const totalPrice = dessert.quantity !== 0? dessert.quantity * 400: 0
-    setDessert(prev => ({...prev, unit_price: totalPrice}))
+    setDessert(prev => ({...prev, unit_price: totalPrice, id: uuidv4()}))
  
 }, [dessert.quantity])
 

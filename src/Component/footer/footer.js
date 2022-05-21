@@ -1,6 +1,7 @@
-import { FacebookIcon, InstagramIcon, MainContainer, ContainerInfo, ContainerIcons } from "./styles";
+import { MainContainer, ContainerInfo, Img } from "./styles";
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import logo from './Images/logo.png'
 
 
 function Copyright() {
@@ -22,10 +23,11 @@ export default function Footer (){
       
      <MainContainer>
        
-         <ContainerIcons>
+         {/* <ContainerIcons>
              <a href="https://www.instagram.com/hitpasta/"><InstagramIcon/></a>
              <a href="https://www.facebook.com/hitpasta"><FacebookIcon/></a>
-          </ContainerIcons>
+          </ContainerIcons> */}
+          <Img src={logo} alt='logo' />
           
           <ContainerInfo>
               <h4>Estamos abiertos todos los dias, de 12hs a 24hs</h4>
