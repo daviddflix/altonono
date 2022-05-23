@@ -46,7 +46,8 @@ export const ContainerInfo = styled.div`
 export const Img = styled.img`
    background-color: transparent;
    background: transparent;
-   position: absolute;
-   left: 0;
-   top: 5px;
+   position: relative;
+ 
+   top: 1rem;
+   margin: 0;
 `;

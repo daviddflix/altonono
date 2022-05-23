@@ -9,6 +9,7 @@ export const MainContainer = styled.div`
  flex-direction: column;
  justify-content: space-around;
  align-items: center;
+ background-color: #f3fbfb;
 }
 `;
 
@@ -26,16 +27,17 @@ export const Container = styled.div`
 @media screen and (max-width: 900px){
  display: flex;
  flex-direction: row;
- border: 1px solid #ff595a;
+ box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
  align-items: center;
  margin-bottom: 1rem;
  margin:1rem;
- /* box-shadow:  
-             -20px -20px 60px #dddddd; */
+ background-color: #fff;
  position: relative;
  border-radius: 10px;
  width: 90%;
  justify-content: center;
+ border: none;
+
 }
 `;
 
@@ -105,15 +107,18 @@ export const ButtonItemDelete = styled(AiOutlineClose)`
 
     @media screen and (max-width: 900px){
      position: absolute;
-     top: -10px;
-     right: 5px;
+     top: -12px;
+     right: 0;
      border: none;
-     margin-top: 1rem;
-     width: 20px;
+     margin-top: .8rem;
+     width: 25px;
      height: 25px;
-     box-shadow:  6px 6px 12px #bebebe,
-             -6px -6px 12px #ffffff;
-    border-radius: 40%;
+     padding: 4px;
+     /* box-shadow:  6px 6px 12px #bebebe,
+             -6px -6px 12px #ffffff; */
+    border-radius: 0 10px 0 10px;
+    background-color: #282828;
+    color: #fff;
    
     
    } 

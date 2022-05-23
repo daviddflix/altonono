@@ -9,7 +9,7 @@ export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT= 'LINK_PAYMENT'
 export const CLEAR_STORAGE = 'CLEAR_STORAGE'
 
-const url= 'https://hit-pasta.herokuapp.com'
+const url= 'https://hit-pasta.herokuapp.com'   
 const ur = 'http://localhost:4000'
 
 export function getProduct (){   

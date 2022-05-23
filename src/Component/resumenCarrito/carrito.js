@@ -48,40 +48,48 @@ export default function ResumenCarrito (){
                         <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                         <ContainerProduct>
                         <h3>{p.title}</h3>
-                        <Flex>
-                        <h4>SALSAS:</h4>
-                         <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
-                         {
-                            p.salsa.map((i, index) => {
-                              return(
-                                <FlexOptions key={index}>
-                                  <h4 style={{margin: '0'}}>{i}</h4>
-                                </FlexOptions>
-                              )
-                            })
-                          }
-                         </div>
-                        </Flex>
-                        <Flex>
-                        <h4>TOPPINGS:</h4>
-                          <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
-                          {
-                            p.toppings.map((i, index) => {
-                              return(
-                                <FlexOptions key={index}>
-                                  <h4 style={{margin: '0', }}>{i}</h4>
-                                  <h4 style={{margin: '0', }}>{p.priceTopping}</h4>
-                                </FlexOptions>
-                              )
-                            })
-                          }
-                          </div>
-                        </Flex>
+                        <div  style={{display: 'flex', margin: '0', alignItems: 'center', justifyContent: 'space-around', width: '100%'}}>
+                        <h4>Cantidad: </h4>
+                        <h4 style={{margin: '0' }}>{p.quantity}</h4>
+                        </div>
+                        {
+                          p.salsa && <Flex>
+                          <h4>SALSAS:</h4>
+                           <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
+                           {
+                              p.salsa.map((i, index) => {
+                                return(
+                                  <FlexOptions key={index}>
+                                    <h4 style={{margin: '0'}}>{i}</h4>
+                                  </FlexOptions>
+                                )
+                              })
+                            }
+                           </div>
+                          </Flex>
+                        }
+                        {
+                          p.toppings && <Flex>
+                          <h4>TOPPINGS:</h4>
+                            <div style={{display: 'flex', flexDirection: 'column', margin: '0'}}>
+                            {
+                              p.toppings.map((i, index) => {
+                                return(
+                                  <FlexOptions key={index}>
+                                    <h4 style={{margin: '0', }}>{i}</h4>
+                                    <h4 style={{margin: '0', }}>{p.priceTopping}</h4>
+                                  </FlexOptions>
+                                )
+                              })
+                            }
+                            </div>
+                          </Flex>
+                        }
                      
                      
                         <Flex>
                           <h4>SUBTOTAL</h4>
-                          <CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                          <h4> <CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
                         </Flex>
                         </ContainerProduct>
                       </Container>
@@ -92,14 +100,14 @@ export default function ResumenCarrito (){
             </div>
            <Flex>
               <h4>TOTAL</h4>
-              <CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
            </Flex>
 
            <div style={{display:'flex', width: '100%'}}>
            <BtnFinalizarCompra 
               onClick={ProcederAlPago} 
               disabled={!cart.length}>FINALIZAR COMPRA</BtnFinalizarCompra>
-               <ButtonVerCarrito onClick={backToProducts}>ARMA OTRO HIT</ButtonVerCarrito>
+               <ButtonVerCarrito onClick={backToProducts}>ARMAR OTRO HIT</ButtonVerCarrito>
            </div>
 
         </MainContainer>

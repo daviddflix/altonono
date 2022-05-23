@@ -10,7 +10,7 @@ body{
   font-family: 'Roboto';
   height: auto;
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; */
- 
+  
 }
 
 .chat{
@@ -22,8 +22,10 @@ body{
 
 html{
   scroll-behavior: smooth;
-  color: #282828
+ 
+  
 }
+
 
 
 

@@ -107,6 +107,14 @@ export const Heart = styled(BsHeart)`
     right: 1px;
   
     color: #ff595a;
+
+    :hover{
+       color: #fff;
+    }
+
+    :active{
+        color: #fff;
+    }
    
    
 }
@@ -126,6 +134,16 @@ export const ContainerHeart = styled.div`
     background-color: #fff;
     width: 28px;
     height: 28px;
+
+    :hover{
+        border: none;
+        background-color: #ff595a;
+    }
+
+    :active{
+        border: none;
+        background-color: #ff595a;
+    }
     
    
 }
@@ -192,6 +210,17 @@ export const ArrowGo = styled(BsFillArrowRightSquareFill)`
     height: 25px;
     pointer-events: none;
    
+}
+`;
+
+export const BtnGeneral = styled.button`
+@media screen and (max-width:900px){
+
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    color: #fff;
+  
 }
 `;
 

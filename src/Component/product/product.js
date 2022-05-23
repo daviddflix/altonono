@@ -24,8 +24,8 @@ import { NavLink } from "react-router-dom";
     const dispatch = useDispatch()
     const product = useSelector(state => state.food)
 
-   
-
+   const media = window.matchMedia('(max-width: 900px)')
+  console.log('media:', media)
 
 
     useEffect(() => {
@@ -48,46 +48,48 @@ import { NavLink } from "react-router-dom";
              <h4>Podes elegir una pasta y dos salsas a elección</h4>
              </div>
         
-             <CarouselProvider
-                    naturalSlideWidth={100}
-                    naturalSlideHeight={143}
-                    totalSlides={6}
-                    isPlaying={false}
-                    hasMasterSpinner={product? false : true}
-                    infinite={true}
-                   
-                >
-                    <Slider>
-                          {
-                            product? product?.map((p, i)=> {
-                                 return(
-                                    <NavLink key={i} to={`detail/${p.id}`}>
-                                  <Slide index={p.id} key={p.id}>
-                            {product.length?  
-                                   <img style={{height: '350px', width: '95%', borderRadius:'5px'}} src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
-                               : <Loading/>}
-                               
-                                <TextoSlide >
-                                <Text>{p.title}</Text>
-                                <Rating
-                                    name="simple-controlled"
-                                    value={value}
-                                    onChange={(event, newValue) => {
-                                    setValue(newValue);
-                                    }}
-                                />
-                                 <Text>${p.price}</Text>
-                                 <ButtonAddToCart  to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
-                            </TextoSlide>
-                            </Slide>
-                            </NavLink>
-                                 )
-                              }): <Loading/>
-                            }
-                    </Slider>
-                   <ArrowLeft><IoIosArrowBack style={{width: '22px', height: '22px'}}/></ArrowLeft>
-                   <ArrowRight><IoIosArrowForward style={{width: '22px', height: '22px'}}/></ArrowRight>
-                </CarouselProvider>
+            {
+                media.matches === true?  <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={143}
+                totalSlides={6}
+                isPlaying={false}
+                hasMasterSpinner={product? false : true}
+                infinite={true}
+               
+            >
+                <Slider>
+                      {
+                        product? product?.map((p, i)=> {
+                             return(
+                                <NavLink key={i} to={`detail/${p.id}`}>
+                              <Slide index={p.id} key={p.id}>
+                        {product.length?  
+                               <img style={{height: '350px', width: '95%', borderRadius:'5px'}} src={`https://hit-pasta.herokuapp.com${p.picture_url}`} alt="Img"/>
+                           : <Loading/>}
+                           
+                            <TextoSlide >
+                            <Text>{p.title}</Text>
+                            <Rating
+                                name="simple-controlled"
+                                value={value}
+                                onChange={(event, newValue) => {
+                                setValue(newValue);
+                                }}
+                            />
+                             <Text>${p.price}</Text>
+                             <ButtonAddToCart  to={`detail/${p.id}`}>ARMA TU HIT</ButtonAddToCart>
+                        </TextoSlide>
+                        </Slide>
+                        </NavLink>
+                             )
+                          }): <Loading/>
+                        }
+                </Slider>
+               <ArrowLeft><IoIosArrowBack style={{width: '22px', height: '22px'}}/></ArrowLeft>
+               <ArrowRight><IoIosArrowForward style={{width: '22px', height: '22px'}}/></ArrowRight>
+            </CarouselProvider> : <></>
+            }
                 </MainContainer>
 
 )

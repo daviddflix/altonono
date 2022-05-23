@@ -191,23 +191,27 @@ export default function DetailProduct(){
                 }
                 
                 </ContainerOption>
-                 
-            </Form>
 
-            <MainBoxComentario>
+                <MainBoxComentario>
               <h3>Comentarios</h3>
               <BoxComentario type='text' value={options.Comments} onChange={handleComments} placeholder="Agrega instrucciones o comentarios a tu orden"/>
             </MainBoxComentario>
 
+                <div style={{display: 'flex', justifyContent: 'center', position: 'relative', left:'2rem'}}>
+           
+           <Okay onClick={Carrito} >OKAY <CartIcon /></Okay>
+            
+           <BtnArmarOtroHit onClick={BackToProducts}>ARMAR OTRO HIT</BtnArmarOtroHit>  
+          </div> 
+                 
+            </Form>
+
+           
+
            
       
         
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-           
-              <Okay onClick={Carrito} >OKAY <CartIcon /></Okay>
-               
-              <BtnArmarOtroHit onClick={BackToProducts}>ARMAR OTRO HIT</BtnArmarOtroHit>  
-             </div>        
+                   
         
          
            

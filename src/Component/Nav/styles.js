@@ -14,7 +14,7 @@ export const  MainContainer = styled.div`
     top: 0;
     z-index: 300;
     background-color: #fff ;
-  
+   
    
 `
 
@@ -46,6 +46,10 @@ export const LinkLogo = styled(NavLink)`
     
    text-decoration: none;
    color: #ff595a;
+   display: flex;  
+       flex-direction : row;
+       justify-content: center;
+       align-items: center;
 
     @media screen and (max-width: 900px) {
        display: flex;  
@@ -96,7 +100,7 @@ export const MenuBar = styled.ul`
     list-style: none;
     height: 90%;
     overflow: hidden;
-
+   
 
    @media screen and (max-width: 900px){
     position: absolute;
@@ -115,20 +119,24 @@ export const MenuBar = styled.ul`
 
 export const ContainerRutas = styled.li`
   width: 100%;
-
+  position: relative;
+       
   @media screen and (max-width:900px){
         position: relative;
         right:2.7rem ; 
         height: 55px;
-        width: 300px;
+        width: 400px;
         border-bottom: 1px solid #f5f6f8;
      
   }
 `;
 
 export const ContainerRutasLogin = styled.li`
-   width: 100%;
-
+   width: 200px;
+   display: flex;
+        justify-content: center;
+        align-items: center;
+       
   @media screen and (max-width:900px){
         display: flex;
         justify-content: flex-start;
@@ -151,7 +159,15 @@ export const Greeting = styled.h5`
 
 export const Link = styled(NavLink)`
     
-    
+    display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: black;
+        padding: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        height: 100%; 
+        width: 100% ;
 
     @media screen and (max-width:900px){
         display: flex;
@@ -161,7 +177,8 @@ export const Link = styled(NavLink)`
         padding: 10px;
         font-weight: 600;
         text-decoration: none;
-        height: 100%;  
+        height: 100%; 
+        width:100% ;
        
     }
 `;
@@ -194,15 +211,16 @@ export const RedirectLink = styled(HashLink)`
 
 
 export const MenuCart = styled.ul`
-    display: flex;
+    display: none;
     list-style: none;
     height: 100%;
 
    @media screen and (max-width: 900px){
+    display: flex;
     position: absolute; 
     width: 75%;
     height: 85vmax;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 0 10px;
     overflow-y: hidden;
     flex-direction: column;
     transition: 0.8s all ease;
@@ -222,6 +240,14 @@ export const PictureAuth0 = styled.img`
     border-radius: 9999px;
     
 `; 
+
+
+export const ContainerIconCart = styled.div`
+    float: right;
+  @media screen and (max-width: 900px){
+      
+  }
+`;
 
 
 

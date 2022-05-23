@@ -5,15 +5,23 @@ import {FaMoneyBillWave} from 'react-icons/fa'
 
 export const  MainContainer = styled.div`
 
-
+     display: flex;
+     background-color: #f5f6f8;
     @media screen and (max-width: 900px ) {
+    display: flex;
+    flex-direction: column;
     background-color: #f5f6f8;
     padding: 1rem;
     
    }
-`;
+`; 
 
 export const  Container = styled.div`
+  margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   @media screen and (max-width: 900px ) {
     margin: 3rem;
     display: flex;
@@ -37,9 +45,10 @@ export const  Text = styled.h4`
 `;
 
 export const  Anchor = styled.a`
-
+display: flex;
+  align-items: center;
 @media screen and (max-width: 900px ) {
-  /* text-decoration: none; */
+ 
   display: flex;
   align-items: center;
    }
@@ -71,8 +80,8 @@ export const  IconGeo = styled(BsFillGeoAltFill)`
 
 export const  HeaderPi = styled.h4`
     color: black;
-    font-size:  2rem;
-
+    font-size:  1rem;
+    margin: 0;
   @media screen and (max-width: 900px ) {
     color: black;
     font-size: 1rem;
@@ -93,7 +102,9 @@ export const  MoneyIcon = styled(FaMoneyBillWave)`
 
 
 export const  ImagesPayments = styled.img`
-
+ margin-right: 15px;
+      width: 40px;
+      height: 40px;
 
     @media screen and (max-width: 900px ) {
       margin-right: 15px;

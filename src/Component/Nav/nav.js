@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper, Greeting } from "./styles";
+import { useContext, useEffect, useState, useRef } from "react";
+import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper, Greeting, ContainerIconCart } from "./styles";
 import Carrito from "../cart/cart";
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -7,7 +7,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { postUser } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import {AiOutlineClose} from 'react-icons/ai';
 
@@ -15,7 +14,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'; 
-import logo from './Logos/arma tu hit2.png'
+import logo from './Logos/favicon.ico'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
      '& .MuiBadge-badge': {
@@ -30,7 +29,7 @@ export default function Nav(){
 
      const onClose = () => {
           setShow(false)
-          
+         
      }
 
      const {isAuthenticated, user, logout , loginWithRedirect } = useAuth0();
@@ -43,7 +42,45 @@ export default function Nav(){
      const open = Boolean(anchorEl);
      const history = useHistory()
 
+     
+     let closeNav = useRef()
+  
  
+     const handleClickOutside = (event) => {
+          if (closeNav.current && show === true && !closeNav.current.contains(event.target)) {
+              setShow(!show);
+              const body = document.body.style
+              body.overflow='visible'
+              body.zIndex=10
+              body.pointerEvents='auto'
+           
+          }
+      };
+
+      useEffect(() => {
+         let cancel = false
+           if(show){   
+                cancel = true;
+               const body = document.body.style
+               body.overflow='hidden'
+               body.zIndex=10
+               body.pointerEvents='none'  
+               document.getElementsByClassName('nav')[0].style.pointerEvents='auto'  
+               document.getElementsByClassName('nav')[0].style.overflow='visible'
+           }
+           if(!show){
+                cancel=false
+           }
+          
+      }, [show])
+  
+      useEffect(() => {
+          document.addEventListener('mousedown', handleClickOutside, true);
+         
+          // return () => {
+          //     document.removeEventListener('mousedown', handleClickOutside, true);
+          // };
+      }, [show]);
     
      const handleClickLogout = () => {
           logout();
@@ -56,6 +93,7 @@ export default function Nav(){
           onClose();
         };
 
+      
         const handleClick = (event) => {
           setAnchorEl(event.currentTarget);
         };
@@ -86,7 +124,7 @@ export default function Nav(){
 
      return( 
 
-<MainContainer >
+<MainContainer className="nav" >
   <Wrapper>
 
      {
@@ -95,20 +133,11 @@ export default function Nav(){
 
     <LinkLogo to='/'>
      {/* <h1 style={{color: 'black', fontWeight: '800'}}>HIT PASTA</h1> */}
-     <img src={logo} style={{width: '20%', height: '20%'}}  alt='logo'/>
+     <img src={logo} style={{width: '40%', height: '40%'}}  alt='logo'/>
     </LinkLogo>
 
     
-     <div onClick={cart}>
-     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
-        <ShoppingCartIcon style={{color: '#282828'}}/>
-      </StyledBadge>
-    </IconButton>
-    </div>
-
-    
-    <MenuBar open={show} >
+    <MenuBar  open={show}  ref={closeNav}>
 
           <ContainerRutas>
                <Link to='/' exact onClick={onClose} >
@@ -173,6 +202,13 @@ export default function Nav(){
 
    
         
+     <ContainerIconCart   onClick={cart}>
+     <IconButton aria-label="cart">
+      <StyledBadge badgeContent={cartItems.length? cartItems.length : '0'} color="primary">
+        <ShoppingCartIcon style={{color: '#282828'}}/>
+      </StyledBadge>
+    </IconButton>
+    </ContainerIconCart>
     
     
    <MenuCart open={closeCart} >
