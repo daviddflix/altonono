@@ -72,7 +72,7 @@ function Card({img, product, price, quantity, picture_url}){
   useEffect(() => {
     
       const totalPrice = dessert.quantity !== 0? dessert.quantity * 400: 0
-    setDessert(prev => ({...prev, unit_price: totalPrice, id: uuidv4()}))
+    setDessert(prev => ({...prev, unit_price: 400, id: uuidv4()}))
  
 }, [dessert.quantity])
 

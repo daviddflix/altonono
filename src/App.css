@@ -22,8 +22,27 @@ body{
 
 html{
   scroll-behavior: smooth;
- 
-  
+}
+
+.MessageMedia{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 10px;
+  color: #282828;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 50%;
+  font-size: 20px;
+  background-color: #ff595a;
+}
+
+.boxMessageMedia{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 8rem;
 }
 
 

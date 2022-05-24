@@ -8,7 +8,7 @@ import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
 import ResumenCarrito from './Component/resumenCarrito/carrito';
@@ -17,8 +17,14 @@ import Checkout from './Component/addressform/Checkout'
 import userContext from './Component/context/userContext';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import OrderContext from './Component/context/orderContext';
+import MessageMedia from './Component/MessajeMedia';
 
 function App() {
+
+  const media = window.matchMedia("(max-width:900px)")
+   
+   
+
 
     const [closeCart, setCloseCart] = useState(false)
     const [input, setInput] = useState({
@@ -48,50 +54,53 @@ function App() {
     <Context.Provider value={{closeCart, setCloseCart }}>
      <userContext.Provider value={{input, setInput}}>
        <OrderContext.Provider value={{options, setOptions}}>
-    <div className="App">
+       {
+        media.matches === true ? <div className="App">
       
-       <Nav/>
-       <Switch>
-
-      
-
-            <Route  exact path='/'>
-            <Carouselp/>
-            <CarouselProduct/>
-            <Info/>  
-            
-            </Route> 
-
-            <Route exact path='/productos'>
-            <Categories/>
-            </Route> 
-
-            <Route exact path='/userProfile'>
-            <UserProfile/>
-            </Route> 
-          
-
-             <ProtectedRoute path="/carrito" component={ResumenCarrito} /> 
-
-            <Route exact path='/formPago'>
-            <Checkout/>
-            </Route>    
-
-            <Route exact path='/detail/:id'>
-            <DetailProduct/>
-            </Route> 
-
-            
-            </Switch>  
-          
-            <Footer />
-
-            <div className='chat'>
-            <Chat/>
-            </div>
-        
+        <Nav/>
+        <Switch>
+ 
+       
+ 
+             <Route  exact path='/'>
+             <Carouselp/>
+             <CarouselProduct/>
+             <Info/>  
+             
+             </Route> 
+ 
+             <Route exact path='/productos'>
+             <Categories/>
+             </Route> 
+ 
+             <Route exact path='/userProfile'>
+             <UserProfile/>
+             </Route> 
+           
+ 
+              <ProtectedRoute path="/carrito" component={ResumenCarrito} /> 
+ 
+             <Route exact path='/formPago'>
+             <Checkout/>
+             </Route>    
+ 
+             <Route exact path='/detail/:id'>
+             <DetailProduct/>
+             </Route> 
+ 
+             
+             </Switch>  
+           
+             <Footer />
+ 
+             <div className='chat'>
+             <Chat/>
+             </div>
+         
+     
+     </div> : <MessageMedia/>
+       }
     
-    </div>
     </OrderContext.Provider>
     </userContext.Provider>
     </Context.Provider>

@@ -89,7 +89,7 @@ export default function ResumenCarrito (){
                      
                         <Flex>
                           <h4>SUBTOTAL</h4>
-                          <h4> <CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
+                          {/* <h4> <CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4> */}
                         </Flex>
                         </ContainerProduct>
                       </Container>
@@ -100,7 +100,7 @@ export default function ResumenCarrito (){
             </div>
            <Flex>
               <h4>TOTAL</h4>
-              <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
+              {/* <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4> */}
            </Flex>
 
            <div style={{display:'flex', width: '100%'}}>

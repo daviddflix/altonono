@@ -17,7 +17,7 @@ import PaymentForm from './PaymentForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from "@auth0/auth0-react";
 import userContext from '../context/userContext';
-import { getLinkPayment, postCompra, resetCart } from '../../redux/actions';
+import { getLinkPayment, postCompra, resetCart, getNotification } from '../../redux/actions';
 import { ButtonHacerOtroPedido, LinkMP } from './styles';
 import { height } from '@mui/system';
 
@@ -76,6 +76,7 @@ export default function Checkout() {
     e.preventDefault()
     dispatch(postCompra({cart, input}))
     dispatch(getLinkPayment({cart, user}))
+    // dispatch(getNotification({cart,user}))
 }
 
   const resetCart = () => {
