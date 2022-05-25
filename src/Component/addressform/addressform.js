@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useEffect, useState } from "react";
+
+import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import {  getLinkPayment, postCompra, postUser } from "../../redux/actions";
@@ -26,7 +24,7 @@ export default function AddressForm() {
     const history = useHistory()
 
     const {input, setInput} = React.useContext(userContext)
-    console.log(input)
+    
     useEffect(() => {
      if(user){
          setInput(prev => ({...prev, sub: user.sub}))
@@ -66,9 +64,7 @@ export default function AddressForm() {
   return (
     <div  >
       <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Direccion de envio
-      </Typography>
+      <h3>Direccion de envio</h3>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -78,9 +74,11 @@ export default function AddressForm() {
             label="Nombre"
             fullWidth
             autoComplete="given-name"
-            variant="standard"
+            variant="outlined"
             onChange={handleInput}
             value={input.nombre}
+            color='success'
+            
           />
         </Grid>
         <Grid item xs={12}>
@@ -92,13 +90,15 @@ export default function AddressForm() {
             fullWidth
             value={input.direccion}
             autoComplete="shipping address-line1"
-            variant="standard"
+            variant="outlined"
             onChange={handleInput}
+            color='success'
+            
             
           />
         </Grid>
         <div style={{position: 'relative', left: '1rem'}}>
-        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl variant="outlined" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-standard-label">Zona</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -106,6 +106,8 @@ export default function AddressForm() {
           value={input.zona}
           onChange={handleZona}
           label="zona"
+          color='success'
+          
         >
           <MenuItem value="">
             <em>None</em>
@@ -127,10 +129,12 @@ export default function AddressForm() {
             label="Numero de celular"
             fullWidth
             autoComplete="shipping address-level2"
-            variant="standard"
+            variant="outlined"
             onChange={handleInput}
             value={input.numero}
             type='number'
+            color='success'
+            
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -139,10 +143,12 @@ export default function AddressForm() {
             name="email"
             label="Email"
             fullWidth
-            variant="standard"
+            variant="outlined"
             onChange={handleInput}
             value={input.email}
             required
+            color='success'
+            sx={{input: {color: '#282828'}}}
           />
         </Grid>
         {/* <Grid item xs={12}>

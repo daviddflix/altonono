@@ -8,16 +8,15 @@ import CarouselProduct from './Component/product/product';
 import Carouselp from './Component/carousel/carousel';
 import DetailProduct from './Component/detailProduct/detailProduct';
 import Categories from './Component/categories/Categories';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Context from './Component/context/Items';
 import UserProfile from './Component/profile/userProfile';
 import ResumenCarrito from './Component/resumenCarrito/carrito';
-
 import Checkout from './Component/addressform/Checkout'
 import userContext from './Component/context/userContext';
-import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import OrderContext from './Component/context/orderContext';
 import MessageMedia from './Component/MessajeMedia';
+import NoMatch from './Component/404/404';
 
 function App() {
 
@@ -78,7 +77,10 @@ function App() {
              </Route> 
            
  
-              <ProtectedRoute path="/carrito" component={ResumenCarrito} /> 
+              {/* <Route path="/carrito" component={ResumenCarrito} />  */}
+              <Route exact path='/carrito'>
+             <ResumenCarrito/>
+             </Route> 
  
              <Route exact path='/formPago'>
              <Checkout/>
@@ -86,6 +88,10 @@ function App() {
  
              <Route exact path='/detail/:id'>
              <DetailProduct/>
+             </Route> 
+
+             <Route path='*'>
+             <NoMatch/>
              </Route> 
  
              

@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { DeleteItem } from "../../redux/actions";
 import Context from "../context/Items";
-import { Button, ButtonClose,  Container, P, H5, H6, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal} from "./styles";
+import { Button, ButtonClose,  Container, P, H5, H6, ContainerButtonAndTitle,ContainerButtons, ContainerButtonAndTitleRelative,  ButtonItemDelete ,ContainerProduct, Img, BoxNoItem, BoxItems, ContainerSubtotal, Quantity} from "./styles";
 import { useAuth0 } from "@auth0/auth0-react";
 import CurrencyFormat from 'react-currency-format';
 
 export default function Carrito(){
 
-  const {isAuthenticated , user, loginWithRedirect } = useAuth0();
+  const {user, loginWithRedirect } = useAuth0();
   const history = useHistory()
   const {closeCart, setCloseCart} = useContext(Context);
   const dispatch = useDispatch()
   let cart = useSelector(state => state.cart);
   
  
-  console.log('cart:',cart)
+  console.log('cart:',cart) 
 
   const handleClic = () => {
      history.push('/productos')
@@ -37,6 +37,7 @@ export default function Carrito(){
  }
 
 
+   const quantity = cart.map(p => p.quantity)
    const total = cart.map(p => p.unit_price)
    const priceProduct =   total.reduce((prev, curr) => {
     return prev + curr 
@@ -65,9 +66,11 @@ export default function Carrito(){
                 <Img src={`https://hit-pasta.herokuapp.com/${p.picture_url}`} alt='picture'/>
                 <ContainerProduct>
                 <H5>{p.title}</H5>
+                
                  <div style={{display: 'flex', alignItems: 'center', position: 'relative', left: '1.5rem'}}>
                   <P>SUBTOTAL: </P>
-                 <h6 style={{margin: '0', width: '88px'}}><CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h6>
+                 <h6 style={{margin: '8px', width: '88px'}}><CurrencyFormat fixedDecimalScale={true} value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h6>
+                
                  </div>
                 </ContainerProduct>
                 <ButtonItemDelete onClick={() => dispatch(DeleteItem(p.id))}>x</ButtonItemDelete>

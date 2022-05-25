@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getProduct } from "../../redux/actions";
 import Loading from "../spinner/spinner";
-import { ArrowGo, Container, ContainerInfo, Heart, Img, ContainerHeart, MainContainer, NavLink, Title } from "./styles";
+import { Container, ContainerInfo, Heart, Img, ContainerHeart, MainContainer, NavLink, Title } from "./styles";
 import Rating from '@mui/material/Rating';
 
 
@@ -13,7 +13,7 @@ import Rating from '@mui/material/Rating';
 export default function Pastas(){
 
     const productos = useSelector(state => state.food)
-    console.log('productos:', productos)
+   
     const dispatch = useDispatch()
     const [value, setValue] = useState(5);
 

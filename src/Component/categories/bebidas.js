@@ -8,7 +8,7 @@ import {v4 as uuidv4} from 'uuid';
 export default function Drinks(){
 
     const productos = useSelector(state => state.food)
-    console.log('productos:', productos)
+
 
     const ItemWithAlcohol = productos[0].beverages.slice(0,5)
     const ItemWithoutAlcohol = productos[0].beverages.slice(6, 10)
@@ -88,11 +88,11 @@ function Card ({ product, price, quantity, picture_url}) {
     useEffect(() => {
         const item = productos[0].beverages.filter(p => p.title===drinks.title)
         const price = item.map(p => p.price)
-       console.log('price:', price)
-        const totalPrice = drinks.quantity !== 0? drinks.quantity * price: 0
+     
+        // const totalPrice = drinks.quantity !== 0? drinks.quantity * price: 0
         setDrinks(prev => ({...prev, unit_price:price[0] , id: uuidv4()}))
    
-  }, [drinks.quantity])
+  }, [drinks.quantity, drinks.title, productos])
   
 
     return(

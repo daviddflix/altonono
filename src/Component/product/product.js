@@ -1,4 +1,4 @@
-import { MainContainer, TextoSlide,  ContainerButton, Arrow, Buttons, Text, ButtonAddToCart, ArrowLeft, ArrowRight } from "./styles";
+import { MainContainer, TextoSlide,  Text, ButtonAddToCart, ArrowLeft, ArrowRight } from "./styles";
 import { CarouselProvider, Slider, Slide,  } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import React, {  useEffect, useState } from "react";
@@ -8,13 +8,12 @@ import {IoIosArrowForward} from 'react-icons/io';
 import {IoIosArrowBack} from 'react-icons/io';
 import Rating from '@mui/material/Rating';
 import Loading from '../spinner/spinner'
-import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 
 
  const CarouselProduct = () =>{
     
-    const [Number, setNumber] = useState(1)
+   
     const [value, setValue] = React.useState(5);
    
 
@@ -25,8 +24,7 @@ import { NavLink } from "react-router-dom";
     const product = useSelector(state => state.food)
 
    const media = window.matchMedia('(max-width: 900px)')
-  console.log('media:', media)
-
+  
 
     useEffect(() => {
         let cancel = false

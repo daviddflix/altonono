@@ -49,11 +49,16 @@ export const ButtonItemDelete = styled(AiOutlineClose)`
 
     @media screen and (max-width: 700px){
      position: absolute;
-     color: black;
-     top: -10px;
-     right: 5px;
+     color: #fff;
+     top:  -15px;
+     width: 20px;
+     padding: 5px;
+     height: 20px;
+     right: 0px;
+     border-radius: 0 10px 0px 10px;
      border: none;
      margin-top: 1rem;
+     background-color: #282828;
    } 
 `; 
 
@@ -115,6 +120,7 @@ export const Container = styled.div`
      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
      align-items: center;
      position: relative;
+     border-radius: 10px;
     
      
      
@@ -137,6 +143,7 @@ export const ContainerProduct = styled.div`
      right: 2.2rem;
      width: 50%;
      margin-right:2.2rem ;
+     
   }
 `;
 
@@ -190,19 +197,31 @@ export const ContainerSubtotal = styled.div`
 export const P = styled.p`
 @media screen and (max-width: 900px){
  font-size: 10px;
+ margin: 0;
 }
 `;
 
 export const H5 = styled.h5`
 @media screen and (max-width: 900px){
-  margin: 1px;
+  margin: 0;
   width: 150px;
 }
 `;
 
-export const H6= styled.h6`
+export const Quantity= styled.h5`
 @media screen and (max-width: 900px){
+  position: absolute;
+  right: -2.5rem;
+  top: .5rem;
+  border-radius: 10px;
+  background-color: #282828;
+  border: none;
+  color: #fff;
+  width: 20px;
+  height: 20px;
   
+  padding: 4px;
+  margin: 0;
 }
 `;
 

@@ -15,10 +15,11 @@ export const MainContainer = styled.div`
 
 export const Img = styled.img`
 @media screen and (max-width: 900px){
-  width: 30%;
-  height: 40%;
-  position: relative;
-  left: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 110px;
   border-radius: 10px;
 } 
 `; 
@@ -29,14 +30,14 @@ export const Container = styled.div`
  flex-direction: row;
  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
  align-items: center;
- margin-bottom: 1rem;
  margin:1rem;
  background-color: #fff;
  position: relative;
  border-radius: 10px;
- width: 90%;
+ width: 370px;
  justify-content: center;
  border: none;
+ height: 200px;
 
 }
 `;
@@ -86,6 +87,7 @@ export const Flex = styled.div`
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  margin: 0;
   
 }
 `;

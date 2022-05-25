@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import {FaInstagramSquare} from 'react-icons/fa'
 import {BsInstagram} from 'react-icons/bs'
 import {FaFacebookSquare} from 'react-icons/fa'
 

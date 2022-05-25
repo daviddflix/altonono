@@ -114,7 +114,7 @@ export default function DetailProduct(){
 
           setOptions(prev => ({...prev, unit_price: total}))
          
-      }, [options.price, options.priceTopping])
+      }, [options.price, options.priceTopping, setOptions])
      
 
       useEffect(() => {
@@ -124,7 +124,7 @@ export default function DetailProduct(){
           setOptions(prev => ({...prev, priceTopping: finalPrice }))
           
         
-      }, [options.toppings])
+      }, [options.toppings, setOptions])
 
 
     

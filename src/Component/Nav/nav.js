@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState, useRef } from "react";
-import { ContainerRutas, ImgLogo, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, RedirectLink, Wrapper, Greeting, ContainerIconCart } from "./styles";
+import { ContainerRutas, Link, LinkLogo, MainContainer,ContainerRutasLogin, MenuBar, MenuCart, MobileIcon, PictureAuth0, Wrapper, Greeting, ContainerIconCart } from "./styles";
 import Carrito from "../cart/cart";
 import Context from "../context/Items";
 import { useAuth0 } from "@auth0/auth0-react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {AiOutlineClose} from 'react-icons/ai';
 
@@ -55,7 +55,16 @@ export default function Nav(){
               body.pointerEvents='auto'
            
           }
+          if (closeNav.current && show === true && closeNav.current.contains(event.target)) {
+               setShow(!show);
+               const body = document.body.style
+               body.overflow='visible'
+               body.zIndex=10
+               body.pointerEvents='auto'
+            
+           }
       };
+
 
       useEffect(() => {
          let cancel = false
@@ -77,9 +86,6 @@ export default function Nav(){
       useEffect(() => {
           document.addEventListener('mousedown', handleClickOutside, true);
          
-          // return () => {
-          //     document.removeEventListener('mousedown', handleClickOutside, true);
-          // };
       }, [show]);
     
      const handleClickLogout = () => {
@@ -132,7 +138,6 @@ export default function Nav(){
      }
 
     <LinkLogo to='/'>
-     {/* <h1 style={{color: 'black', fontWeight: '800'}}>HIT PASTA</h1> */}
      <img src={logo} style={{width: '40%', height: '40%'}}  alt='logo'/>
     </LinkLogo>
 
@@ -140,7 +145,7 @@ export default function Nav(){
     <MenuBar  open={show}  ref={closeNav}>
 
           <ContainerRutas>
-               <Link to='/' exact onClick={onClose} >
+               <Link  to='/' exact onClick={onClose} >
                HOME
                </Link>
           </ContainerRutas>
@@ -160,7 +165,7 @@ export default function Nav(){
           </ContainerRutas>
 
           <ContainerRutasLogin>
-               {/* <Link to='/login' exact > */}
+             
           {isAuthenticated ? (
 
           <div>
@@ -195,7 +200,7 @@ export default function Nav(){
           Log In/Register
           </Button>
           )}
-               {/* </Link> */}
+            
           </ContainerRutasLogin>
 
     </MenuBar>

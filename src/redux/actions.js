@@ -16,7 +16,7 @@ export function getProduct (){
        return async function (dispatch){
           try {                            
                const res = await axios.get(url); 
-               console.log('res:', res)
+             
                if(res.data.status === 404){
                  dispatch({ type: NOT_FOUND, payload: true });
                } else {
@@ -110,21 +110,6 @@ export function postCompra (payload){
     }
        
     } 
-
-    export function getNotification  (payload){
-        return async function (dispatch){
-           try {                       
-               const res =  await  axios.post(`${url}/postnotification`,payload);
-            console.log('notification:', res)
-            // return dispatch({ type: LINK_PAYMENT, payload: res.data})
-              
-           } catch (err) {
-               return console.error(err);
-           }
-        }
-           
-        }
-
 
  export function addItem(value){
     
