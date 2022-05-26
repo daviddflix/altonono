@@ -86,7 +86,7 @@ export default function Checkout() {
 
 
   return (
-    <div style={{height: '100vh', backgroundColor: '#00fa7d'}}>
+    <div style={{height: '100vh', backgroundColor: '#f5f6f8', marginTop: '60px'}}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBar

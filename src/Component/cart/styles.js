@@ -200,6 +200,7 @@ export const P = styled.p`
 @media screen and (max-width: 900px){
  font-size: 10px;
  margin: 0;
+ color: black;
 }
 `;
 

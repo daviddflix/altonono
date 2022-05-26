@@ -225,7 +225,7 @@ export const MenuCart = styled.ul`
     overflow-y: hidden;
     flex-direction: column;
     transition: 0.8s all ease;
-    background-color: #c1c1c1;
+    background-color: rgba(0,0,0,0.5);
     top: ${({open}) => open? "44px" : "-3000%"} ;
     right: 0;
     z-index: 50;

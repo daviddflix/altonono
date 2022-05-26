@@ -47,7 +47,7 @@ export default function Carrito(){
      
       cart.length? <BoxItems>
          <ContainerButtonAndTitleRelative>
-            <h3 style={{position: 'relative', left: '1rem'}}>TUS PEDIDOS</h3>
+            <h3 style={{position: 'relative', left: '1rem', color: '#fff'}}>TUS PEDIDOS</h3>
             <ButtonClose onClick={() => setCloseCart(!closeCart)} />
           </ContainerButtonAndTitleRelative>
       
@@ -76,8 +76,8 @@ export default function Carrito(){
             cart.length>5 && <h4>Podes ver toda tu orden en el carrito</h4>
           }
          <ContainerSubtotal>
-         <h4>SUBTOTAL</h4>
-         <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
+         <h4 style={{color: '#fff'}}>SUBTOTAL</h4>
+         <h4  style={{color: '#fff'}}><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
          </ContainerSubtotal>
         <Button onClick={verCarrito}>VER CARRITO</Button>
         </ContainerButtons>

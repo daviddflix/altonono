@@ -10,6 +10,7 @@ export const MainContainer = styled.div`
  justify-content: space-around;
  align-items: center;
  background-color: #f3fbfb;
+ margin-top: 60px;
 }
 `;
 

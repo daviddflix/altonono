@@ -27,6 +27,7 @@ export const  MainContainer = styled.div`
              -6px -6px 12px #ffffff;
     border-radius: 5px;
     margin-top: 0;
+    background-color: #fff
  
   
   
@@ -46,11 +47,11 @@ export const  Menu = styled.div`
 export const  NavLink = styled(Link)`
 
 
-@media screen and (max-width: 600px ) {
+@media screen and (max-width: 900px ) {
    text-decoration: none;
    padding: 3px;
    text-transform: uppercase;
-   color: #161a1d;
+  
    font-size: 15px;
    margin: 1rem;
    border: none;

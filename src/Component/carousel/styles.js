@@ -35,7 +35,7 @@ export const  Div = styled.div`
  height: 500px;
 
 @media screen and (max-width: 900px ) {
-   height: 100vh;
+   height: 60vh;
    
 }
 `;
@@ -44,7 +44,7 @@ export const  Img = styled.img`
 height: 500px;
 
 @media screen and (max-width: 900px ) {
-    height: 100vh;
+    height: 70vh;
     background-repeat: no-repeat;
     background-position: center;
 }

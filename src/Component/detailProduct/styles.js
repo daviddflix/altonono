@@ -315,9 +315,10 @@ export const LabelProductName = styled.label`
 export const Like = styled(RiArrowLeftSLine)`
    
   visibility:hidden;
+  
 @media screen and (max-width:900px){
     position: absolute;
-    top: 1rem;
+    top: 4.5rem;
     left: 1rem;
     color: #ff595a;
     visibility: visible;
