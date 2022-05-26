@@ -21,7 +21,7 @@ export default function AddressForm() {
 
     let link = useSelector(state => state.link);
     const dispatch = useDispatch()
-    const history = useHistory()
+   
 
     const {input, setInput} = React.useContext(userContext)
     
@@ -32,18 +32,11 @@ export default function AddressForm() {
     },[user])
 
     useEffect(() => {
-       if(input.direccion && input.email && input.nombre && input.numero && input.sub){
+       if(input.direccion && input.email && input.nombre && input.zona && input.numero && input.sub){
         dispatch(postUser(input))
        }
     }, [input, dispatch])
 
-  
-    const submitform = (e) => {
-        e.preventDefault()
-        dispatch(postCompra({cart, user}))
-        dispatch(getLinkPayment({cart, user}))
-       
-    }
 
     const handleInput = (e) => {
         setInput(prev=> ({...prev, [e.target.name]: e.target.value}))
@@ -78,6 +71,7 @@ export default function AddressForm() {
             onChange={handleInput}
             value={input.nombre}
             color='success'
+            focused
             
           />
         </Grid>
@@ -151,12 +145,7 @@ export default function AddressForm() {
             sx={{input: {color: '#282828'}}}
           />
         </Grid>
-        {/* <Grid item xs={12}>
-          <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="Use this address for payment details"
-          />
-        </Grid> */}
+       
       </Grid>
     </React.Fragment>
     </div>

@@ -124,7 +124,22 @@ export default function Nav(){
        }else{
          setCloseCart(!closeCart)
        }
-}
+   }
+
+   const changeBackgroundColor = () => {
+       
+        if(window.scrollY >= 66){
+             document.getElementsByClassName('nav')[0].style.backgroundColor='#fff'
+             document.getElementsByClassName('nav')[0].style.borderBottom='none'
+        } else{
+          document.getElementsByClassName('nav')[0].style.backgroundColor='transparent'
+          // document.getElementsByClassName('nav')[0].style.borderBottom='0.5px solid #060808'
+        }
+   }
+
+   useEffect(() => {
+     document.addEventListener('scroll', changeBackgroundColor)
+   },[document])
 
 
 

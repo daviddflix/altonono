@@ -35,7 +35,7 @@ export default function Categories () {
      }
 
     return(
-        <div style={{marginBottom: '2rem', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{marginTop: '60px',marginBottom: '2rem', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
        <Menu style={{background: color}}>
         <Ul>
           <Li type='button' id='pastas' value='Pastas' placeholder="Pastas"  onClick={handleProducts}/>

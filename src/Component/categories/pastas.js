@@ -68,10 +68,8 @@ export default function Pastas(){
                           <h4 style={{margin: '7px', color: '#282828'}}>$ {p.price}</h4>
                         </ContainerInfo>
                        <ContainerHeart>
-                       <Heart/>
+                       <Heart />
                        </ContainerHeart>
-
-                        {/* <ArrowGo/> */}
                 </Container>
                   </NavLink>
                  

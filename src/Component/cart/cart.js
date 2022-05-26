@@ -35,21 +35,13 @@ export default function Carrito(){
     }
    
  }
-
-
-   const quantity = cart.map(p => p.quantity)
-   const total = cart.map(p => p.unit_price)
-   const priceProduct =   total.reduce((prev, curr) => {
+   const priceProduct = cart.map(p => p.unit_price * p.quantity)
+   const total =   priceProduct.reduce((prev, curr) => {
     return prev + curr 
    }, 0)
 
    
  const CartFilter = cart.slice(0, 5)
- 
-
-
- 
-
 
     return(
      
@@ -85,7 +77,7 @@ export default function Carrito(){
           }
          <ContainerSubtotal>
          <h4>SUBTOTAL</h4>
-         <h4>${priceProduct}</h4>
+         <h4><CurrencyFormat  fixedDecimalScale={true} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} /></h4>
          </ContainerSubtotal>
         <Button onClick={verCarrito}>VER CARRITO</Button>
         </ContainerButtons>

@@ -25,7 +25,7 @@ export default function ResumenCarrito (){
     dispatch(getAllCompras())
   }, [ dispatch])
 
-  const priceProduct = cart.map(p => p.unit_price)
+  const priceProduct = cart.map(p => p.unit_price * p.quantity)
   const total =   priceProduct.reduce((prev, curr) => {
    return prev + curr 
   }, 0)

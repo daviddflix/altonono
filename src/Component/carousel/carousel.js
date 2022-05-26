@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img from './image/spaguetti 1500x.jpg'
+import img from './image/spaguetti 1600x1000.jpg'
 import img2 from './image/noquis 442.jpg'
 import img3 from './image/portada-pastas-604x270.jpg'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -12,7 +12,7 @@ import { Div, Img } from './styles';
 export default class Carouselp extends Component {
     render() {
         return (
-           img?  <Carousel   infiniteLoop={true} autoPlay={true} showThumbs={false} showStatus={false}>
+           img?  <Carousel   infiniteLoop={true} autoPlay={false} showThumbs={false} showStatus={false}>
            <Div>
                <Img src={img} alt='picture'/>
            </Div>

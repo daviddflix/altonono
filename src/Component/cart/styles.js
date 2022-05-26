@@ -27,6 +27,7 @@ export const BoxItems = styled.div`
      align-items: center;
      justify-content: center;
     
+    
   }
 `;
 
@@ -121,6 +122,7 @@ export const Container = styled.div`
      align-items: center;
      position: relative;
      border-radius: 10px;
+     background-color: #fff;
     
      
      
@@ -176,7 +178,7 @@ export const ContainerButtonAndTitleRelative = styled.div`
      display:flex;
      justify-content: space-between;
      align-items: center;
-     
+   
      margin-bottom: 8px;
      position: relative;
      right: 1rem;

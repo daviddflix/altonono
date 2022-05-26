@@ -10,11 +10,12 @@ import img from '../carousel/image/tiposDePasta.jpg'
 export const  MainContainer = styled.div`
     width: 100%;
     height: 60px;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 300;
-    background-color: #fff ;
-   
+    transition: 0.3s ease-in-out;
+    /* border-bottom: 0.5px solid #060808; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    
 `
 
@@ -224,7 +225,7 @@ export const MenuCart = styled.ul`
     overflow-y: hidden;
     flex-direction: column;
     transition: 0.8s all ease;
-    background-color: #fff;
+    background-color: #c1c1c1;
     top: ${({open}) => open? "44px" : "-3000%"} ;
     right: 0;
     z-index: 50;
