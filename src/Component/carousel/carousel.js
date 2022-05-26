@@ -15,7 +15,7 @@ export default class Carouselp extends Component {
         return (
     <CarouselProvider
     naturalSlideWidth={100}
-    naturalSlideHeight={100}
+    naturalSlideHeight={114}
     totalSlides={3}
     hasMasterSpinner={img? false : true}
     infinite={true}
