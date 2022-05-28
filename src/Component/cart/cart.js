@@ -73,7 +73,7 @@ export default function Carrito(){
        
         <ContainerButtons>
           {
-            cart.length>5 && <h4>Podes ver toda tu orden en el carrito</h4>
+            cart.length>5 && <h4 style={{color: '#fff'}}>Podes ver toda tu orden en el carrito</h4>
           }
          <ContainerSubtotal>
          <h4 style={{color: '#fff'}}>SUBTOTAL</h4>

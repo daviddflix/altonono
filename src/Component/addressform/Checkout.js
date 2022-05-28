@@ -75,7 +75,7 @@ export default function Checkout() {
   const submitOrder = async(e) => {
     e.preventDefault()
     dispatch(postCompra({cart, input}))
-    dispatch(getLinkPayment({cart, user}))
+    dispatch(getLinkPayment({cart, input}))
     // dispatch(getNotification({cart,user}))
 }
 

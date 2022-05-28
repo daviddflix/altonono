@@ -29,11 +29,13 @@ function App() {
     const [input, setInput] = useState({
       nombre: "",
       direccion: "",
-      numero: '',
+      numero: 0,
       email: "",
       sub: "",
       zona: ""
   })
+
+  console.log('input', input)
 
   const [options, setOptions] = useState({
     toppings: [],
@@ -41,7 +43,7 @@ function App() {
     priceTopping: null,
     id: '',
     title: '',
-    price: 0,
+    price: '',
     picture_url: '',
     Comments: '',
     unit_price: 0,
