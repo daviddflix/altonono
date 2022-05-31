@@ -4,6 +4,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT = 'LINK_PAYMENT'
+export const RESET_CART = 'RESET_CART'
 
 
 const url= 'https://altonono.herokuapp.com'   
@@ -24,21 +25,6 @@ export function getProduct (){
  }
 
 
-export function postOrder (payload){
-    return async function (dispatch){
-           try {                          
-                const res = await axios.post(`${url}/postcompras`, payload);
-                console.log('postcompras', res)
-                return res
-            } catch (err) {
-                return console.error('algo paso',err);
-            }
-                
-        } 
-     
-     
-  } 
-
  export function getLinkPayment (payload){
     return async function (dispatch){
        try {                       
@@ -54,7 +40,7 @@ export function postOrder (payload){
     } 
 
  export function addItem(value){
-    
+    console.log('value', value)
      return{
          type:ADD_ITEM_TO_CART,
          payload: value
@@ -68,6 +54,14 @@ export function postOrder (payload){
         payload: value
     }
 }
+
+export function resetCart(){
+    
+    return{
+        type:RESET_CART
+    }
+}
+
 
 
 

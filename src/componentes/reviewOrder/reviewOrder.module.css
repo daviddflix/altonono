@@ -1,0 +1,42 @@
+.mainBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.boxReview{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 97%;
+    /* border-bottom: 1px solid #c1c1c1; */
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     margin: 1rem;
+     position: relative;
+}
+
+.styleflex{
+ display: flex;
+ width: 100%;
+ align-items: center;
+ justify-content: space-around;
+ margin-bottom: 1rem;
+}
+
+
+.margin{
+    margin: 0;
+}
+
+.btnDelete{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #282828;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+}

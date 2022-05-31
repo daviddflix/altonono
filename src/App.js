@@ -3,31 +3,48 @@ import { Route, Switch } from 'react-router-dom';
 import {  useState } from 'react';
 import cartContext from './componentes/context/cartContext';
 import userContext from './componentes/context/userContext'
+import Navbar from './componentes/Navbar/navbar';
+import Products from './componentes/Products/Products';
+import ReviewOrder from './componentes/reviewOrder/ReviewOrder';
+import Payment from './componentes/payment/payment';
 
 
 function App() {
 
-  const [cart, setCart] = useState({
-    title: '',
-    description: '',
-    unit_price: '',
-    quantity: 0
-  })
+  const [categories, setCategories] = useState('');
+
 
   const [client, setClient] = useState({
     name: '',
     table: '',
     email: '',
     method: '',
-    total: ''
   })
 
+  console.log('client', client)
+
   return (
-    <cartContext.Provider value={{cart, setCart}}>
-    <userContext.Provider value={{client, setClient}}>
-      <div>hola</div>
-    </userContext.Provider>
-    </cartContext.Provider>
+   <div className='App'>
+      <cartContext.Provider value={{categories, setCategories}}>
+      <userContext.Provider value={{client, setClient}}>
+        <Navbar/>
+        <Switch>
+          <Route exact path='/'>
+          <Products/> 
+          </Route>
+
+          <Route exact path='/review'>
+          <ReviewOrder/> 
+          </Route>
+
+          <Route exact path='/payment'>
+          <Payment/> 
+          </Route>
+
+        </Switch>
+      </userContext.Provider>
+      </cartContext.Provider>
+   </div>
   )
 }
 

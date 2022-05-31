@@ -1,4 +1,5 @@
-import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT } from "./actions"
+import storage from "redux-persist/lib/storage"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT, RESET_CART } from "./actions"
 
 
 const InicialState ={
@@ -27,6 +28,15 @@ const InicialState ={
       
     }
   }
+  if(action.type === RESET_CART){
+    storage.removeItem('persist:root')
+    return{
+     cart: [],
+     link: '',
+     items: []
+    }
+  }
+ 
  
   if(action.type === DELETE_ITEM){
 
@@ -34,7 +44,7 @@ const InicialState ={
     return{
       ...state,
       cart: items
-      
+     
     }
   }
 

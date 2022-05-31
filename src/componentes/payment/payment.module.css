@@ -1,0 +1,36 @@
+.main{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.input{
+    margin-bottom: 1rem;
+    width: 90%;
+    height: 30px;
+    border: none;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+
+}
+
+.select{
+    display: flex;
+    align-items: flex-start;
+    width: 90%;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.selectinput{
+    width: 80%;
+    height: 30px;
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    margin-left: 1rem;
+}

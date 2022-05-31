@@ -1,0 +1,70 @@
+.mainBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+   
+}
+
+.boxProduct{
+    width: 300px;
+    margin: .6rem;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    border-radius: 5px;
+    position: relative;
+    border-bottom: 1px solid #c1c1c1;
+   
+}
+
+.boxTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.title{
+    margin: 0;
+    padding: 10px;
+    font-size: 17px;
+    overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+}
+
+.description{
+    position: absolute;
+    top: 1.5rem;
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.price{
+    padding: 10px;
+    margin: 0;
+    font-weight: 800;
+}
+
+.btn{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #282828;
+    color: #fff;
+}
+
+.btnAdd{
+   margin-left: 1rem;
+   padding: 8px 15px;
+   border-radius: 5px;
+   background-color: #282828;
+   color: #fff;
+   font-size: 12px;
+}
