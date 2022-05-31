@@ -58,3 +58,12 @@ margin: 1rem;
     border: none;
     padding: 6px 10px;
 }
+
+.arrow{
+    position: absolute;
+    top: 6.3rem;
+    left: 1rem;
+    width: 28px;
+    height: 28px;
+    
+}

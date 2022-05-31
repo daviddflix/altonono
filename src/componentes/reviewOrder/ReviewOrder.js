@@ -4,7 +4,7 @@ import s from './reviewOrder.module.css'
 import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
 import { DeleteItem } from "../../redux/actions";
-
+import {RiArrowLeftSLine} from 'react-icons/ri'
 export default function ReviewOrder(){
 
     const cart = useSelector(state => state.cart)
@@ -30,6 +30,7 @@ export default function ReviewOrder(){
     return(
         <div className={s.mainBox}>
             <h2>TUS PRODUCTOS</h2>
+            <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <div className={s.boxCard}>
            {
                 cart.map((p, i) => {
@@ -45,7 +46,6 @@ export default function ReviewOrder(){
             </div>
             <div className={s.styleflex}>
                 <Button variant='contained' onClick={payment}>FINALIZAR PEDIDO</Button>
-                <Button variant='contained' style={{marginLeft: '1rem'}} onClick={back}>VOLVER</Button>
             </div>
         </div>
     )
