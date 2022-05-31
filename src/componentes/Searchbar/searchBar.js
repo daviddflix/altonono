@@ -34,8 +34,8 @@ export default function SearchBar(){
           onChange={handleChange}
           MenuProps={{PaperProps:{
             sx: {
-              bgcolor: '#c1c1c1',
-              color: '#000000'
+              bgcolor: 'rgba(0,0,0,0.90)',
+              color: '#fff'
             }
           }}}
         >
