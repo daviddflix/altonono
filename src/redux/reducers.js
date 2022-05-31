@@ -1,15 +1,10 @@
-
-import storage from "redux-persist/lib/storage"
-import { ADD_ITEM_TO_CART, CLEAR_STORAGE, DELETE_ITEM, GET_DETAILS, GET_PRODUCTS, GET_USER, LINK_PAYMENT } from "./actions"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT } from "./actions"
 
 
 const InicialState ={
-  food: [],
-  detail: {},
-  userDetails: [],
-  cart: [],
-  cartFinal: [],
-  link: ''
+ items: [],
+ cart: [],
+ link: ''
 }
 
 
@@ -20,23 +15,11 @@ const InicialState ={
    if(action.type === GET_PRODUCTS){
      return{
        ...state,
-       food: action.payload
+       items: action.payload
      }
    }
-    if(action.type === GET_DETAILS){
-
-    return{
-      ...state,
-      detail: action.payload
-    }
-  }
-  if(action.type === GET_USER){
-    return{
-      ...state,
-      userDetails: action.payload
-    }
-  }
-  if(action.type === ADD_ITEM_TO_CART){
+ 
+   if(action.type === ADD_ITEM_TO_CART){
    
     return{
       ...state,
@@ -44,31 +27,25 @@ const InicialState ={
       
     }
   }
-  if(action.type === LINK_PAYMENT){
-   
-    return{
-      ...state,
-      link: action.payload
-      
-    }
-  }
-      if(action.type === CLEAR_STORAGE) {
-        storage.removeItem('persist:root')
-        return {
-          cart: []
-        }
-       }
-
+ 
   if(action.type === DELETE_ITEM){
 
-    const items = state.cart.filter(p => p.id !== action.payload)
-   
+    const items = state.cart.filter(p => p.id !== action.payload) 
     return{
       ...state,
       cart: items
       
     }
   }
+
+  if(action.type === LINK_PAYMENT){ 
+    return{
+      ...state,
+      link: action.payload
+      
+    }
+  }
+   
    
    else{
      return {...state}
@@ -78,12 +55,4 @@ const InicialState ={
 
 export default appReducer
 
-
-export const rootReducer = (state = InicialState, action) => {
-  if(action.type === CLEAR_STORAGE) {
-      storage.removeItem('key:root')
-      return appReducer(undefined, action)
-  }
-  return appReducer(state, action)
-}
 
