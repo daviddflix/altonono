@@ -4,11 +4,13 @@
 
 body, html{
   box-sizing: border-box;
-  font-family: 'Roboto';
+  font-family: 'Asap condensed';
   scroll-behavior: smooth;
   border: none;
   margin: 0;
   padding: 0;
+  height: auto;
+  background-color: #c1c1c1;
 }
 
 

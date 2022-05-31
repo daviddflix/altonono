@@ -6,12 +6,14 @@
     align-items: center;
     width: 100%;
     margin-top: 1rem;
+    height: 100%;
+    background-color: #c1c1c1;
 }
 
 .input{
     margin-bottom: 1rem;
     width: 90%;
-    height: 30px;
+    height: 40px;
     border: none;
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
     border: 1px solid #c1c1c1;
@@ -19,18 +21,40 @@
 
 }
 
+.inputTable{
+    margin-bottom: 1rem;
+    width: 50%;
+    height: 40px;
+    border: none;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    border: 1px solid #c1c1c1;
+    border-radius: 5px;
+    position: relative;
+     right: 5rem;
+}
+
 .select{
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     width: 90%;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
 }
 
 .selectinput{
-    width: 80%;
-    height: 30px;
+    width: 60%;
+    height: 40px;
     border: 1px solid #c1c1c1;
     border-radius: 5px;
     margin-left: 1rem;
+}
+
+.btnMp{
+    border-radius: 5px;
+    background-color: #2979ff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    text-transform: uppercase;
 }

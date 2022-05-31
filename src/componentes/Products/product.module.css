@@ -2,19 +2,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-   
+    background-color: #fff;
 }
 
 .boxProduct{
-    width: 300px;
+    width: 340px;
     margin: .6rem;
     display: flex;
     flex-direction: column;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
     position: relative;
     border-bottom: 1px solid #c1c1c1;
-   
+    background-color: #c1c1c1;
 }
 
 .boxTitle{
@@ -37,6 +37,8 @@
     overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        color: red;
+        font-weight: 900;
 }
 
 .description{
@@ -58,6 +60,8 @@
     border-radius: 5px;
     background-color: #282828;
     color: #fff;
+    border: none;
+    font-family: 'roboto';
 }
 
 .btnAdd{
@@ -67,4 +71,5 @@
    background-color: #282828;
    color: #fff;
    font-size: 12px;
+   border: none;
 }

@@ -7,6 +7,7 @@ import Navbar from './componentes/Navbar/navbar';
 import Products from './componentes/Products/Products';
 import ReviewOrder from './componentes/reviewOrder/ReviewOrder';
 import Payment from './componentes/payment/payment';
+import Success from './componentes/successMp/sucess';
 
 
 function App() {
@@ -39,6 +40,11 @@ function App() {
 
           <Route exact path='/payment'>
           <Payment/> 
+          </Route>
+
+          
+          <Route exact path='/paymentmp'>
+          <Success/> 
           </Route>
 
         </Switch>

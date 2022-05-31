@@ -6,6 +6,7 @@ import CurrencyFormat from 'react-currency-format'
 import SearchBar from "../Searchbar/searchBar"
 import cartContext from "../context/cartContext"
 import { v4 as uuidv4 } from 'uuid';
+import Spinner from '../spinner/spinner'
 
 export default function Products(){
 
@@ -28,11 +29,11 @@ export default function Products(){
         <div className={s.mainBox}>
             <SearchBar/>
             {
-                itemsFiltered.map((p,i) => {
+                itemsFiltered.length? itemsFiltered.map((p,i) => {
                  return(
                    <Card key={i} title={p.title} quantity={0} description={p.description} unit_price={p.unit_price} uuid={uuidv4()}/>
                  )
-                })
+                }) : <Spinner/>
             }
         </div>
     )
@@ -79,7 +80,7 @@ function Card ({ title, unit_price, quantity, description, uuid}) {
         <div className={s.boxProduct}>
             <div className={s.boxTitle}>
                 <h2 className={s.title}>{title}</h2>
-                <CurrencyFormat className={s.price} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <CurrencyFormat fixedDecimalScale={true}  className={s.price} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <h4 className={s.description}>{description}</h4>
             <div className={s.boxTitle}>

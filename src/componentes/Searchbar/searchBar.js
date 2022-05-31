@@ -16,6 +16,11 @@ export default function SearchBar(){
         setCategories(event.target.value);
     };
 
+    const styles = theme => ({
+      dropdown: {
+        backgroundColor: '#c1c1c1'
+      }
+    })
 
     return(
         <div>
@@ -27,6 +32,12 @@ export default function SearchBar(){
           value={categories}
           label="categories"
           onChange={handleChange}
+          MenuProps={{PaperProps:{
+            sx: {
+              bgcolor: '#c1c1c1',
+              color: '#000000'
+            }
+          }}}
         >
           <MenuItem value="All">
             <em>All</em>
@@ -36,7 +47,7 @@ export default function SearchBar(){
           <MenuItem value={'Espirituosas'}>Espirituosas</MenuItem>
           <MenuItem value={'Ensaladas'}>Ensaladas</MenuItem>
           <MenuItem value={'Postres'}>Postres</MenuItem>
-          <MenuItem value={'Snacks'}>Snacks</MenuItem>
+          <MenuItem value={'Kiosco'}>Kiosco</MenuItem>
           <MenuItem value={'Vinos'}>Vinos</MenuItem>
           <MenuItem value={'Comidas'}>Comidas</MenuItem>
         </Select>

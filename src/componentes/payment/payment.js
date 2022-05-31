@@ -1,5 +1,5 @@
 import { Button } from "@mui/material"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getLinkPayment, resetCart } from "../../redux/actions"
 import userContext from "../context/userContext"
@@ -11,6 +11,7 @@ export default function Payment(){
 
     const {client, setClient} = useContext(userContext)
     const cart = useSelector(state => state.cart)
+    const link = useSelector(state => state.link)
 
    const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
    const emailOk = regex.test(client.email)
@@ -18,11 +19,11 @@ export default function Payment(){
    const dispatch = useDispatch()
    const history = useHistory()
 
-   const getlink = () => {
-       if(client.email && client.method && client.name && client.table && emailOk === true){
-           dispatch(getLinkPayment({cart, client}))
-       }
-   }
+   useEffect(() => {
+    if(client.email && client.method === 'Mercado Pago' && client.name && client.table && emailOk === true){
+        dispatch(getLinkPayment({cart, client}))
+    }
+   })
 
    const cash = () => {
         Swal.fire({
@@ -45,9 +46,6 @@ export default function Payment(){
         //   }))
     }
 
-    let handleMesa = (e) => {
-        setClient({...client, table: e.target.value})
-    }
 
     let handleMethod = (e) => {
         setClient({...client, method: e.target.value})
@@ -58,18 +56,8 @@ export default function Payment(){
            <h3>Rellena tus Datos</h3>
            <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
            <input className={s.input}  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
-          
-           <div className={s.select}>
-            <label>Mesa</label>
-           <select className={s.selectinput} name="mesa" onChange={handleMesa}>
-               <option value=""></option>
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-           </select>
-             </div>
+           <input className={s.inputTable}  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
+
 
              <div className={s.select}>
             <label >Metodo de Pago</label>
@@ -82,8 +70,9 @@ export default function Payment(){
             
             <div>
             {
-                 client.method === 'Efectivo'? <Button  variant='contained' onClick={cash}>Confirmar Pedido</Button> :
-                 <Button variant='contained' onClick={getlink}>Confirmar Pedido</Button>
+                 client.method === 'Efectivo'?  <Button variant='contained' onClick={cash}>Confirmar Pedido</Button> :
+                 <a className={s.btnMp} href={link}>Confirmar Pedido</a> 
+                 
              }
             </div>
        </div>
