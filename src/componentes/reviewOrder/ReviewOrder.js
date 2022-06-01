@@ -5,6 +5,8 @@ import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
 import { DeleteItem } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
+import {TbTrashX} from 'react-icons/tb'
+
 export default function ReviewOrder(){
 
     const cart = useSelector(state => state.cart)
@@ -45,7 +47,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button variant='contained' onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )
@@ -61,12 +63,12 @@ function Card({title, quantity, subtotal, id, description}){
     }
     return(
         <div className={s.boxReview}>
-        <button onClick={btn} className={s.btnDelete}>x</button>
+        <button onClick={btn} className={s.btnDelete}><TbTrashX/></button>
         <div className={s.styleflex}>
         <h3 style={{color: 'red', fontWeight: '900'}}className={s.margin}>{title}</h3>
         <h3 style={{margin: 0}}>{quantity}</h3>
         </div>
-        <h6 style={{margin: 0, position: 'absolute', top: '2.3rem', left: '1.5rem'}}>{description}</h6>
+        <h6 style={{margin: 0, position: 'absolute', top: '2.3rem', left: '1.7rem'}}>{description}</h6>
         <div className={s.styleflex}>
             <h5 className={s.margin}>SUBTOTAL</h5>
             <CurrencyFormat value={subtotal} displayType={'text'} thousandSeparator={true} prefix={'$'} />
