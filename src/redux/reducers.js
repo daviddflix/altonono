@@ -21,13 +21,28 @@ const InicialState ={
    }
  
    if(action.type === ADD_ITEM_TO_CART){
+    
+     const find = state.cart.find( p => p.id === action.payload.id)
+     
+     
+     if(find){
+       return {
+         ...state,
+          cart: state.cart.map(p => p.id === action.payload.id? {
+            ...p, quantity : action.payload.quantity
+          }: p)
+       }
+     }
+    
    
     return{
       ...state,
-      cart: [...state.cart, action.payload]
+      cart:[...state.cart, action.payload]
       
     }
   }
+
+
   if(action.type === RESET_CART){
     storage.removeItem('persist:root')
     return{

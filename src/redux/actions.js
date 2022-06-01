@@ -8,6 +8,7 @@ export const RESET_CART = 'RESET_CART'
 
 
 const url= 'https://altonono.herokuapp.com'   
+const url2 = 'http://localhost:4000'
 
 export function getProduct (){   
        return async function (dispatch){
@@ -56,7 +57,7 @@ export function getProduct (){
     } 
 
  export function addItem(value){
-    console.log('value', value)
+   
      return{
          type:ADD_ITEM_TO_CART,
          payload: value

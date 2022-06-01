@@ -22,7 +22,7 @@ function App() {
     method: '',
   })
 
-  console.log('client', client)
+  
 
   return (
    <div className='App'>

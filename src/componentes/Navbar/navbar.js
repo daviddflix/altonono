@@ -33,7 +33,7 @@ export default function Navbar(){
             <h3 onClick={home} className={s.title}>ALTONONO - FULTBOL EN SERIO</h3>
             <IconButton aria-label="cart">
             <StyledBadge badgeContent={items.length? items.length : '0'} color="primary">
-                <ShoppingCartIcon onClick={viewCart} />
+                <ShoppingCartIcon style={{color: '#fff'}} onClick={viewCart} />
             </StyledBadge>
             </IconButton>
         </div>

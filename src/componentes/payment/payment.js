@@ -6,6 +6,7 @@ import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
 import { useHistory } from "react-router-dom"
+import {RiArrowLeftSLine} from 'react-icons/ri'
 
 export default function Payment(){
 
@@ -19,6 +20,13 @@ export default function Payment(){
    const dispatch = useDispatch()
    const history = useHistory()
 
+ 
+
+   const back = () => {
+     history.push('/review')
+   }
+
+    console.log('cart', cart)
    useEffect(() => {
     if(client.email && client.method === 'Mercado Pago' && client.name && client.table && emailOk === true){
         dispatch(getLinkPayment({cart, client}))
@@ -34,7 +42,7 @@ export default function Payment(){
             showConfirmButton: true,
             // timer: 1500
             })
-            dispatch(cashPayment({cart, client}))
+            dispatch(cashPayment({client, cart}))
             dispatch(resetCart())
             history.push('/')
        }
@@ -57,6 +65,7 @@ export default function Payment(){
 
     return(
        <div className={s.main}>
+           <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <h3>Completa tus Datos</h3>
            <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
            <input className={s.input} type='email'  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
@@ -75,7 +84,7 @@ export default function Payment(){
             <div>
             {
                  client.method === 'Efectivo'?  <Button variant='contained' onClick={cash}>Confirmar Pedido</Button> :
-                <Button disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
+                <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
                  
              }
             </div>

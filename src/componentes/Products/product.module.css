@@ -14,7 +14,17 @@
     border-radius: 5px;
     position: relative;
     background-color: #fff;
+    
+ 
+    
 }
+
+@media screen and (max-width: 800px){
+   .boxProduct{
+    width: 100%;
+   }
+}
+
 
 .boxTitle{
     display: flex;
@@ -25,7 +35,8 @@
 .boxTitle2{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+   margin: .7rem;
 }
 
 .btnBox{
@@ -38,6 +49,7 @@
     height: 35px;
     margin: 5px;
     margin-top: 10px;
+   
     
 }
 
@@ -58,6 +70,7 @@
     margin: 0;
     padding: 10px;
     font-size: 12px;
+    font-family: 'roboto';
 }
 
 .price{
@@ -78,11 +91,15 @@
   
    padding: 8px 15px;
    border-radius: 5px;
-   background-color: #282828;
+   background-color: #263238;
    color: #fff;
    font-size: 12px;
    border: none;
+   margin-left: 15px;
+   
+
 }
+
 
 .btnAdd:active{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
