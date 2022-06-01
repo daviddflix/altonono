@@ -26,6 +26,7 @@ export default function Payment(){
    })
 
    const cash = () => {
+       if(client.email && client.method === 'Efectivo' && client.name && client.table && emailOk === true)
         Swal.fire({
         icon: 'success',
         title: 'Pedido Confirmado',
