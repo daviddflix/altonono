@@ -42,6 +42,7 @@ export default function SearchBar(){
           <MenuItem value="All">
             <em>All</em>
           </MenuItem>
+          <MenuItem value={'Comidas'}>Comidas</MenuItem>
           <MenuItem value={'bebidas'}>Bebidas</MenuItem>
           <MenuItem value={'Cervezas'}>Cervezas</MenuItem>
           <MenuItem value={'Espirituosas'}>Espirituosas</MenuItem>
@@ -49,7 +50,6 @@ export default function SearchBar(){
           <MenuItem value={'Postres'}>Postres</MenuItem>
           <MenuItem value={'Kiosco'}>Kiosco</MenuItem>
           <MenuItem value={'Vinos'}>Vinos</MenuItem>
-          <MenuItem value={'Comidas'}>Comidas</MenuItem>
         </Select>
         </FormControl>
         </div>

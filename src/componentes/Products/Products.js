@@ -33,7 +33,7 @@ export default function Products(){
             {
                 itemsFiltered.length? itemsFiltered.map((p,i) => {
                  return(
-                   <Card key={i} title={p.title} quantity={0} description={p.description} unit_price={p.unit_price} uuid={uuidv4()}/>
+                   <Card key={i} title={p.title} quantity={0} description={p.description} unit_price={p.unit_price} />
                  )
                 }) : <Spinner/>
             }
@@ -42,7 +42,7 @@ export default function Products(){
 }
 
 
-function Card ({ title, unit_price, quantity, description, uuid}) {
+function Card ({ title, unit_price, quantity, description}) {
 
     const dispatch = useDispatch()
 
@@ -55,7 +55,7 @@ function Card ({ title, unit_price, quantity, description, uuid}) {
         quantity: quantity,
         unit_price: Number(unit_price),
         description: description,
-        id: uuid
+        id: ''
     })
 
     const ProductNumberIncrement = () => {
@@ -73,6 +73,7 @@ function Card ({ title, unit_price, quantity, description, uuid}) {
       const AddItemsToCart = () => {
         if(cart.quantity){
          dispatch(addItem(cart))
+         setCart(prev => ({...prev, id: uuidv4()}))
         }
      }
   
