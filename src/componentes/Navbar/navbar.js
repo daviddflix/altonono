@@ -30,7 +30,7 @@ export default function Navbar(){
 
     return(
         <div className={s.main}>
-            <h3 onClick={home} className={s.title}>ALTONONO - FULTBOL EN SERIO</h3>
+            <h3 onClick={home} className={s.title}>ALTONONO - FUTBOL EN SERIO</h3>
             <IconButton aria-label="cart">
             <StyledBadge badgeContent={items.length? items.length : '0'} color="primary">
                 <ShoppingCartIcon style={{color: '#fff'}} onClick={viewCart} />
