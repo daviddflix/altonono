@@ -23,7 +23,7 @@ export default function Payment(){
     if(client.email && client.method === 'Mercado Pago' && client.name && client.table && emailOk === true){
         dispatch(getLinkPayment({cart, client}))
     }
-   })
+   }, [client.method])
 
    const cash = () => {
        if(client.email.length && client.method === 'Efectivo' && client.name.length && client.table.length && emailOk === true){
