@@ -73,7 +73,6 @@ function Card ({ title, unit_price, quantity, description, uuid}) {
       const AddItemsToCart = () => {
         if(cart.quantity){
          dispatch(addItem(cart))
-         setCart(prev => ({...prev, quantity: 0}))
         }
      }
   
