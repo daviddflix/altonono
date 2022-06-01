@@ -24,6 +24,22 @@ export function getProduct (){
     
  }
 
+ export function cashPayment (payload){   
+    return async function (){
+       try {                            
+            const res = await axios.post(`${url}/cashpayment`, payload); 
+              console.log('rescash', res.data)
+            
+        } catch (error) {
+            console.log('error en cashPayment', error)
+        }
+            
+    } 
+ 
+ 
+}
+
+
 
  export function getLinkPayment (payload){
     return async function (dispatch){

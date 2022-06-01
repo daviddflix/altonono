@@ -59,11 +59,22 @@ margin: 1rem;
     padding: 6px 10px;
 }
 
+.btnDelete:active{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: black;
+}
+
 .arrow{
     position: absolute;
     top: 6.3rem;
     left: 1rem;
     width: 28px;
     height: 28px;
-    
+    color: #282828;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 50px;
+}
+
+.arrow:active{
+  color: black;  
 }

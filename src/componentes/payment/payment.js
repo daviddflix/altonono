@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useContext, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getLinkPayment, resetCart } from "../../redux/actions"
+import { cashPayment, getLinkPayment, resetCart } from "../../redux/actions"
 import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
@@ -34,6 +34,7 @@ export default function Payment(){
             showConfirmButton: true,
             // timer: 1500
             })
+            dispatch(cashPayment({cart, client}))
             dispatch(resetCart())
             history.push('/')
        }
