@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #fff;
+   
 }
 
 .boxProduct{
@@ -13,8 +13,7 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
     position: relative;
-   border: none;
-    background-color: #c1c1c1;
+    background-color: #fff;
 }
 
 .boxTitle{
@@ -23,11 +22,22 @@
     justify-content: space-between;
 }
 
+.boxTitle2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btnBox{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 40%;
+    border-radius: 100px ;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    height: 40px;
+    margin: 5px;
+    
 }
 
 .title{
@@ -57,15 +67,14 @@
 
 .btn{
     padding: 9px 16px;
-    border-radius: 5px;
-    background-color: #282828;
-    color: #fff;
+    border-radius: 100px;
     border: none;
     font-family: 'roboto';
+    background-color: #fff;
 }
 
 .btnAdd{
-   margin-left: 1rem;
+  
    padding: 8px 15px;
    border-radius: 5px;
    background-color: #282828;

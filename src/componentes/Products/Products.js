@@ -7,6 +7,8 @@ import SearchBar from "../Searchbar/searchBar"
 import cartContext from "../context/cartContext"
 import { v4 as uuidv4 } from 'uuid';
 import Spinner from '../spinner/spinner'
+import {TbPlus} from 'react-icons/tb'
+import {AiOutlineMinus} from 'react-icons/ai'
 
 export default function Products(){
 
@@ -83,14 +85,14 @@ function Card ({ title, unit_price, quantity, description, uuid}) {
                 <CurrencyFormat fixedDecimalScale={true}  className={s.price} value={unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <h4 className={s.description}>{description}</h4>
-            <div className={s.boxTitle}>
+            <div className={s.boxTitle2}>
                 
                 <div className={s.btnBox}>
-                    <button onClick={ProductNumberDecrement} className={s.btn}>-</button>
+                    <button onClick={ProductNumberDecrement} className={s.btn}><AiOutlineMinus/></button>
                     <p className={s.btn}>{cart.quantity}</p>
-                    <button onClick={ProductNumberIncrement} className={s.btn}>+</button>
-                    <button onClick={AddItemsToCart} className={s.btnAdd}>AGREGAR</button>
+                    <button onClick={ProductNumberIncrement} className={s.btn}><TbPlus/></button>
                 </div>
+                    <button onClick={AddItemsToCart} className={s.btnAdd}>AGREGAR</button>
             </div>
         </div>
     )
