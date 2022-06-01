@@ -26,16 +26,18 @@ export default function Payment(){
    })
 
    const cash = () => {
-       if(client.email && client.method === 'Efectivo' && client.name && client.table && emailOk === true)
+       if(client.email.length && client.method === 'Efectivo' && client.name.length && client.table.length && emailOk === true){
         Swal.fire({
-        icon: 'success',
-        title: 'Pedido Confirmado',
-        text: "Nuestra camarera le acercara su pedido",
-        showConfirmButton: true,
-        // timer: 1500
-        })
-        dispatch(resetCart())
-        history.push('/')
+            icon: 'success',
+            title: 'Pedido Confirmado',
+            text: "Nuestra camarera le acercara su pedido",
+            showConfirmButton: true,
+            // timer: 1500
+            })
+            dispatch(resetCart())
+            history.push('/')
+       }
+      
    }
 
     let handleInputChange = (e) => {
@@ -56,8 +58,8 @@ export default function Payment(){
        <div className={s.main}>
            <h3>Completa tus Datos</h3>
            <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
-           <input className={s.input}  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
-           <input className={s.inputTable}  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
+           <input className={s.input} type='email'  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
+           <input className={s.inputTable} type='number'  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
 
 
              <div className={s.select}>
@@ -72,7 +74,7 @@ export default function Payment(){
             <div>
             {
                  client.method === 'Efectivo'?  <Button variant='contained' onClick={cash}>Confirmar Pedido</Button> :
-                 <a className={s.btnMp} href={link}>Confirmar Pedido</a> 
+                <Button disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
                  
              }
             </div>
