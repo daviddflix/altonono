@@ -54,7 +54,7 @@ export default function Payment(){
 
     return(
        <div className={s.main}>
-           <h3>Rellena tus Datos</h3>
+           <h3>Completa tus Datos</h3>
            <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
            <input className={s.input}  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
            <input className={s.inputTable}  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
