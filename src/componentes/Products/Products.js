@@ -8,16 +8,14 @@ import cartContext from "../context/cartContext"
 import Spinner from '../spinner/spinner'
 import {TbPlus} from 'react-icons/tb'
 import {AiOutlineMinus} from 'react-icons/ai'
-import {v4 as uuidv4} from 'uuid'
 
 export default function Products(){
 
     const items = useSelector(state => state.items)
-    const itemsInCart = useSelector(state => state.cart)
+    
     const dispatch = useDispatch()
 
-   console.log('itemsInCart', itemsInCart)
-    
+  
     const {categories} = useContext(cartContext)
     
     const itemsFiltered = !categories? items : categories === 'All'? items: items.filter(p => p.category_id === categories)
@@ -73,7 +71,7 @@ function Card ({ title, unit_price, quantity, description, id}) {
            
         }
       }
-      const [text, setText] = useState('Agregar')
+      const [text, setText] = useState('AGREGAR')
   
       const AddItemsToCart = (e) => {
         if(cart.quantity){
@@ -86,16 +84,10 @@ function Card ({ title, unit_price, quantity, description, id}) {
      useEffect(() => {
         if(text === 'AGREGADO'){
            setTimeout(() => {
-            setText('Agregar')
+            setText('AGREGAR')
            }, 2000);
         }
      }, [text])
-
-     const changeText = () => {
-        setText('Agregado')
-      return  setText('Agregar')
-     }
-
   
 
     return(

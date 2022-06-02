@@ -14,7 +14,7 @@ export default function ReviewOrder(){
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
 
-    console.log('sub', subtotal)
+   
 
     const history = useHistory()
 

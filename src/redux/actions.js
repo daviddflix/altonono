@@ -8,7 +8,7 @@ export const RESET_CART = 'RESET_CART'
 
 
 const url= 'https://altonono.herokuapp.com'   
-const url2 = 'http://localhost:4000'
+// const url2 = 'http://localhost:4000'
 
 export function getProduct (){   
        return async function (dispatch){

@@ -16,11 +16,7 @@ export default function SearchBar(){
         setCategories(event.target.value);
     };
 
-    const styles = theme => ({
-      dropdown: {
-        backgroundColor: '#c1c1c1'
-      }
-    })
+  
 
     return(
         <div>
