@@ -28,13 +28,13 @@ export default function Payment(){
 
     console.log('cart', cart)
    useEffect(() => {
-    if(client.email && client.method === 'Mercado Pago' && client.name && client.table && emailOk === true){
+    if(cart.length && client.email && client.method === 'Mercado Pago' && client.name && client.table && emailOk === true){
         dispatch(getLinkPayment({cart, client}))
     }
    }, [client.method, cart, dispatch, emailOk, client])
 
    const cash = () => {
-       if(client.email.length && client.method === 'Efectivo' && client.name.length && client.table.length && emailOk === true){
+       if(cart.length && client.email.length && client.method === 'Efectivo' && client.name.length && client.table.length && emailOk === true){
         Swal.fire({
             icon: 'success',
             title: 'Pedido Confirmado',
