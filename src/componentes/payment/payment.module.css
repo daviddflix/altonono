@@ -72,11 +72,13 @@
     padding: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     text-transform: uppercase;
+    margin-right: 1.5rem
 }
 
 .arrow{
-    position: relative;
-    right: 10rem;
+    position: absolute;
+    top: 6.3rem;
+    left: 1rem;
     width: 32px;
     height: 32px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
