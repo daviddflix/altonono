@@ -67,6 +67,7 @@ export default function Payment(){
        <div className={s.main}>
            <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <h3>Completa tus Datos</h3>
+           <div className={s.boxSubMain}>
            <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
            <input className={s.input} type='email'  value={client.email} name='email' placeholder='Email' onChange={handleInputChange}/>
            <input className={s.inputTable} type='number'  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
@@ -81,7 +82,9 @@ export default function Payment(){
            </select>
              </div>
             
-            <div>
+         
+          </div>
+          <div>
             {
                  client.method === 'Efectivo'?  <Button variant='contained' onClick={cash}>Confirmar Pedido</Button> :
                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
