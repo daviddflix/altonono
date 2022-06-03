@@ -42,7 +42,6 @@ export default function Payment(){
             title: 'Pedido Confirmado',
             text: "Nuestra camarera le acercara su pedido",
             showConfirmButton: true,
-            // timer: 1500
             })
             dispatch(cashPayment({client, cart}))
             dispatch(resetCart())

@@ -6,8 +6,11 @@ import { useHistory } from 'react-router-dom';
 import { DeleteItem } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import {TbTrashX} from 'react-icons/tb'
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import userContext from "../context/userContext";
+import io from "socket.io-client";
+
+const port = 'https://altonono.herokuapp.com'
 
 export default function ReviewOrder(){
 
@@ -16,6 +19,22 @@ export default function ReviewOrder(){
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
     const {client, setClient} = useContext(userContext)
+
+    const [response, setResponse] = useState("");
+    console.log('res.socket', response)
+
+
+    useEffect(() => {  
+        let isMounted = true
+         const socket = io.connect(`${port}`, {transports: ['websocket', 'polling']})
+          socket.on('offline', data => {
+             if (isMounted) setResponse(data)
+           })
+           socket.on('online', data => {
+            if (isMounted) setResponse(data)
+          })
+          return ()=> { isMounted = false}
+         })
 
    
     
@@ -62,7 +81,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || response === 'offline' || !response} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )
