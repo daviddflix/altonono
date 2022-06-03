@@ -81,7 +81,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || response === 'offline' || !response} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || response === 'offline' } onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )
