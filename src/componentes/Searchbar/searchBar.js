@@ -19,7 +19,7 @@ export default function SearchBar(){
   
 
     return(
-        <div>
+        <div style={{position: 'sticky', top: '5rem', zIndex: '100'}}>
         <FormControl variant='filled' size='small' sx={{ m: 1, minWidth: 320 }}>
             <InputLabel id="demo-simple-select-helper-label">Todas las Categorias</InputLabel>
         <Select

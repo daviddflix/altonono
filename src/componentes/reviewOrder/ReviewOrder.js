@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom';
 import { DeleteItem } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import {TbTrashX} from 'react-icons/tb'
+import { useContext } from "react";
+import userContext from "../context/userContext";
 
 export default function ReviewOrder(){
 
@@ -13,8 +15,13 @@ export default function ReviewOrder(){
 
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
+    const {client, setClient} = useContext(userContext)
 
    
+    
+    const handleComentarios = (e) => {
+        setClient(prev => ({...prev, comentarios: e.target.value}))
+    }
 
     const history = useHistory()
 
@@ -35,19 +42,27 @@ export default function ReviewOrder(){
             <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <div className={s.boxCard}>
            {
-                cart.map((p, i) => {
+             cart.length > 0? cart.map((p, i) => {
                     return(
                     <Card key={i} description={p.description} title={p.title} quantity={p.quantity} id={p.id} subtotal={p.quantity * p.unit_price}/>
                     )
-                })
+                }) : <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+                    <h4>No hay productos para mostrar</h4>
+                </div>
             }
            </div>
+           {
+               cart.length> 0 && <div className={s.boxTextarea}>
+               <h4>Comentarios</h4>
+               <textarea value={client.comentarios} onChange={handleComentarios} placeholder="Agrega instrucciones o comentarios" className={s.textarea}></textarea>
+           </div>
+           }
             <div className={s.styleflex}>
                 <h4>TOTAL</h4>
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )

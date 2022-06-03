@@ -82,11 +82,13 @@ function Card ({ title, unit_price, quantity, description, id}) {
      }
 
      useEffect(() => {
+       let isMounted = true
         if(text === 'AGREGADO'){
-           setTimeout(() => {
+         if(isMounted) setTimeout(() => {
             setText('AGREGAR')
            }, 2000);
         }
+        return () => { isMounted = false}
      }, [text])
   
 
