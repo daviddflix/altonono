@@ -22,6 +22,12 @@ export default function ReviewOrder(){
     const {client, setClient} = useContext(userContext)
     const socket = useContext(SocketContext)
 
+    socket.on('ping', data => {
+        console.log(data)
+      socket.emit('pong', {beat: 1})
+   })
+   
+
     // useEffect(()=> {
     //     socket.on('online', data => {
     //         console.log('data', data)

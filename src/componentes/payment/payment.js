@@ -18,17 +18,22 @@ export default function Payment(){
     const status = useSelector(state => state.status)
     const socket = useContext(SocketContext)
 
+    socket.on('ping', data => {
+        console.log(data)
+      socket.emit('pong', {beat: 1})
+   })
+
     
-    useEffect(()=> {
-        socket.on('online', data => {
-            console.log('data', data)
-            dispatch(statusStore(data))
-        })
-        socket.on('offline', data => {
-            console.log('data', data)
-            dispatch(statusStore(data))
-        })
-    }, [socket, dispatch, status])
+    // useEffect(()=> {
+    //     socket.on('online', data => {
+    //         console.log('data', data)
+    //         dispatch(statusStore(data))
+    //     })
+    //     socket.on('offline', data => {
+    //         console.log('data', data)
+    //         dispatch(statusStore(data))
+    //     })
+    // }, [socket, dispatch, status])
    
 
 //    const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/  //check if email is okay
