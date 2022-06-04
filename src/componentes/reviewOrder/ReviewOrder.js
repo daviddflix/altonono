@@ -50,7 +50,7 @@ export default function ReviewOrder(){
 
       
    const date = new Date().getHours()
-   const fecha = date > 22 ? false : true  //close store at this time
+   const fecha = date > 22  && date < 10 ? false : true  //close store at this time
    
 
     
@@ -82,7 +82,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || fecha === true} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )

@@ -107,7 +107,7 @@ const fecha = date > 22 ? false : true  //close store at this time
          
           </div>
           <div>
-          <Button variant='contained'  disabled={!cart.length  || fecha === true} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
+          <Button variant='contained'  disabled={!cart.length} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
             {/* {
                  client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
