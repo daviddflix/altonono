@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addItem, getProduct } from "../../redux/actions"
+import { addItem, getProduct, statusStore } from "../../redux/actions"
 import s from './product.module.css'
 import CurrencyFormat from 'react-currency-format'
 import SearchBar from "../Searchbar/searchBar"
@@ -8,6 +8,7 @@ import cartContext from "../context/cartContext"
 import Spinner from '../spinner/spinner'
 import {TbPlus} from 'react-icons/tb'
 import {AiOutlineMinus} from 'react-icons/ai'
+import {SocketContext} from '../context/socketContext'
 
 export default function Products(){
 
@@ -90,6 +91,19 @@ function Card ({ title, unit_price, quantity, description, id}) {
         }
         return () => { isMounted = false}
      }, [text])
+
+     const socket = useContext(SocketContext)
+
+     useEffect(()=> {
+        socket.on('online', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+        socket.on('offline', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+    }, [socket, dispatch])
   
 
     return(

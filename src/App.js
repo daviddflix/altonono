@@ -8,6 +8,7 @@ import Products from './componentes/Products/Products';
 import ReviewOrder from './componentes/reviewOrder/ReviewOrder';
 import Payment from './componentes/payment/payment';
 import Success from './componentes/successMp/sucess';
+import { SocketContext, socket } from './componentes/context/socketContext';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
    <div className='App'>
       <cartContext.Provider value={{categories, setCategories}}>
       <userContext.Provider value={{client, setClient}}>
+        <SocketContext.Provider value={socket}>
         <Navbar/>
         <Switch>
           <Route exact path='/'>
@@ -49,6 +51,7 @@ function App() {
           </Route>
 
         </Switch>
+        </SocketContext.Provider>
       </userContext.Provider>
       </cartContext.Provider>
    </div>

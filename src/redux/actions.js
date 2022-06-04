@@ -5,6 +5,7 @@ export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_ITEM = 'DELETE_ITEM'
 export const LINK_PAYMENT = 'LINK_PAYMENT'
 export const RESET_CART = 'RESET_CART'
+export const STATUS = 'STATUS'
 
 
 const url= 'https://altonono.herokuapp.com'   
@@ -76,6 +77,14 @@ export function resetCart(){
     
     return{
         type:RESET_CART
+    }
+}
+
+export function statusStore(value){
+    
+    return{
+        type:STATUS,
+        payload: value
     }
 }
 

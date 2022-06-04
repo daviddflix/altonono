@@ -1,11 +1,12 @@
 import storage from "redux-persist/lib/storage"
-import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT, RESET_CART } from "./actions"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT, RESET_CART, STATUS } from "./actions"
 
 
 const InicialState ={
  items: [],
  cart: [],
- link: ''
+ link: '',
+ status: 'offline'
 }
 
 
@@ -67,6 +68,13 @@ const InicialState ={
     return{
       ...state,
       link: action.payload
+      
+    }
+  }
+  if(action.type === STATUS){ 
+    return{
+      ...state,
+      status: action.payload
       
     }
   }

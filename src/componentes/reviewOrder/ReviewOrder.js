@@ -3,39 +3,35 @@ import CurrencyFormat from 'react-currency-format'
 import s from './reviewOrder.module.css'
 import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
-import { DeleteItem } from "../../redux/actions";
+import { DeleteItem, statusStore } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import {TbTrashX} from 'react-icons/tb'
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import userContext from "../context/userContext";
-import io from "socket.io-client";
+import { SocketContext } from "../context/socketContext";
 
-const port = 'https://altonono.herokuapp.com'
 
 export default function ReviewOrder(){
 
     const cart = useSelector(state => state.cart)
+    const status = useSelector(state => state.status)
+    const dispatch = useDispatch()
 
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
     const {client, setClient} = useContext(userContext)
+    const socket = useContext(SocketContext)
 
-    const [response, setResponse] = useState("");
-    console.log('res.socket', response)
-
-
-    useEffect(() => {  
-        let isMounted = true
-         const socket = io.connect(`${port}`, {transports: ['websocket', 'polling']})
-          socket.on('offline', data => {
-             if (isMounted) setResponse(data)
-           })
-           socket.on('online', data => {
-            if (isMounted) setResponse(data)
-          })
-          return ()=> { isMounted = false}
-         })
-
+    useEffect(()=> {
+        socket.on('online', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+        socket.on('offline', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+    }, [socket, dispatch])
    
     
     const handleComentarios = (e) => {
@@ -81,7 +77,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || response === 'offline' } onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || status === 'offline'} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )

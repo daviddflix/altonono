@@ -1,23 +1,41 @@
 import { Button } from "@mui/material"
 import { useContext, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { cashPayment, getLinkPayment, resetCart } from "../../redux/actions"
+import { cashPayment, getLinkPayment, resetCart, statusStore } from "../../redux/actions"
 import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
 import { useHistory } from "react-router-dom"
 import {RiArrowLeftSLine} from 'react-icons/ri'
+import { SocketContext } from "../context/socketContext"
 
 export default function Payment(){
 
+    const dispatch = useDispatch()
     const {client, setClient} = useContext(userContext)
     const cart = useSelector(state => state.cart)
     const link = useSelector(state => state.link)
+    const status = useSelector(state => state.status)
+    const socket = useContext(SocketContext)
+
+    
+
+    useEffect(()=> {
+        socket.on('online', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+        socket.on('offline', data => {
+            console.log('data', data)
+            dispatch(statusStore(data))
+        })
+    }, [socket, dispatch, status])
+   
 
 //    const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/  //check if email is okay
 //    const emailOk = regex.test(client.email)
 
-   const dispatch = useDispatch()
+  
    const history = useHistory()
 
    const regex = /^[1-9][0-9]?$|^100$/
@@ -30,13 +48,13 @@ export default function Payment(){
 
    
    useEffect(() => {
-    if(cart.length && client.email && client.method === 'Mercado Pago' && client.name && client.table && validateNumber === true){
+    if(cart.length && status === 'online' && client.email && client.method === 'Mercado Pago' && client.name && client.table && validateNumber === true){
         dispatch(getLinkPayment({cart, client}))
     }
-   }, [client.method, cart, dispatch, client, validateNumber])
+   }, [client.method, cart, dispatch, client, validateNumber, status])
 
    const cash = () => {
-       if(cart.length && client.telefono.length && client.method === 'Efectivo' && validateNumber === true && client.name.length && client.table.length){
+       if(cart.length && status === 'online' && client.telefono.length && client.method === 'Efectivo' && validateNumber === true && client.name.length && client.table.length){
         Swal.fire({
             icon: 'success',
             title: 'Pedido Confirmado',
@@ -87,7 +105,7 @@ export default function Payment(){
          
           </div>
           <div>
-          <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
+          <Button variant='contained'  disabled={!cart.length || status === 'offline'} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
             {/* {
                  client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
