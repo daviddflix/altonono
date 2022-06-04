@@ -19,7 +19,6 @@ export default function Payment(){
     const socket = useContext(SocketContext)
 
     
-
     useEffect(()=> {
         socket.on('online', data => {
             console.log('data', data)
@@ -46,15 +45,18 @@ export default function Payment(){
      history.push('/review')
    }
 
+   const date = new Date().getHours()
+const fecha = date > 22 ? false : true  //close store at this time
+
    
    useEffect(() => {
-    if(cart.length && status === 'online' && client.email && client.method === 'Mercado Pago' && client.name && client.table && validateNumber === true){
+    if(cart.length && client.email && client.method === 'Mercado Pago' && client.name && client.table && validateNumber === true){
         dispatch(getLinkPayment({cart, client}))
     }
    }, [client.method, cart, dispatch, client, validateNumber, status])
 
    const cash = () => {
-       if(cart.length && status === 'online' && client.telefono.length && client.method === 'Efectivo' && validateNumber === true && client.name.length && client.table.length){
+       if(cart.length && client.telefono.length && client.method === 'Efectivo' && validateNumber === true && client.name.length && client.table.length){
         Swal.fire({
             icon: 'success',
             title: 'Pedido Confirmado',
@@ -105,7 +107,7 @@ export default function Payment(){
          
           </div>
           <div>
-          <Button variant='contained'  disabled={!cart.length || status === 'offline'} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
+          <Button variant='contained'  disabled={!cart.length  || fecha === true} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
             {/* {
                  client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 

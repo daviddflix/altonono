@@ -22,16 +22,16 @@ export default function ReviewOrder(){
     const {client, setClient} = useContext(userContext)
     const socket = useContext(SocketContext)
 
-    useEffect(()=> {
-        socket.on('online', data => {
-            console.log('data', data)
-            dispatch(statusStore(data))
-        })
-        socket.on('offline', data => {
-            console.log('data', data)
-            dispatch(statusStore(data))
-        })
-    }, [socket, dispatch])
+    // useEffect(()=> {
+    //     socket.on('online', data => {
+    //         console.log('data', data)
+    //         dispatch(statusStore(data))
+    //     })
+    //     socket.on('offline', data => {
+    //         console.log('data', data)
+    //         dispatch(statusStore(data))
+    //     })
+    // }, [socket, dispatch])
    
     
     const handleComentarios = (e) => {
@@ -47,6 +47,11 @@ export default function ReviewOrder(){
     const payment = () => {
         history.push('/payment')
       }
+
+      
+   const date = new Date().getHours()
+   const fecha = date > 22 ? false : true  //close store at this time
+   
 
     
 
@@ -77,7 +82,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || status === 'offline'} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length || fecha === true} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )
