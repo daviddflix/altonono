@@ -47,9 +47,11 @@ const InicialState ={
   if(action.type === RESET_CART){
     storage.removeItem('persist:root')
     return{
+      ...state,
      cart: [],
      link: '',
-     items: []
+     items: [],
+    
     }
   }
  
