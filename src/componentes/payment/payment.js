@@ -68,6 +68,7 @@ const fecha = date > 22 ? false : true  //close store at this time
             text: "Nuestra camarera le acercara su pedido",
             showConfirmButton: true,
             })
+            socket.emit('pedido', {client, cart})
             dispatch(cashPayment({client, cart}))
             dispatch(resetCart())
             history.push('/')
