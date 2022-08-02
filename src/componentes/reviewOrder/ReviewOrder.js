@@ -5,6 +5,7 @@ import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
 import { DeleteItem, getStatus, statusStore, sustractItem } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
+import {BsCartX} from 'react-icons/bs'
 import {TbTrashX} from 'react-icons/tb'
 import { useContext, useEffect } from "react";
 import userContext from "../context/userContext";
@@ -54,7 +55,8 @@ export default function ReviewOrder(){
                     return(
                     <Card key={i} description={p.description} title={p.title} quantity={p.quantity} id={p.id} subtotal={p.quantity * p.unit_price}/>
                     )
-                }) : <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+                }) : <div style={{display: 'flex', flexDirection: 'column' ,alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+                    <BsCartX className={s.emptyCart}/>
                     <h4>No hay productos para mostrar</h4>
                 </div>
             }

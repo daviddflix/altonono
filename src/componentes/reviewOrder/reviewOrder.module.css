@@ -97,3 +97,9 @@ margin: 1rem;
   
 
 }
+
+.emptyCart{
+    margin: 2rem 0 0 0;
+    width: 35px;
+    height: 35px;
+}

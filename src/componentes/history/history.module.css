@@ -1,12 +1,73 @@
+.mainContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.submaincontainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .mainboxCard{
    width: 100%;
-
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  
 }
 
 .boxcard{
  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
- width: 98%;
- min-height: 200px ;
+ width: 95%;
+ min-height: 100px ;
+ color: #282828;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ margin: 0 0 1rem 0 ;
+ background-color: #fff;
+ border-radius: 10px;
+}
+
+.containerbox{
+    display: flex;
+    width: 100%;
+    border-bottom: rgba(0, 0, 0, 0.10) solid 1px;
+    align-items: center;
+    justify-content: space-between;
+    height: 20%;
+}
+
+.name{
+    position: relative;
+    left: 1rem;
+}
+
+.quantity{
+   margin: 0 .5rem 0 0;
+}
+
+.subconatiner{
+    position: relative;
+    right: 1rem;
+}
+
+.subcontainerbox{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: scroll;
+    justify-content: space-between;
+    margin: .5rem 0 0 0;
 }
 
 .emptyCart{

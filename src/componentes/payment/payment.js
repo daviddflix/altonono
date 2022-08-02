@@ -56,7 +56,7 @@ console.log('client', client)
     if(cart.length){
      Swal.fire({
          icon: 'success',
-         title: 'Pedido Confirmado',
+         title: 'Pedido en curso',
          text: "Nuestra camarera le acercara su pedido",
          showConfirmButton: true,
          })
