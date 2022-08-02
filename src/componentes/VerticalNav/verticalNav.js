@@ -13,7 +13,7 @@ export default function VerticalNav(){
     const wrapperRef = useRef(null);
     const history = useHistory();
 
-console.log('nav',nav)
+
     const handleClickOutside = useCallback((event) => {
         if(nav === true && wrapperRef.current && !wrapperRef.current.contains(event.target)){
             setNav(!nav)

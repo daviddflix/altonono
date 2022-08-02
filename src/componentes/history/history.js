@@ -2,11 +2,18 @@ import { useSelector } from 'react-redux'
 import Button from '@mui/material/Button' 
 import {BsCartX} from 'react-icons/bs'
 import s from './history.module.css'
+import {useHistory} from 'react-router-dom'
 
 export default function History (){
 
-    const history = useSelector(state => state.history)
-    console.log(history)
+    const history = useSelector(state => state.history);
+    const route = useHistory();
+
+
+    const handleMenu = () => {
+      route.push('/')
+    }
+    
     return(
         <div className={s.mainContainer}>
            {
@@ -20,9 +27,7 @@ export default function History (){
                                 <Card key={p.id}
                                  name={p.name}
                                  monto={p.monto}
-                                 quantity={p.items.map(p => p.quantity)}
-                                 unit_price={p.items.map(p => p.unit_price)}
-                                 title={p.items.map(p => p.title)}
+                                 items={p.items}
                                 />
                                
                             )
@@ -31,9 +36,12 @@ export default function History (){
                 </div>
             </div>:
             <div className={s.containerNoOrder}>
-                <BsCartX className={s.emptyCart}/>
-                <h3>Aun no tienes Pedidos</h3>
-                <Button style={{width: '50%'}} variant='contained'>Ver Menu</Button>
+                <h2>Tus Pedidos</h2>
+                <div className={s.subcontainerNoOrder}>
+                    <BsCartX className={s.emptyCart}/>
+                    <h3>Aun no tienes Pedidos</h3>
+                    <Button onClick={handleMenu} style={{width: '50%'}} variant='contained'>Ver Menu</Button>
+                </div>
             </div>
            }
         </div>
@@ -41,7 +49,7 @@ export default function History (){
 }
 
 
-function Card({monto, name, quantity, title, unit_price}){
+function Card({monto, name, items}){
     return(
         <div className={s.boxcard}>
             <div className={s.containerbox}>
@@ -50,13 +58,19 @@ function Card({monto, name, quantity, title, unit_price}){
                     <h3>${monto}</h3>
                 </div>
             </div>
-            <div className={s.subcontainerbox}>
-                <div className={s.name}>
-                <span className={s.quantity}>x{quantity}</span>
-                <span>{title}</span>
-                </div>
-                <span className={s.subconatiner}>{unit_price}</span>
-            </div>
+            {
+                items?.map((p, i) => {
+                    return(
+                    <div key={i} className={s.subcontainerbox}>
+                        <div className={s.name}>
+                            <span className={s.quantity}>x{p.quantity}</span>
+                            <span>{p.title}</span>
+                        </div>
+                        <span className={s.subconatiner}>{p.unit_price}</span>
+                    </div>
+                    )
+                })
+            }
         </div>
     )
 }

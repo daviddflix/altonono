@@ -34,7 +34,6 @@ export default function Payment(){
     useEffect(() => {
         dispatch(getStatus())
     }, [])
-console.log('client', client)
     
     // useEffect(()=> {
     //     socket.on('online', data => {

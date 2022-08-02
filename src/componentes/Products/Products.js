@@ -19,7 +19,7 @@ export default function Products(){
     const {categories} = useContext(cartContext);
     const itemsFiltered = !categories? items : categories === 'All'? items: items.filter(p => p.category_id === categories)
 
-
+    console.log('itemsFiltered', itemsFiltered)
     useEffect(()=> {
       dispatch(getProduct())
     }, [dispatch])
@@ -34,8 +34,9 @@ export default function Products(){
          
             {
                 itemsFiltered.length? itemsFiltered.map((p,i) => {
+                    console.log('p', p.img)
                  return(
-                   <Card status={findStatus} key={i} available={p.available} title={p.title} id={p.id} description={p.description} unit_price={p.unit_price} />
+                   <Card status={findStatus} image={p.img !== null? `https://altonono.herokuapp.com${p.img}` : ''} key={i} available={p.available} title={p.title} id={p.id} description={p.description} unit_price={p.unit_price} />
                  )
                 }) : <Spinner/>
             }
@@ -44,7 +45,7 @@ export default function Products(){
 }
 
 
-function Card ({ title, unit_price, description, status, id, available}) {
+function Card ({ title, unit_price, description, status, id, available, image}) {
 
     const dispatch = useDispatch();
     const cartItem = useSelector(state => state.cart);
@@ -66,7 +67,7 @@ function Card ({ title, unit_price, description, status, id, available}) {
         dispatch(sustractItem(cart))
       }
   
-
+console.log('card', image)
     return(
         <div className={available === false? s.unavailable : s.boxProduct}>
             <div className={s.boxTitle}>
@@ -75,7 +76,7 @@ function Card ({ title, unit_price, description, status, id, available}) {
             </div>
             <h4 className={s.description}>{description}</h4>
             <div className={s.boxTitle2}>
-                
+                {image && <img className={s.img} src={image}  alt={'image'}/>}
                 <div className={s.btnBox}>
                     <button disabled={available === false || status === 'offline'} onClick={ProductNumberDecrement} className={s.btn}><AiOutlineMinus/></button>
                     <p className={s.btn}>{findQuantity !== undefined? findQuantity.quantity: 0}</p>

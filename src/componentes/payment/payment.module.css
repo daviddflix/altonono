@@ -16,9 +16,10 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     width: 90%;
     margin-top: 1rem;
+
 }
 
 .containerInputs{
@@ -28,6 +29,7 @@
     justify-content: center;
     align-items: flex-start;
     margin: 0 0 1rem 0;
+
 }
 
 .input{
