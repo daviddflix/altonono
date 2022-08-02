@@ -1,12 +1,13 @@
 import storage from "redux-persist/lib/storage"
-import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, LINK_PAYMENT, RESET_CART, STATUS } from "./actions"
+import { ADD_ITEM_TO_CART, DELETE_ITEM, GET_PRODUCTS, HISTORY, LINK_PAYMENT, RESET_CART, STATUS, SUSTRACT_TO_CART } from "./actions"
 
 
 const InicialState ={
  items: [],
  cart: [],
  link: '',
- status: 'offline'
+ status: [],
+ history:[]
 }
 
 
@@ -25,12 +26,11 @@ const InicialState ={
     
      const find = state.cart.find( p => p.id === action.payload.id)
      
-     
      if(find){
        return {
          ...state,
           cart: state.cart.map(p => p.id === action.payload.id? {
-            ...p, quantity : action.payload.quantity
+            ...p, quantity : p.quantity + 1
           }: p)
        }
      }
@@ -43,15 +43,43 @@ const InicialState ={
     }
   }
 
+  if(action.type === HISTORY){
+    return{
+      ...state,
+      history:[...state.history, action.payload]
+    }
+  }
+
+  if(action.type === SUSTRACT_TO_CART){
+    const find = state.cart.find( p => p.id === action.payload.id)
+     
+     if(find && find.quantity > 1){
+       return {
+         ...state,
+          cart: state.cart.map(p => p.id === action.payload.id? {
+            ...p, quantity : p.quantity - 1
+          }: p)
+       }
+     }
+     if(find && find.quantity === 1){
+      return {
+        ...state,
+         cart: state.cart.filter(p => p.id !== action.payload.id) 
+      }
+    }
+     
+   
+
+  }
+
 
   if(action.type === RESET_CART){
-    storage.removeItem('persist:root')
     return{
       ...state,
      cart: [],
      link: '',
      items: [],
-    
+     
     }
   }
  

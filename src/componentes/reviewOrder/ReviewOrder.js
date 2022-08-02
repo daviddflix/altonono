@@ -3,7 +3,7 @@ import CurrencyFormat from 'react-currency-format'
 import s from './reviewOrder.module.css'
 import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
-import { DeleteItem, statusStore } from "../../redux/actions";
+import { DeleteItem, getStatus, statusStore, sustractItem } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import {TbTrashX} from 'react-icons/tb'
 import { useContext, useEffect } from "react";
@@ -15,36 +15,23 @@ export default function ReviewOrder(){
 
     const cart = useSelector(state => state.cart)
     const status = useSelector(state => state.status)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
     const {client, setClient} = useContext(userContext)
     const socket = useContext(SocketContext)
 
-    socket.on('ping', data => {
-        console.log(data)
-      socket.emit('pong', {beat: 1})
-   })
-   
-
-    // useEffect(()=> {
-    //     socket.on('online', data => {
-    //         console.log('data', data)
-    //         dispatch(statusStore(data))
-    //     })
-    //     socket.on('offline', data => {
-    //         console.log('data', data)
-    //         dispatch(statusStore(data))
-    //     })
-    // }, [socket, dispatch])
-   
-    
+    useEffect(() => {
+        dispatch(getStatus())
+    }, [])
+  
     const handleComentarios = (e) => {
         setClient(prev => ({...prev, comentarios: e.target.value}))
     }
 
-    const history = useHistory()
+ 
 
     const back = () => {
       history.push('/')
@@ -53,11 +40,6 @@ export default function ReviewOrder(){
     const payment = () => {
         history.push('/payment')
       }
-
-      
-   const date = new Date().getHours()
-   const fecha = date > 22  && date < 10 ? false : true  //close store at this time
-   
 
     
 
@@ -88,7 +70,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem'}} variant='contained' disabled={!cart.length} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem', width: '60%'}} variant='contained' disabled={!cart.length || status[0].status === 'offline'} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )
@@ -97,7 +79,7 @@ export default function ReviewOrder(){
 
 function Card({title, quantity, subtotal, id, description}){
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const btn = () => {
         dispatch(DeleteItem(id))

@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
    
 }
 
@@ -13,14 +14,34 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 5px;
     position: relative;
-    background-color: #fff;
-    
- 
+    background-color: #fff; 
+}
+
+.unavailable{
+    width: 340px;
+    margin: .6rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #fff; 
+    opacity: .7;
+}
+
+.itemUnavailable{
+    position: absolute;
+    top: .8rem;
+    right: 3rem;
+    color: red;
     
 }
 
 @media screen and (max-width: 800px){
    .boxProduct{
+    width: 100%;
+   }
+   .unavailable{
     width: 100%;
    }
 }
@@ -56,13 +77,15 @@
 .title{
     margin: 0;
     padding: 10px;
-    font-size: 17px;
+    font-size: 1.2rem;
     overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         color: red;
         font-weight: 900;
 }
+
+
 
 .description{
     position: absolute;

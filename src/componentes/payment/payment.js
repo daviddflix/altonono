@@ -1,28 +1,40 @@
 import { Button } from "@mui/material"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { cashPayment, getLinkPayment, resetCart, statusStore } from "../../redux/actions"
+import { cashPayment, getLinkPayment, getStatus, resetCart, statusStore } from "../../redux/actions"
 import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
 import { useHistory } from "react-router-dom"
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import { SocketContext } from "../context/socketContext"
+import { Alert, TextField } from "@mui/material";
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default function Payment(){
 
-    const dispatch = useDispatch()
-    const {client, setClient} = useContext(userContext)
-    const cart = useSelector(state => state.cart)
-    const link = useSelector(state => state.link)
-    const status = useSelector(state => state.status)
-    const socket = useContext(SocketContext)
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const {client, setClient} = useContext(userContext);
+    const cart = useSelector(state => state.cart);
+    const link = useSelector(state => state.link);
+    const status = useSelector(state => state.status);
+    const socket = useContext(SocketContext);
+    const findStatus = status.length > 0 && status[0].status
+  
 
-    socket.on('ping', data => {
-        console.log(data)
-      socket.emit('pong', {beat: 1})
-   })
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    useEffect(() => {
+        dispatch(getStatus())
+    }, [])
+console.log('client', client)
     
     // useEffect(()=> {
     //     socket.on('online', data => {
@@ -36,90 +48,125 @@ export default function Payment(){
     // }, [socket, dispatch, status])
    
 
-//    const regex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/  //check if email is okay
-//    const emailOk = regex.test(client.email)
-
-  
-   const history = useHistory()
-
-   const regex = /^[1-9][0-9]?$|^100$/
-   const validateNumber = regex.test(client.table)
- 
-
    const back = () => {
      history.push('/review')
    }
 
-   const date = new Date().getHours()
-const fecha = date > 22 ? false : true  //close store at this time
-
-   
-   useEffect(() => {
-    if(cart.length && client.email && client.method === 'Mercado Pago' && client.name && client.table && validateNumber === true){
-        dispatch(getLinkPayment({cart, client}))
-    }
-   }, [client.method, cart, dispatch, client, validateNumber, status])
-
    const cash = () => {
-       if(cart.length && client.telefono.length && client.method === 'Efectivo' && validateNumber === true && client.name.length && client.table.length){
-        Swal.fire({
-            icon: 'success',
-            title: 'Pedido Confirmado',
-            text: "Nuestra camarera le acercara su pedido",
-            showConfirmButton: true,
-            })
-            socket.emit('pedido', {client, cart})
-            dispatch(cashPayment({client, cart}))
-            dispatch(resetCart())
-            history.push('/')
-       }
-      
-   }
+    if(cart.length){
+     Swal.fire({
+         icon: 'success',
+         title: 'Pedido Confirmado',
+         text: "Nuestra camarera le acercara su pedido",
+         showConfirmButton: true,
+         })
+         socket.emit('pedido', {client, cart})
+         dispatch(cashPayment({client, cart}))
+         dispatch(resetCart())
+         history.push('/history')
+    }
+   
+}
+// setClient
+   const handleChange = (e) => {
+    const { name, value } = e.target;
+    setClient({ ...client, [name]: value });
+  };
 
-    let handleInputChange = (e) => {
-        setClient(prev => ({...prev, [e.target.name] : e.target.value
-        }));
-        // setErrors(handleError({
-        //     ...input,
-        //     [e.target.name]: e.target.value
-        //   }))
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormErrors(validate(client));
+    setIsSubmitting(true);
+  };
+
+  const validate = (values) => {
+    let errors = {};
+    const regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+    const regexTable = /^[1-9][0-9]?$|^100$/
+
+    if (!values.name) {
+      errors.name = "No puede estar vacio!";
+    } 
+
+    if (!values.table) {
+      errors.table= "No puede estar vacio!";
+    } 
+    if(typeof Number(values.table) !== 'number'){
+        errors.table = "Debe ser un numero"
+    }
+    if(!values.telefono){
+        errors.telefono = "No puede estar vacio!"
+    }
+    if(!values.method){
+        errors.method = "No puede estar vacio!"
     }
 
 
-    let handleMethod = (e) => {
-        setClient({...client, method: e.target.value})
+
+
+
+    return errors;
+  };
+
+  
+
+   useEffect(() => {
+    if (Object.keys(formErrors).length === 0 && isSubmitting) {
+        cash()
     }
+  }, [formErrors, isSubmitting]);
+
 
     return(
        <div className={s.main}>
            <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <h3 style={{marginRight: '1.5rem'}}>Completa tus Datos</h3>
-           <div className={s.boxSubMain}>
-           <input className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleInputChange}/>
-           <input className={s.input} type='tel'  value={client.telefono} name='telefono' placeholder='Telefono' onChange={handleInputChange}/>
-         
-           <input className={s.inputTable} type='number'  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleInputChange}/>
-
-
-             <div className={s.select}>
-            <label >Metodo de Pago</label>
-           <select className={s.selectinput} name="method" onChange={handleMethod}>
-               <option value=""></option>
-               <option value="Efectivo">Efectivo</option>
-               <option value="Mercado Pago" disabled={true}>Mercado Pago</option>
-           </select>
-             </div>
-            
-         
-          </div>
-          <div>
-          <Button variant='contained'  disabled={!cart.length} style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button>
-            {/* {
-                 client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
-                <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
-                 
-             } */}
+           <form onSubmit={handleSubmit} className={s.boxSubMain}>
+            <div className={s.containerInputs}>
+             <TextField label='Nombre' className={s.input} value={client.name} name='name' placeholder='Nombre' onChange={handleChange}/>
+             {formErrors.name &&  <Alert className={s.error} severity="error">{formErrors.name}</Alert>}
             </div>
-       </div>
+            <div className={s.containerInputs}>
+            <TextField label='Telefono 11xxxx xxxx' className={s.input} type='tel'  value={client.telefono} name='telefono' placeholder='Telefono 11xxxx xxxx' pattern="[0-9]{9}" onChange={handleChange}/>
+            {formErrors.telefono &&  <Alert className={s.error} severity="error">{formErrors.telefono}</Alert>}
+            </div>
+            <div className={s.containerInputs}>
+            <TextField label='Numero de Mesa' className={s.inputTable} type='number'  value={client.table} name='table' placeholder='Numero de Mesa' onChange={handleChange}/>
+            {formErrors.table &&  <Alert className={s.error} severity="error">{formErrors.table}</Alert>}
+            </div>
+        
+             <div className={s.select}>
+               <Box sx={{ minWidth: '100%' }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Metodo Pago</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={client.method}
+                    name='method'
+                    label="Metodo Pago"
+                    onChange={handleChange}
+                    >
+                    <MenuItem value={'Efectivo'}>Efectivo</MenuItem>
+                    <MenuItem value={'Mercado Pago'}>Mercado Pago</MenuItem>
+                    
+                    </Select>
+                 </FormControl>
+                </Box>
+                {formErrors.method &&  <Alert className={s.error} severity="error">{formErrors.method}</Alert>}
+             </div>
+          </form>
+          <div className={s.containerBtn}>
+          <Button  variant='contained' onClick={handleSubmit} type='submit'  disabled={!cart.length || findStatus === 'offline'} style={{marginRight: '1.5rem', width: '50%'}} >Confirmar Pedido</Button>
+         </div>
+    </div>
     )
 }
+
+
+
+//  {/* {
+//                  client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
+//                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
+                 
+//              } */}

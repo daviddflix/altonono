@@ -3,8 +3,13 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
+import { useContext, useEffect } from 'react';
+import { getStatus } from '../../redux/actions';
+import VerticalNav from '../VerticalNav/verticalNav';
+import navContext from '../context/navContext';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -17,9 +22,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function Navbar(){
 
-    const history = useHistory()
+    const history = useHistory();
+    const dispatch = useDispatch();
     const items = useSelector(state => state.cart)
-
+    const status = useSelector(state => state.status);
+    const findStatus = status.length >0 ? status[0].status: 'offline'
+    const {nav, setNav} = useContext(navContext)
     const viewCart = () => {
         history.push('/review')
     }
@@ -28,14 +36,32 @@ export default function Navbar(){
         history.push('/')
     }
 
+    useEffect(() => {
+        dispatch(getStatus())
+    }, [])
+
+    const showRoutes = () => {
+        if(nav === true){
+             setNav(!nav)
+          }else{
+            setNav(!nav)
+          }
+     }
+   
+
     return(
         <div className={s.main}>
+            <MenuIcon onClick={showRoutes} className={s.bars}/>
+            <div className={s.container}>
             <h3 onClick={home} className={s.title}>ALTONONO - FUTBOL EN SERIO</h3>
+            {findStatus === 'offline' && <h4 className={s.store}>Tienda cerrada</h4>}
+            </div>
             <IconButton aria-label="cart">
             <StyledBadge badgeContent={items.length? items.length : '0'} color="primary">
                 <ShoppingCartIcon style={{color: '#fff'}} onClick={viewCart} />
             </StyledBadge>
             </IconButton>
+            <VerticalNav/>
         </div>
     )
 }
