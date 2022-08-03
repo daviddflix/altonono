@@ -1,6 +1,6 @@
 .main{
     width: 70%;
-    height: 90vh;
+    height: calc(100vh - 80px);
     background-color: #fff;
     display: flex;
     align-items: flex-start;
