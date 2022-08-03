@@ -78,7 +78,7 @@ const route2 = () => {
            </div>
             </div>
               
-           <img className={s.image} src='https://thumbs.dreamstime.com/b/soccer-football-ball-green-grass-over-white-background-vector-73323372.jpg' alt='Image' />
+           <img className={s.image} src='https://img.freepik.com/free-vector/soccer-ball-grass-background_1284-8507.jpg' alt='Image' />
             
         </div>
     )
