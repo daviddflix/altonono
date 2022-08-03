@@ -3,6 +3,7 @@ import Button from '@mui/material/Button'
 import {BsCartX} from 'react-icons/bs'
 import s from './history.module.css'
 import {useHistory} from 'react-router-dom'
+import moment from 'moment'
 
 export default function History (){
 
@@ -28,6 +29,8 @@ export default function History (){
                                  name={p.name}
                                  monto={p.monto}
                                  items={p.items}
+                                 id={p.id}
+                                 date={p.createdAt}
                                 />
                                
                             )
@@ -39,7 +42,7 @@ export default function History (){
                 <h2>Tus Pedidos</h2>
                 <div className={s.subcontainerNoOrder}>
                     <BsCartX className={s.emptyCart}/>
-                    <h3>Aun no tienes Pedidos</h3>
+                    <h3>Hace tu primer pedido</h3>
                     <Button onClick={handleMenu} style={{width: '50%'}} variant='contained'>Ver Menu</Button>
                 </div>
             </div>
@@ -49,13 +52,19 @@ export default function History (){
 }
 
 
-function Card({monto, name, items}){
+function Card({monto, name, items, id, date}){
+    console.log(moment(date.slice(0,10)).format('LLL'))
     return(
         <div className={s.boxcard}>
             <div className={s.containerbox}>
+                <span className={s.span}></span>
+                <div className={s.subconatiner1}>
+                <h3 className={s.name}>#{id}</h3>
                 <h3 className={s.name}>{name}</h3>
+                </div>
                 <div className={s.subconatiner}>
-                    <h3>${monto}</h3>
+                    <span>{moment(date.slice(0,10)).format('ll')}</span>
+                    <h3 style={{margin: '.5rem 0 0 0'}}>${monto}</h3>
                 </div>
             </div>
             {
@@ -66,7 +75,7 @@ function Card({monto, name, items}){
                             <span className={s.quantity}>x{p.quantity}</span>
                             <span>{p.title}</span>
                         </div>
-                        <span className={s.subconatiner}>{p.unit_price}</span>
+                        <span className={s.subconatiner}>${p.unit_price}</span>
                     </div>
                     )
                 })

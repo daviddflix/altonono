@@ -126,7 +126,7 @@ export default function Payment(){
              {formErrors.name &&  <Alert className={s.error} severity="error">{formErrors.name}</Alert>}
             </div>
             <div className={s.containerInputs}>
-            <TextField label='Telefono 11xxxx xxxx' className={s.input} type='tel'  value={client.telefono} name='telefono' placeholder='Telefono 11xxxx xxxx' pattern="[0-9]{9}" onChange={handleChange}/>
+            <TextField label='Telefono 11xxxx xxxx' className={s.input} type='tel'  value={client.telefono} name='telefono' placeholder='11xxxx xxxx' pattern="[0-9]{9}" onChange={handleChange}/>
             {formErrors.telefono &&  <Alert className={s.error} severity="error">{formErrors.telefono}</Alert>}
             </div>
             <div className={s.containerInputs}>
