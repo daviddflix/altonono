@@ -4,6 +4,7 @@
     background-color: #fff;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     position: absolute;
     top: 80px;
     transition: .3s ease;
@@ -55,4 +56,10 @@
     width: 20px;
     height: 20px;
     color: rgba(0,0,0,0.5);
+}
+
+.image{
+    width: 100%;
+    height: 200px;
+   
 }

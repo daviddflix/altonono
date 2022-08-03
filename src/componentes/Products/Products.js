@@ -58,13 +58,13 @@ function Card ({ title, unit_price, description, status, id, available, image}) 
         description: description,
         id: id
     })
-
+ 
    
     const ProductNumberIncrement = () => {
-        dispatch(addItem(cart))
+        dispatch(addItem({title, quantity: 1, unit_price: Number(unit_price), description, id}))
     }
       const ProductNumberDecrement = () => {
-        dispatch(sustractItem(cart))
+        dispatch(sustractItem({title, quantity: 1, unit_price: Number(unit_price), description, id}))
       }
   
     return(
