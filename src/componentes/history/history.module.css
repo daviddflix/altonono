@@ -47,9 +47,20 @@
     height: 20%;
 }
 
+
+
 .name{
     position: relative;
     left: 1rem;
+    
+}
+
+.containerbox::before{
+    content: '';
+    background-color: green;
+    height: 10vh;
+    width: 10px;
+    border-radius: 10px;
 }
 
 .quantity{
