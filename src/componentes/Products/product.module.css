@@ -45,6 +45,8 @@
     
 }
 
+
+
 @media screen and (max-width: 800px){
    .boxProduct{
     width: 100%;
@@ -86,11 +88,11 @@
 .title{
     margin: 0;
     padding: 10px;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: red;
+       color: #282828;
         font-weight: 900;
 }
 
@@ -103,6 +105,7 @@
     padding: 10px;
     font-size: 12px;
     font-family: 'roboto';
+    color: black;
 }
 
 .price{

@@ -45,6 +45,7 @@
     align-items: center;
     justify-content: space-between;
     height: 20%;
+    position: relative;
 }
 
 
@@ -52,25 +53,43 @@
 .name{
     position: relative;
     left: 1rem;
-    
-}
-
-.containerbox::before{
-    content: '';
-    background-color: green;
-    height: 10vh;
-    width: 10px;
-    border-radius: 10px;
+   margin: 0;
+  
 }
 
 .quantity{
    margin: 0 .5rem 0 0;
 }
 
+.subconatiner1{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    
+}
+
 .subconatiner{
     position: relative;
     right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
 }
+
+.span{
+    color: #282828;
+    height: 90%;
+    width: 1vw;
+    position: absolute;
+    left: 5px;
+    top: 3px;
+    border-radius: 10px;
+    background-color: #29d884;
+}
+
+
 
 .subcontainerbox{
     display: flex;

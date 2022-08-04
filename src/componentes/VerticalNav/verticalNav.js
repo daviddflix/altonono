@@ -61,6 +61,7 @@ const route2 = () => {
 
     return(
         <div id='nav' ref={wrapperRef} style={nav === true? {left: 0}: {left: '-100%'}} className={s.main}>
+            <div style={{width: '100%'}}>
             <div onClick={route1} className={s.containerRoutes}>
                <div className={s.subcontainer}>
                     <MdRestaurantMenu className={s.icon}/>
@@ -75,8 +76,9 @@ const route2 = () => {
               </div>
               <MdOutlineArrowForwardIos className={s.arrow}/>
            </div>
+            </div>
               
-           
+           <img className={s.image} src='https://img.freepik.com/free-vector/soccer-ball-grass-background_1284-8507.jpg' alt='Image' />
             
         </div>
     )

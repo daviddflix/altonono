@@ -19,7 +19,7 @@ export default function Products(){
     const {categories} = useContext(cartContext);
     const itemsFiltered = !categories? items : categories === 'All'? items: items.filter(p => p.category_id === categories)
 
-    console.log('itemsFiltered', itemsFiltered)
+    
     useEffect(()=> {
       dispatch(getProduct())
     }, [dispatch])
@@ -34,7 +34,7 @@ export default function Products(){
          
             {
                 itemsFiltered.length? itemsFiltered.map((p,i) => {
-                    console.log('p', p.img)
+                  
                  return(
                    <Card status={findStatus} image={p.img !== null? `https://altonono.herokuapp.com${p.img}` : ''} key={i} available={p.available} title={p.title} id={p.id} description={p.description} unit_price={p.unit_price} />
                  )
@@ -58,16 +58,15 @@ function Card ({ title, unit_price, description, status, id, available, image}) 
         description: description,
         id: id
     })
-
+ 
    
     const ProductNumberIncrement = () => {
-        dispatch(addItem(cart))
+        dispatch(addItem({title, quantity: 1, unit_price: Number(unit_price), description, id}))
     }
       const ProductNumberDecrement = () => {
-        dispatch(sustractItem(cart))
+        dispatch(sustractItem({title, quantity: 1, unit_price: Number(unit_price), description, id}))
       }
   
-console.log('card', image)
     return(
         <div className={available === false? s.unavailable : s.boxProduct}>
             <div className={s.boxTitle}>
