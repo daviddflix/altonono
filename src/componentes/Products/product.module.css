@@ -88,11 +88,11 @@
 .title{
     margin: 0;
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        color: red;
+       color: #282828;
         font-weight: 900;
 }
 
@@ -100,11 +100,12 @@
 
 .description{
     position: absolute;
-    top: 1.5rem;
+    top: 1.8rem;
     margin: 0;
     padding: 10px;
     font-size: 12px;
     font-family: 'roboto';
+    color: black;
 }
 
 .price{
