@@ -35,7 +35,7 @@
  align-items: center;
  margin: 0 0 1rem 0 ;
  background-color: #fff;
- border-radius: 10px;
+ border-radius: 1px;
 }
 
 .containerbox{
@@ -44,17 +44,16 @@
     border-bottom: rgba(0, 0, 0, 0.10) solid 1px;
     align-items: center;
     justify-content: space-between;
-    height: 20%;
+    height: 30%;
     position: relative;
+    margin: .3rem;
 }
 
 
 
 .name{
-    position: relative;
-    left: 1rem;
    margin: 0;
-  
+   font-size: 1.2rem;
 }
 
 .quantity{
@@ -66,12 +65,13 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+    position: relative;
+    left: 1rem;
     
 }
 
 .subconatiner{
-    position: relative;
-    right: 1rem;
+  
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -94,9 +94,10 @@
 .subcontainerbox{
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 95%;
     justify-content: space-between;
-    margin: .5rem 0 .3rem 0;
+    font-size: .8rem;
+   
 }
 
 .emptyCart{

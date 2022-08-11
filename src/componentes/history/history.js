@@ -59,27 +59,31 @@ function Card({monto, name, items, id, date}){
             <div className={s.containerbox}>
                 <span className={s.span}></span>
                 <div className={s.subconatiner1}>
-                <h3 className={s.name}>#{id}</h3>
                 <h3 className={s.name}>{name}</h3>
+                <span style={{fontSize: '.8rem'}}>{moment(date.slice(0,10)).format('ll')}</span>
                 </div>
-                <div className={s.subconatiner}>
+                {/* <div className={s.subconatiner}>
                     <span>{moment(date.slice(0,10)).format('ll')}</span>
                     <h3 style={{margin: '.5rem 0 0 0'}}>${monto}</h3>
-                </div>
+                </div> */}
             </div>
             {
                 items?.map((p, i) => {
                     return(
                     <div key={i} className={s.subcontainerbox}>
                         <div className={s.name}>
-                            <span className={s.quantity}>x{p.quantity}</span>
-                            <span>{p.title}</span>
+                            <span style={{fontSize: '.8rem'}} className={s.quantity}>x{p.quantity}</span>
+                            <span style={{fontSize: '.8rem'}}>{p.title}</span>
                         </div>
                         <span className={s.subconatiner}>${p.unit_price}</span>
                     </div>
                     )
                 })
             }
+            <div className={s.subcontainerbox}>
+            <h3 style={{fontSize: '.8rem'}}>Total</h3>
+            <h3 style={{fontSize: '.8rem'}}>${monto}</h3>
+            </div>
         </div>
     )
 }
