@@ -5,6 +5,7 @@ import s from './history.module.css'
 import {useHistory} from 'react-router-dom'
 import moment from 'moment'
 import CurrencyFormat from 'react-currency-format'
+import logo from '../Assets/descarga.png'
 
 export default function History (){
 
@@ -57,6 +58,7 @@ function Card({monto, name, items, id, date}){
     console.log(moment(date.slice(0,10)).format('LLL'))
     return(
         <div className={s.boxcard}>
+            <img  className={s.logo} src={logo} alt='logo'/>
             <div className={s.containerbox}>
                 <span className={s.span}></span>
                 <div className={s.subconatiner1}>
