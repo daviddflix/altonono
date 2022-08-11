@@ -4,6 +4,7 @@ import {BsCartX} from 'react-icons/bs'
 import s from './history.module.css'
 import {useHistory} from 'react-router-dom'
 import moment from 'moment'
+import CurrencyFormat from 'react-currency-format'
 
 export default function History (){
 
@@ -75,14 +76,16 @@ function Card({monto, name, items, id, date}){
                             <span style={{fontSize: '.8rem'}} className={s.quantity}>x{p.quantity}</span>
                             <span style={{fontSize: '.8rem'}}>{p.title}</span>
                         </div>
-                        <span className={s.subconatiner}>${p.unit_price}</span>
+                        {/* <span className={s.subconatiner}>${p.unit_price}</span> */}
+                        <CurrencyFormat value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
                     </div>
                     )
                 })
             }
             <div className={s.subcontainerbox}>
             <h3 style={{fontSize: '.8rem'}}>Total</h3>
-            <h3 style={{fontSize: '.8rem'}}>${monto}</h3>
+            {/* <h3 style={{fontSize: '.8rem'}}>${monto}</h3> */}
+            <CurrencyFormat value={monto} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
         </div>
     )
