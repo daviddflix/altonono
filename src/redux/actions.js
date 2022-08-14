@@ -11,7 +11,7 @@ export const HISTORY = 'HISTORY'
 
 
 
-const url= 'https://altonono.herokuapp.com'
+const url= process.env.REACT_APP_URL
 
 export function getProduct (){   
        return async function (dispatch){
