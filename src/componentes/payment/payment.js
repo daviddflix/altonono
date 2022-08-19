@@ -27,7 +27,7 @@ export default function Payment(){
     const socket = useContext(SocketContext);
     const findStatus = status.length > 0 && status[0].status
   
-
+console.log('client', client.telefono.length)
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,17 +35,6 @@ export default function Payment(){
         dispatch(getStatus())
     }, [])
     
-    // useEffect(()=> {
-    //     socket.on('online', data => {
-    //         console.log('data', data)
-    //         dispatch(statusStore(data))
-    //     })
-    //     socket.on('offline', data => {
-    //         console.log('data', data)
-    //         dispatch(statusStore(data))
-    //     })
-    // }, [socket, dispatch, status])
-   
 
    const back = () => {
      history.push('/review')
@@ -95,6 +84,9 @@ export default function Payment(){
     }
     if(!values.telefono){
         errors.telefono = "No puede estar vacio!"
+    }
+    if(values.telefono.length > 10 || values.telefono.length < 10){
+      errors.telefono = "Ingrese un numero valido"
     }
     if(!values.method){
         errors.method = "No puede estar vacio!"
@@ -147,7 +139,7 @@ export default function Payment(){
                     onChange={handleChange}
                     >
                     <MenuItem value={'Efectivo'}>Efectivo</MenuItem>
-                    <MenuItem value={'Mercado Pago'}>Mercado Pago</MenuItem>
+                    <MenuItem value={'QR'}>QR</MenuItem>
                     
                     </Select>
                  </FormControl>

@@ -38,7 +38,7 @@ export default function Products(){
                  return(
                    <Card status={findStatus} image={p.img !== null? `https://altonono.herokuapp.com${p.img}` : ''} key={i} available={p.available} title={p.title} id={p.id} description={p.description} unit_price={p.unit_price} />
                  )
-                }) : <Spinner/>
+                }) : <div className={s.containerSpinner}><Spinner/></div>
             }
         </div>
     )

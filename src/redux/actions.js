@@ -8,6 +8,8 @@ export const LINK_PAYMENT = 'LINK_PAYMENT'
 export const RESET_CART = 'RESET_CART'
 export const STATUS = 'STATUS'
 export const HISTORY = 'HISTORY'
+export const DETAILS = 'DETAILS'
+export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 
 
@@ -52,6 +54,19 @@ export function getStatus (){
           
        } catch (error) {
            return console.log('error en getSatus', error);
+       }
+    }
+       
+} 
+
+export function detail (id){
+    return async function (dispatch){
+       try {                       
+           const res =  await  axios(`${url}/details/${id}`);
+        return dispatch({ type: DETAILS, payload: res.data})
+          
+       } catch (error) {
+           return console.log('error en detail', error);
        }
     }
        
@@ -111,6 +126,14 @@ export function resetCart(){
         type:RESET_CART
     }
 }
+
+export function clearDetail(){
+    
+    return{
+        type:CLEAR_DETAIL
+    }
+}
+
 
 
 

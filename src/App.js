@@ -13,6 +13,7 @@ import { SocketContext, socket } from './componentes/context/socketContext';
 import { useDispatch } from 'react-redux';
 import { getStatus } from './redux/actions';
 import History from './componentes/history/history';
+import Detail from './componentes/Detail/detail';
 
 
 function App() {
@@ -54,6 +55,10 @@ function App() {
 
           <Route exact path='/payment'>
           <Payment/> 
+          </Route>
+
+          <Route exact path='/detail/:id'>
+          <Detail/> 
           </Route>
 
           
