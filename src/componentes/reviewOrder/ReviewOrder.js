@@ -47,7 +47,7 @@ export default function ReviewOrder(){
 
     return(
         <div className={s.mainBox}>
-            <h2>TUS PRODUCTOS</h2>
+            <h2>MIS PRODUCTOS</h2>
             <RiArrowLeftSLine onClick={back} className={s.arrow}/>
            <div className={s.boxCard}>
            {
