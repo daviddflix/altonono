@@ -10,6 +10,7 @@ import { useContext, useEffect } from 'react';
 import { getStatus } from '../../redux/actions';
 import VerticalNav from '../VerticalNav/verticalNav';
 import navContext from '../context/navContext';
+import {AiOutlineClose} from 'react-icons/ai'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -51,7 +52,7 @@ export default function Navbar(){
 
     return(
         <div className={s.main}>
-            <MenuIcon onClick={showRoutes} className={s.bars}/>
+            {nav == false? <MenuIcon onClick={showRoutes} className={s.bars}/> : <AiOutlineClose onClick={showRoutes} className={s.bars}/>}
             <div className={s.container}>
             <h3 onClick={home} className={s.title}>ALTONONO - FUTBOL EN SERIO</h3>
             {findStatus === 'offline' && <h4 className={s.store}>Tienda cerrada</h4>}

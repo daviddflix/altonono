@@ -14,10 +14,13 @@ import { useDispatch } from 'react-redux';
 import { getStatus } from './redux/actions';
 import History from './componentes/history/history';
 import Detail from './componentes/Detail/detail';
+import CacheBuster from 'react-cache-buster';
+import { version } from '../package.json';
+import Spinner from './componentes/spinner/spinner';
 
 
 function App() {
-
+  const isProduction = process.env.NODE_ENV === 'production';
   const [categories, setCategories] = useState('');
   const [nav, setNav] = useState(false);
   const dispatch = useDispatch();
@@ -38,6 +41,12 @@ function App() {
   
 
   return (
+    <CacheBuster
+      currentVersion={version}
+      isEnabled={isProduction} //If false, the library is disabled.
+      isVerboseMode={false} //If true, the library writes verbose logs to console.
+      loadingComponent={<Spinner />} //If not pass, nothing appears at the time of new version check.
+    >
    <div className='App'>
     <navContext.Provider value={{nav, setNav}}>
       <cartContext.Provider value={{categories, setCategories}}>
@@ -76,6 +85,7 @@ function App() {
       </cartContext.Provider>
       </navContext.Provider>
    </div>
+   </CacheBuster>
   )
 }
 

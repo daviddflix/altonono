@@ -1,5 +1,5 @@
 .main{
-    min-width: 20%;
+    width: 100%;
     height: calc(100vh - 80px);
     background-color: #fff;
     display: flex;
@@ -7,7 +7,7 @@
     justify-content: space-between;
     position: absolute;
     top: 80px;
-    transition: .3s ease;
+    transition: .3s ease-in-out;
     flex-direction: column;
     z-index: 300;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;

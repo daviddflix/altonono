@@ -14,40 +14,40 @@ export default function VerticalNav(){
     const history = useHistory();
 
 
-    const handleClickOutside = useCallback((event) => {
-        if(nav === true && wrapperRef.current && !wrapperRef.current.contains(event.target)){
-            setNav(!nav)
-            const body = document.body.style
-            body.overflow='visible'
-            body.pointerEvents='auto'
-         }
+//     const handleClickOutside = useCallback((event) => {
+//         if(nav === true && wrapperRef.current && !wrapperRef.current.contains(event.target)){
+//             setNav(!nav)
+//             const body = document.body.style
+//             body.overflow='visible'
+//             body.pointerEvents='auto'
+//             }
   
-        if (wrapperRef.current && wrapperRef.current.contains(event.target)) {
-            const body = document.body.style
-            body.overflow='visible'
-            body.pointerEvents='auto'
-            }
-   }, [nav]) 
+//         if (wrapperRef.current && wrapperRef.current.contains(event.target)) {
+//             const body = document.body.style
+//             body.overflow='visible'
+//             body.pointerEvents='auto'
+//             }
+//    }, [nav]) 
 
-   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside, true);
+//    useEffect(() => {
+//     document.addEventListener('mousedown', handleClickOutside, true);
    
-}, [nav, handleClickOutside]);
+// }, [nav, handleClickOutside]);
 
-useEffect(() => {
+// useEffect(() => {
         
-    if(nav){   
+//     if(nav){   
        
-        const body = document.body.style
-        body.overflow='hidden'
-        body.zIndex=10
-        body.pointerEvents='none'  
-        document.getElementById('nav').style.pointerEvents='auto'  
-        document.getElementById('nav').style.overflow='visible'
-    }
+//         const body = document.body.style
+//         body.overflow='hidden'
+//         body.zIndex=10
+//         body.pointerEvents='none'  
+//         document.getElementById('nav').style.pointerEvents='auto'  
+//         document.getElementById('nav').style.overflow='visible'
+//     }
   
    
-}, [nav])
+// }, [nav])
 
 const route1 = () => {
     history.push('/')
@@ -60,7 +60,7 @@ const route2 = () => {
 }
 
     return(
-        <div id='nav' ref={wrapperRef} style={nav === true? {left: 0}: {left: '-100%'}} className={s.main}>
+        <div id='nav' style={nav === false? {left: '-1000%'}: {left: 0}}  className={s.main}>
             <div style={{width: '100%'}}>
             <div onClick={route1} className={s.containerRoutes}>
                <div className={s.subcontainer}>
