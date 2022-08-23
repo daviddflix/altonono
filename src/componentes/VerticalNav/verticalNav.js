@@ -5,7 +5,7 @@ import s from './vertical.module.css'
 import {MdRestaurantMenu} from 'react-icons/md'
 import {IoPersonCircle} from 'react-icons/io5'
 import {MdOutlineArrowForwardIos} from 'react-icons/md'
-import image from '../Assets/feld.jpg'
+import image from '../Assets/feld2.jpg'
 
 export default function VerticalNav(){
 
