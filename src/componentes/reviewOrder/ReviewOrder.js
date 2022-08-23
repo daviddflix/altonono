@@ -3,13 +3,12 @@ import CurrencyFormat from 'react-currency-format'
 import s from './reviewOrder.module.css'
 import { Button } from "@mui/material"
 import { useHistory } from 'react-router-dom';
-import { DeleteItem, getStatus, statusStore, sustractItem } from "../../redux/actions";
+import { DeleteItem, getStatus } from "../../redux/actions";
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import {BsCartX} from 'react-icons/bs'
 import {TbTrashX} from 'react-icons/tb'
 import { useContext, useEffect } from "react";
 import userContext from "../context/userContext";
-import { SocketContext } from "../context/socketContext";
 
 
 export default function ReviewOrder(){
@@ -22,11 +21,10 @@ export default function ReviewOrder(){
     const subtotal = cart.map(p => p.unit_price * p.quantity)
     const total = subtotal.reduce((a,b) => a + b, 0)
     const {client, setClient} = useContext(userContext)
-    const socket = useContext(SocketContext)
 
     useEffect(() => {
         dispatch(getStatus())
-    }, [])
+    }, [dispatch])
   
     const handleComentarios = (e) => {
         setClient(prev => ({...prev, comentarios: e.target.value}))
@@ -72,7 +70,7 @@ export default function ReviewOrder(){
                 <CurrencyFormat style={{marginLeft: '3rem'}} value={total} displayType={'text'} thousandSeparator={true} prefix={'$'} />
             </div>
             <div className={s.styleflex}>
-                <Button style={{marginBottom: '2rem', width: '60%'}} variant='contained' disabled={!cart.length || status[0].status === 'offline'} onClick={payment}>FINALIZAR PEDIDO</Button>
+                <Button style={{marginBottom: '2rem', width: '60%'}} variant='contained' disabled={!cart.length || status[0].status === "Cerrado"} onClick={payment}>FINALIZAR PEDIDO</Button>
             </div>
         </div>
     )

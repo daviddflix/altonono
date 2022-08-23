@@ -1,4 +1,3 @@
-import storage from "redux-persist/lib/storage"
 import { ADD_ITEM_TO_CART, CLEAR_DETAIL, DELETE_ITEM, DETAILS, GET_PRODUCTS, HISTORY, LINK_PAYMENT, RESET_CART, STATUS, SUSTRACT_TO_CART } from "./actions"
 
 

@@ -1,16 +1,16 @@
-import { useCallback, useContext, useEffect, useRef } from 'react'
-import { NavLink as h3, useHistory } from 'react-router-dom'
+import { useContext } from 'react'
+import {  useHistory } from 'react-router-dom'
 import navContext from '../context/navContext'
 import s from './vertical.module.css'
 import {MdRestaurantMenu} from 'react-icons/md'
 import {IoPersonCircle} from 'react-icons/io5'
 import {MdOutlineArrowForwardIos} from 'react-icons/md'
-
+import image from '../Assets/feld.jpg'
 
 export default function VerticalNav(){
 
     const {nav, setNav} = useContext(navContext);
-    const wrapperRef = useRef(null);
+    // const wrapperRef = useRef(null);
     const history = useHistory();
 
 
@@ -52,11 +52,13 @@ export default function VerticalNav(){
 const route1 = () => {
     history.push('/')
     setNav(!nav)
+    document.getElementById("check").checked = false;
 }
 
 const route2 = () => {
     history.push('/history')
     setNav(!nav)
+    document.getElementById("check").checked = false;
 }
 
     return(
@@ -78,7 +80,7 @@ const route2 = () => {
            </div>
             </div>
               
-           <img className={s.image} src='https://img.freepik.com/free-vector/soccer-ball-grass-background_1284-8507.jpg' alt='Image' />
+           <img className={s.image} src={image} alt='campo de futbol' />
             
         </div>
     )

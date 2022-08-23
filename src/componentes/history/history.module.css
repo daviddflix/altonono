@@ -54,6 +54,7 @@
     justify-content: flex-start;
     height: 60px;
     position: relative;
+    color: #282828;
 }
 
 
@@ -147,4 +148,14 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+}
+
+.status{
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    background-color: #29d884;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
 }

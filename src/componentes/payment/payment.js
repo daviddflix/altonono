@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { cashPayment, getLinkPayment, getStatus, resetCart, statusStore } from "../../redux/actions"
+import { cashPayment, getStatus, resetCart } from "../../redux/actions"
 import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
@@ -22,18 +22,17 @@ export default function Payment(){
     const history = useHistory();
     const {client, setClient} = useContext(userContext);
     const cart = useSelector(state => state.cart);
-    const link = useSelector(state => state.link);
+    // const link = useSelector(state => state.link);
     const status = useSelector(state => state.status);
     const socket = useContext(SocketContext);
     const findStatus = status.length > 0 && status[0].status
   
-console.log('client', client.telefono.length)
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         dispatch(getStatus())
-    }, [])
+    }, [dispatch])
     
 
    const back = () => {
@@ -69,8 +68,8 @@ console.log('client', client.telefono.length)
 
   const validate = (values) => {
     let errors = {};
-    const regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-    const regexTable = /^[1-9][0-9]?$|^100$/
+    // const regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+    // const regexTable = /^[1-9][0-9]?$|^100$/
 
     if (!values.name) {
       errors.name = "No puede estar vacio!";

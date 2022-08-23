@@ -3,8 +3,6 @@ import Button from '@mui/material/Button'
 import {BsCartX} from 'react-icons/bs'
 import s from './history.module.css'
 import {useHistory} from 'react-router-dom'
-import moment from 'moment'
-import CurrencyFormat from 'react-currency-format'
 import logo from '../Assets/descarga.png'
 import {MdOutlineArrowForwardIos} from 'react-icons/md'
 import { clearDetail } from '../../redux/actions'
@@ -13,7 +11,7 @@ export default function History (){
 
     const history = useSelector(state => state.history);
     const route = useHistory();
-
+     
 
     const handleMenu = () => {
       route.push('/')
@@ -34,7 +32,8 @@ export default function History (){
                                  monto={p.monto}
                                  items={p.items}
                                  id={p.id}
-                                 date={p.createdAt}
+                                 date={p.date}
+                                 method={p.method}
                                 />
                                
                             )
@@ -55,8 +54,12 @@ export default function History (){
     )
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-function Card({name, id, date}){
+
+function Card({name, id, date, method}){
    
 
     const history = useHistory();
@@ -72,9 +75,10 @@ function Card({name, id, date}){
             <div className={s.containerbox}>
                 <img  className={s.logo} src={logo} alt='logo'/>
                 <div className={s.subconatiner1}>
-                <h3 className={s.name}>{name}</h3>
-                <span style={{fontSize: '.8rem'}}>{moment(date.slice(0,10)).format('l')}</span>
+                <h3 className={s.name}>{capitalizeFirstLetter(name)}</h3>
+                <span style={{fontSize: '.8rem'}}>{date}</span>
                 </div>
+                <h3 className={s.status}>{method}</h3>
             </div>
             <div  onClick={detail} className={s.boxcard2}>
                 <h3>Detalle</h3>
@@ -83,22 +87,3 @@ function Card({name, id, date}){
         </div>
     )
 }
-
-// {
-//     items?.map((p, i) => {
-//         return(
-//         <div key={i} className={s.subcontainerbox}>
-//             <div className={s.name}>
-//                 <span style={{fontSize: '.8rem'}} className={s.quantity}>x{p.quantity}</span>
-//                 <span style={{fontSize: '.8rem'}}>{p.title}</span>
-//             </div>
-//             <CurrencyFormat value={p.unit_price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-//         </div>
-//         )
-//     })
-// }
-// <div className={s.subcontainerbox}>
-// <h3 style={{fontSize: '.8rem'}}>Total</h3>
-// {/* <h3 style={{fontSize: '.8rem'}}>${monto}</h3> */}
-// <CurrencyFormat value={monto} displayType={'text'} thousandSeparator={true} prefix={'$'} />
-// </div>

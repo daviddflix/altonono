@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addItem, getProduct, getStatus, statusStore, sustractItem } from "../../redux/actions"
+import { addItem, getProduct, getStatus, sustractItem } from "../../redux/actions"
 import s from './product.module.css'
 import CurrencyFormat from 'react-currency-format'
 import SearchBar from "../Searchbar/searchBar"
@@ -8,13 +8,13 @@ import cartContext from "../context/cartContext"
 import Spinner from '../spinner/spinner'
 import {TbPlus} from 'react-icons/tb'
 import {AiOutlineMinus} from 'react-icons/ai'
-import {SocketContext} from '../context/socketContext'
+
 
 export default function Products(){
 
     const items = useSelector(state => state.items);
     const status = useSelector(state => state.status);
-    const findStatus = status.length > 0 ? status[0].status : 'offline'
+    const findStatus = status.length > 0 && status[0].status;
     const dispatch = useDispatch();
     const {categories} = useContext(cartContext);
     const itemsFiltered = !categories? items : categories === 'All'? items: items.filter(p => p.category_id === categories)
@@ -26,7 +26,7 @@ export default function Products(){
 
     useEffect(() => {
         dispatch(getStatus())
-    }, [])
+    }, [dispatch])
 
     return(
         <div className={s.mainBox}>
@@ -51,13 +51,13 @@ function Card ({ title, unit_price, description, status, id, available, image}) 
     const cartItem = useSelector(state => state.cart);
     const findQuantity = cartItem.find(p => p.id === id)
 
-    const [cart, setCart] = useState({
-        title: title,
-        quantity: 1,
-        unit_price: Number(unit_price),
-        description: description,
-        id: id
-    })
+    // const [cart, setCart] = useState({
+    //     title: title,
+    //     quantity: 1,
+    //     unit_price: Number(unit_price),
+    //     description: description,
+    //     id: id
+    // })
  
    
     const ProductNumberIncrement = () => {
@@ -75,11 +75,11 @@ function Card ({ title, unit_price, description, status, id, available, image}) 
             </div>
             <h4 className={s.description}>{description}</h4>
             <div className={s.boxTitle2}>
-                {image && <img className={s.img} src={image}  alt={'image'}/>}
+                {image && <img className={s.img} src={image}  alt={'producto'}/>}
                 <div className={s.btnBox}>
-                    <button disabled={available === false || status === 'offline'} onClick={ProductNumberDecrement} className={s.btn}><AiOutlineMinus/></button>
+                    <button disabled={available === false || status === "Cerrado"} onClick={ProductNumberDecrement} className={s.btn}><AiOutlineMinus/></button>
                     <p className={s.btn}>{findQuantity !== undefined? findQuantity.quantity: 0}</p>
-                    <button disabled={available === false || status === 'offline'} onClick={ProductNumberIncrement} className={s.btn}><TbPlus/></button>
+                    <button disabled={available === false || status === "Cerrado"} onClick={ProductNumberIncrement} className={s.btn}><TbPlus/></button>
                 </div>
             </div>
             {available===false && <span className={s.itemUnavailable}>No Disponible</span>}

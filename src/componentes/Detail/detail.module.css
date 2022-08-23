@@ -105,5 +105,12 @@
     border-radius: 2px;
 }
 
+.status{
+    margin: 0 0 0 1.5rem;
+    color: #29d884;
+    border-radius: 2px;
+    padding: .3rem;
+}
+
 
 

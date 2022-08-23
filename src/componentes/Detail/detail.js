@@ -13,11 +13,10 @@ export default function Detail (){
     const {id} = useParams();
     const data = useSelector(state => state.detail);
     const history = useHistory();
-
-     console.log('data', data)
+    
     useEffect(() => {
         dispatch(detail(id))
-    }, [])
+    }, [dispatch, id])
 
     const goback = () => {
       history.goBack()
@@ -35,7 +34,7 @@ export default function Detail (){
                        {
                         data.items && data.items.map(p => {
                             return(
-                               <div className={s.subbox1}>
+                               <div key={id} className={s.subbox1}>
                                     <div className={s.subbox_}>
                                         <h4 className={s.quantity}>x{p.quantity}</h4>
                                         <h4>{p.title}</h4>
@@ -55,6 +54,12 @@ export default function Detail (){
                         <div className={s.subbox2}>
                             <h4 className={s.subbox2_title}>Total</h4>
                             <CurrencyFormat value={data.monto} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                        </div>
+                    </div>
+                    <div className={s.containerResumen}><h3>Mi orden</h3></div>
+                    <div className={s.box2}>
+                        <div className={s.subbox2}>
+                            <h4 className={s.status}>{data.status}</h4>
                         </div>
                     </div>
                 </div> :

@@ -89,7 +89,6 @@ export function detail (id){
 } 
 
  export function addItem(value){
-   console.log('value', value)
      return{
          type:ADD_ITEM_TO_CART,
          payload: value

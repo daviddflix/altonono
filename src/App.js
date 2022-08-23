@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {
      dispatch(getStatus())
-  }, [])
+  }, [dispatch])
   
 
   const [client, setClient] = useState({
