@@ -46,11 +46,11 @@ export default function Payment(){
          title: 'Pedido en curso',
          text: "Nuestra camarera le acercara su pedido",
          showConfirmButton: true,
+         timer: 1200
          })
          socket.emit('pedido', {client, cart})
          dispatch(cashPayment({client, cart}))
          dispatch(resetCart())
-         history.push('/history')
     }
    
 }

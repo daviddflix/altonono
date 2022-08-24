@@ -1,17 +1,24 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import {  useHistory } from 'react-router-dom'
 import navContext from '../context/navContext'
 import s from './vertical.module.css'
 import {MdRestaurantMenu} from 'react-icons/md'
 import {IoPersonCircle} from 'react-icons/io5'
 import {MdOutlineArrowForwardIos} from 'react-icons/md'
-import image from '../Assets/feld2.jpg'
+import image from '../Assets/soccer-ball-grass-background_1284-8507.webp'
+import { useDispatch } from 'react-redux'
+import { getStatus } from '../../redux/actions'
 
 export default function VerticalNav(){
 
     const {nav, setNav} = useContext(navContext);
-    // const wrapperRef = useRef(null);
     const history = useHistory();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getStatus())
+    }, [dispatch])
+    
 
 
 //     const handleClickOutside = useCallback((event) => {

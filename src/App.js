@@ -12,7 +12,6 @@ import Success from './componentes/successMp/sucess';
 import { SocketContext, socket } from './componentes/context/socketContext';
 import { useDispatch } from 'react-redux';
 import { getStatus } from './redux/actions';
-import History from './componentes/history/history';
 import Detail from './componentes/Detail/detail';
 import CacheBuster from 'react-cache-buster';
 import { version } from '../package.json';
@@ -75,9 +74,9 @@ function App() {
           <Success/> 
           </Route>
 
-          <Route exact path='/history'>
+          {/* <Route exact path='/history'>
           <History/> 
-          </Route>
+          </Route> */}
 
         </Switch>
         </SocketContext.Provider>
