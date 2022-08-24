@@ -78,13 +78,13 @@ const route2 = () => {
               </div>
               <MdOutlineArrowForwardIos className={s.arrow}/>
            </div>
-           <div onClick={route2} className={s.containerRoutes}>
+           {/* <div onClick={route2} className={s.containerRoutes}>
               <div className={s.subcontainer}>
                 <IoPersonCircle className={s.icon}/>
                 <h3 className={s.link}>Mis pedidos</h3>
               </div>
               <MdOutlineArrowForwardIos className={s.arrow}/>
-           </div>
+           </div> */}
             </div>
               
            <img className={s.image} src={image} alt='campo de futbol' />
