@@ -49,8 +49,6 @@ export default function Payment(){
          text: "Nuestra camarera le acercara su pedido",
          showConfirmButton: true,
          })
-         dispatch(cashPayment({client, cart}))
-         dispatch(resetCart())
     } else {
       Swal.fire({
         icon: 'error',
