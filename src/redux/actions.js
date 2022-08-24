@@ -13,7 +13,7 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 
 
-const url= process.env.REACT_APP_URL
+const url= 'https://altonono.herokuapp.com'
 
 export function getProduct (){   
        return async function (dispatch){

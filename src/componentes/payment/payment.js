@@ -31,6 +31,8 @@ export default function Payment(){
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+
+
     useEffect(() => {
         dispatch(getStatus())
     }, [dispatch])
