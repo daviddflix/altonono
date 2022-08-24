@@ -7,7 +7,7 @@ import s from './payment.module.css'
 import Swal from 'sweetalert2'
 import { useHistory } from "react-router-dom"
 import {RiArrowLeftSLine} from 'react-icons/ri'
-import { SocketContext } from "../context/socketContext"
+// import { SocketContext } from "../context/socketContext"
 import { Alert, TextField } from "@mui/material";
 import * as React from 'react';
 import Box from '@mui/material/Box';
@@ -22,9 +22,10 @@ export default function Payment(){
     const history = useHistory();
     const {client, setClient} = useContext(userContext);
     const cart = useSelector(state => state.cart);
+    const order = useSelector(state => state.history);
     // const link = useSelector(state => state.link);
     const status = useSelector(state => state.status);
-    const socket = useContext(SocketContext);
+    // const socket = useContext(SocketContext);
     const findStatus = status.length > 0 && status[0].status
   
     const [formErrors, setFormErrors] = useState({});
@@ -33,26 +34,32 @@ export default function Payment(){
     useEffect(() => {
         dispatch(getStatus())
     }, [dispatch])
-    
 
    const back = () => {
      history.push('/review')
    }
 
    const cash = () => {
-    if(cart.length){
+    dispatch(cashPayment({client, cart}))
+    dispatch(resetCart())
+    if(order.time){
      Swal.fire({
          icon: 'success',
          title: 'Pedido en curso',
          text: "Nuestra camarera le acercara su pedido",
          showConfirmButton: true,
-         timer: 1200
          })
-         socket.emit('pedido', {client, cart})
          dispatch(cashPayment({client, cart}))
          dispatch(resetCart())
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Algo salio mal, por favor realiza tu pedido de nuevo',
+        showConfirmButton: true
+      })
     }
-   
+   history.push('/')
 }
 // setClient
    const handleChange = (e) => {
@@ -147,7 +154,7 @@ export default function Payment(){
              </div>
           </form>
           <div className={s.containerBtn}>
-          <Button  variant='contained' onClick={handleSubmit} type='submit'  disabled={!cart.length || findStatus === 'offline'} style={{marginRight: '1.5rem', width: '50%'}} >Confirmar Pedido</Button>
+          <Button  variant='contained' onClick={handleSubmit} type='submit'  disabled={!cart.length || findStatus === 'Cerrado'} style={{marginRight: '1.5rem', width: '50%'}} >Confirmar Pedido</Button>
          </div>
     </div>
     )

@@ -46,7 +46,7 @@ const InicialState ={
   if(action.type === HISTORY){
     return{
       ...state,
-      history:[...state.history, action.payload]
+      history: action.payload
     }
   }
 
