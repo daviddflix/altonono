@@ -3,7 +3,7 @@ import {  useHistory } from 'react-router-dom'
 import navContext from '../context/navContext'
 import s from './vertical.module.css'
 import {MdRestaurantMenu} from 'react-icons/md'
-import {IoPersonCircle} from 'react-icons/io5'
+// import {IoPersonCircle} from 'react-icons/io5'
 import {MdOutlineArrowForwardIos} from 'react-icons/md'
 import image from '../Assets/soccer-ball-grass-background_1284-8507.webp'
 import { useDispatch } from 'react-redux'
@@ -62,11 +62,11 @@ const route1 = () => {
     document.getElementById("check").checked = false;
 }
 
-const route2 = () => {
-    history.push('/history')
-    setNav(!nav)
-    document.getElementById("check").checked = false;
-}
+// const route2 = () => {
+//     history.push('/history')
+//     setNav(!nav)
+//     document.getElementById("check").checked = false;
+// }
 
     return(
         <div id='nav' style={nav === false? {left: '-1000%'}: {left: 0}}  className={s.main}>
