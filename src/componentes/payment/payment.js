@@ -44,21 +44,13 @@ export default function Payment(){
    const cash = () => {
     dispatch(cashPayment({client, cart}))
     dispatch(resetCart())
-    if(order.time){
      Swal.fire({
          icon: 'success',
          title: 'Pedido en curso',
          text: "Nuestra camarera le acercara su pedido",
          showConfirmButton: true,
          })
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Algo salio mal, por favor realiza tu pedido de nuevo',
-        showConfirmButton: true
-      })
-    }
+    
    history.push('/')
 }
 // setClient
