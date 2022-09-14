@@ -60,9 +60,7 @@ export default function Payment(){
    const handleChange = (e) => {
     const { name, value } = e.target;
     setClient({ ...client, [name]: value });
-    if(client.method === 'Mercado Pago'){
-      dispatch(getLinkPayment({cart,client}))
-    }
+ 
   };
 
   const handleSubmit = (e) => {
