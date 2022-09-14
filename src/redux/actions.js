@@ -14,7 +14,7 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 
 
-const url= 'https://altonono.herokuapp.com'
+const url= 'http://localhost:4000'
 
 export function getProduct (){   
        return async function (dispatch){
