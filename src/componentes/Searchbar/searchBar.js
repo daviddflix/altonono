@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useContext, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getProduct, getStatus } from '../../redux/actions';
+import { filterProducts, getProduct, getStatus } from '../../redux/actions';
 import cartContext from '../context/cartContext';
 
 
@@ -19,12 +19,16 @@ export default function SearchBar(){
     };
 
     useEffect(() => {
+      dispatch(filterProducts({category: categories}))
+    }, [dispatch,categories ])
+    
+    useEffect(() => {
       dispatch(getStatus())
   }, [categories, dispatch])
 
   useEffect(() => {
-    dispatch(getProduct())
-}, [categories, dispatch])
+    dispatch(filterProducts())
+}, [dispatch])
 
   
 

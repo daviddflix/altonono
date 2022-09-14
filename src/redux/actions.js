@@ -9,6 +9,7 @@ export const RESET_CART = 'RESET_CART'
 export const STATUS = 'STATUS'
 export const HISTORY = 'HISTORY'
 export const DETAILS = 'DETAILS'
+export const FILTER = 'FILTER'
 export const CLEAR_DETAIL = 'CLEAR_DETAIL'
 
 
@@ -23,6 +24,21 @@ export function getProduct (){
                
            } catch (error) {
                console.log('error en getproducts', error)
+           }
+               
+       } 
+    
+    
+ }
+
+export function filterProducts (payload){   
+       return async function (dispatch){
+          try {                            
+               const res = await axios.post(`${url}/findProduct`, payload); 
+                 dispatch({ type: FILTER, payload: res.data });
+               
+           } catch (error) {
+               console.log('error en filterProducts', error)
            }
                
        } 

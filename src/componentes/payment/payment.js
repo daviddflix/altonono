@@ -103,7 +103,7 @@ export default function Payment(){
     if (Object.keys(formErrors).length === 0 && isSubmitting) {
         cash()
     }
-  }, [formErrors, isSubmitting, cash]);
+  }, [formErrors, isSubmitting]);
 
 
     return(

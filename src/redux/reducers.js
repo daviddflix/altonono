@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART, CLEAR_DETAIL, DELETE_ITEM, DETAILS, GET_PRODUCTS, HISTORY, LINK_PAYMENT, RESET_CART, STATUS, SUSTRACT_TO_CART } from "./actions"
+import { ADD_ITEM_TO_CART, CLEAR_DETAIL, DELETE_ITEM, DETAILS, FILTER, GET_PRODUCTS, HISTORY, LINK_PAYMENT, RESET_CART, STATUS, SUSTRACT_TO_CART } from "./actions"
 
 
 const InicialState ={
@@ -102,13 +102,22 @@ const InicialState ={
      
     }
   }
-
   if(action.type === DETAILS){
 
     
     return{
       ...state,
       detail: action.payload
+     
+    }
+  }
+
+  if(action.type === FILTER){
+
+    
+    return{
+      ...state,
+      items: action.payload
      
     }
   }

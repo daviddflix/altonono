@@ -20,7 +20,7 @@ import Spinner from './componentes/spinner/spinner';
 
 function App() {
   const isProduction = process.env.NODE_ENV === 'production';
-  const [categories, setCategories] = useState('Comidas');
+  const [categories, setCategories] = useState('');
   const [nav, setNav] = useState(false);
   const dispatch = useDispatch();
 

@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addItem, getProduct, getStatus, sustractItem } from "../../redux/actions"
+import { addItem, filterProducts, getStatus, sustractItem } from "../../redux/actions"
 import s from './product.module.css'
 import CurrencyFormat from 'react-currency-format'
 import SearchBar from "../Searchbar/searchBar"
-import cartContext from "../context/cartContext"
 import Spinner from '../spinner/spinner'
 import {TbPlus} from 'react-icons/tb'
 import {AiOutlineMinus} from 'react-icons/ai'
+import {FcSearch} from 'react-icons/fc'
 
 
 export default function Products(){
@@ -16,12 +16,14 @@ export default function Products(){
     const status = useSelector(state => state.status);
     const findStatus = status.length > 0 && status[0].status;
     const dispatch = useDispatch();
-    const {categories} = useContext(cartContext);
-    const itemsFiltered = !categories? items : categories === 'All'? items: items.filter(p => p.category_id === categories)
+    const [finder,setFinder] = useState('');
 
+    useEffect(() => {
+        dispatch(filterProducts({product: finder}))
+    }, [dispatch, finder])
     
     useEffect(()=> {
-      dispatch(getProduct())
+      dispatch(filterProducts())
     }, [dispatch])
 
     useEffect(() => {
@@ -30,10 +32,13 @@ export default function Products(){
 
     return(
         <div className={s.mainBox}>
-            <SearchBar/>
-         
+            <div className={s.containerInput}>
+                <FcSearch className={s.searchIcon}/>
+            <input type='text' value={finder} className={s.input} placeholder='Encuentra productos por su nombre' onChange={(e) => setFinder(e.target.value)}/>
+            </div>
+            <SearchBar />
             {
-                itemsFiltered.length? itemsFiltered.map((p,i) => {
+                items.length? items.map((p,i) => {
                   
                  return(
                    <Card status={findStatus} image={p.img !== null? `https://altonono.herokuapp.com${p.img}` : ''} key={i} available={p.available} title={p.title} id={p.id} description={p.description} unit_price={p.unit_price} />
@@ -51,15 +56,6 @@ function Card ({ title, unit_price, description, status, id, available, image}) 
     const cartItem = useSelector(state => state.cart);
     const findQuantity = cartItem.find(p => p.id === id)
 
-    // const [cart, setCart] = useState({
-    //     title: title,
-    //     quantity: 1,
-    //     unit_price: Number(unit_price),
-    //     description: description,
-    //     id: id
-    // })
- 
-   
     const ProductNumberIncrement = () => {
         dispatch(addItem({title, quantity: 1, unit_price: Number(unit_price), description, id}))
     }
