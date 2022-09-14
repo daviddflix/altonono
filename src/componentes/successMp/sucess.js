@@ -23,10 +23,11 @@ export default function Success (){
             // timer: 1500
             })
             dispatch(resetCart())
+            history.push('/')
     })
     return(
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '90%', justifyContent: 'center'}}>
-        <Button onClick={back} size='large' variant='contained'>HOME</Button>
+        {/* <Button onClick={back} size='large' variant='contained'>HOME</Button> */}
         </div>
     )
 }
