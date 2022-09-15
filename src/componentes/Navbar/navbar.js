@@ -45,12 +45,12 @@ export default function Navbar(){
     return(
         <div className={s.main}>
             {/* {nav == false? <MenuIcon onClick={showRoutes} className={s.bars}/> : <AiOutlineClose onClick={showRoutes} className={s.bars}/>} */}
-            <Button/>
+            {/* <Button/> */}
             <div className={s.container}>
             <h3 onClick={home} className={s.title}>ALTONONO - FUTBOL EN SERIO</h3>
             {findStatus === "Cerrado" && <h4 className={s.store}>Tienda cerrada</h4>}
             </div>
-            <IconButton aria-label="cart">
+            <IconButton style={{position: 'absolute', right: '1rem'}} aria-label="cart">
             <StyledBadge badgeContent={items.length? items.length : '0'} color="primary">
                 <ShoppingCartIcon style={{color: '#fff'}} onClick={viewCart} />
             </StyledBadge>

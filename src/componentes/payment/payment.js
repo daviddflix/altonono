@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { cashPayment, getLinkPayment, getStatus, resetCart } from "../../redux/actions"
+import { cashPayment, getStatus, resetCart } from "../../redux/actions"
 import userContext from "../context/userContext"
 import s from './payment.module.css'
 import Swal from 'sweetalert2'
@@ -23,18 +23,15 @@ export default function Payment(){
     const {client, setClient} = useContext(userContext);
     const cart = useSelector(state => state.cart);
     const order = useSelector(state => state.history);
-    const link = useSelector(state => state.link);
+    // const link = useSelector(state => state.link);
     const status = useSelector(state => state.status);
+    // const socket = useContext(SocketContext);
     const findStatus = status.length > 0 && status[0].status
-
+  
     const [formErrors, setFormErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
-      if(client.method === 'Mercado Pago'){
-        dispatch(getLinkPayment({cart,client}))
-      }
-    }, [dispatch, client.method])
+
 
     useEffect(() => {
         dispatch(getStatus())
@@ -60,7 +57,6 @@ export default function Payment(){
    const handleChange = (e) => {
     const { name, value } = e.target;
     setClient({ ...client, [name]: value });
- 
   };
 
   const handleSubmit = (e) => {
@@ -141,7 +137,7 @@ export default function Payment(){
                     onChange={handleChange}
                     >
                     <MenuItem value={'Efectivo'}>Efectivo</MenuItem>
-                    <MenuItem value={'Mercado Pago'}>Mercado Pago</MenuItem>
+                    <MenuItem value={'QR'}>QR</MenuItem>
                     
                     </Select>
                  </FormControl>
@@ -150,11 +146,7 @@ export default function Payment(){
              </div>
           </form>
           <div className={s.containerBtn}>
-{
-             client.method === 'Efectivo'?  <Button variant='contained' style={{marginRight: '1.5rem'}} onClick={cash}>Confirmar Pedido</Button> :
-               <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
-                 
-           }
+          <Button  variant='contained' onClick={handleSubmit} type='submit'  disabled={!cart.length || findStatus === 'Cerrado'} style={{marginRight: '1.5rem', width: '50%'}} >Confirmar Pedido</Button>
          </div>
     </div>
     )
@@ -167,4 +159,3 @@ export default function Payment(){
 //                 <Button size='large' disabled={!link.length} ><a className={s.btnMp} href={link}>Confirmar Pedido</a></Button> 
                  
 //              } */}
- 
