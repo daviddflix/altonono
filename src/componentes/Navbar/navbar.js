@@ -49,7 +49,7 @@ export default function Navbar(){
             <div className={s.container}>
             <h3 onClick={home} className={s.title}>ALTONONO - FUTBOL EN SERIO</h3>
             {findStatus === "Cerrado" && <h4 className={s.store}>Tienda cerrada</h4>}
-            </div>
+            </div> 
             <IconButton style={{position: 'absolute', right: '1rem'}} aria-label="cart">
             <StyledBadge badgeContent={items.length? items.length : '0'} color="primary">
                 <ShoppingCartIcon style={{color: '#fff'}} onClick={viewCart} />
