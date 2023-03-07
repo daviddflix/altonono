@@ -8,7 +8,6 @@ import { useHistory } from 'react-router-dom';
 import {  useEffect } from 'react';
 import { getStatus } from '../../redux/actions';
 import VerticalNav from '../VerticalNav/verticalNav';
-import Button from '../VerticalNav/button';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {

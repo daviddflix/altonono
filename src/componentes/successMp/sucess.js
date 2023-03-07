@@ -1,4 +1,3 @@
-import { Button } from "@mui/material"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
@@ -9,10 +8,6 @@ export default function Success (){
 
     const dispatch = useDispatch()
     const history = useHistory()
-
-    const back = () => {
-        history.push('/')
-    }
 
     useEffect(() => {
         Swal.fire({
