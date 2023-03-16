@@ -51,9 +51,6 @@ export default function Products() {
           return (
             <Card
               status={findStatus}
-              //   image={
-              //     p.img !== null ? `https://altonono.herokuapp.com${p.img}` : ""
-              //   }
               key={i}
               available={p.available}
               title={p.title}
@@ -123,7 +120,6 @@ function Card({
       </div>
       <h4 className={s.description}>{description}</h4>
       <div className={s.boxTitle2}>
-        {image && <img className={s.img} src={image} alt={"producto"} />}
         <div className={s.btnBox}>
           <button
             disabled={available === false || status === "Cerrado"}

@@ -2,7 +2,7 @@ import { FormControl } from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterProducts, getProduct, getStatus } from '../../redux/actions';
 import cartContext from '../context/cartContext';
@@ -30,11 +30,23 @@ export default function SearchBar(){
     dispatch(filterProducts())
 }, [dispatch])
 
+
+const [screenSize, setScreenSize] = useState(null);
+
+useEffect(() => {
+  function handleResize() {
+    setScreenSize(window.innerWidth);
+  }
+  window.addEventListener('resize', handleResize);
+  setScreenSize(window.innerWidth);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+console.log(screenSize)
   
 
     return(
         <div style={{position: 'sticky', top: '5rem', zIndex: 1}}>
-        <FormControl variant='filled' size='small' sx={{ m: 1, minWidth: 320, bgcolor:'rgba(0,0,0,0.2)', color: '#fff' }}>
+        <FormControl variant='filled' size='small' sx={{ m: 1, minWidth: screenSize >=1000 ? 900 : screenSize >= 800 ? 600 : 320, bgcolor:'rgba(0,0,0,0.2)', color: '#fff' }}>
             <InputLabel   id="demo-simple-select-helper-label">Todas las Categorias</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
